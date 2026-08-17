@@ -1,0 +1,91 @@
+{
+  "name": "@vantra-design/ask-design-system",
+  "version": "0.1.0",
+  "description": "A local-first AI assistant for your design system — ask questions about your tokens in natural language. Nothing leaves your browser.",
+  "keywords": [
+    "design-system",
+    "design-tokens",
+    "dtcg",
+    "style-dictionary",
+    "ai",
+    "local-first",
+    "webgpu",
+    "rag",
+    "vantra"
+  ],
+  "license": "Apache-2.0",
+  "author": "Vantra Design <vantra@kauper.co>",
+  "homepage": "https://github.com/vantradesign/vantra-ask-design-system#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vantradesign/vantra-ask-design-system.git",
+    "directory": "packages/core"
+  },
+  "bugs": {
+    "url": "https://github.com/vantradesign/vantra-ask-design-system/issues"
+  },
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    },
+    "./voice-input": {
+      "types": "./dist/voice-input.d.ts",
+      "import": "./dist/voice-input.js",
+      "require": "./dist/voice-input.cjs"
+    },
+    "./voice-output": {
+      "types": "./dist/voice-output.d.ts",
+      "import": "./dist/voice-output.js",
+      "require": "./dist/voice-output.cjs"
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE",
+    "NOTICE",
+    "CHANGELOG.md"
+  ],
+  "sideEffects": false,
+  "engines": {
+    "node": ">=18.18.0"
+  },
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
+  },
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "clean": "rm -rf dist coverage",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "typecheck": "tsc --noEmit",
+    "tsc": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage",
+    "changeset": "changeset",
+    "version-packages": "changeset version",
+    "release": "pnpm run build && changeset publish",
+    "verify": "pnpm run lint && pnpm run typecheck && pnpm run test && pnpm run build"
+  },
+  "dependencies": {
+    "@huggingface/transformers": "^3.6.0",
+    "@vantra-design/local-inference": "^0.1.0"
+  },
+  "devDependencies": {
+    "@vitest/coverage-v8": "^4.1.10",
+    "@webgpu/types": "^0.1.55",
+    "tsup": "^8.5.1",
+    "typescript": "^5.9.3",
+    "vitest": "^4.1.10"
+  }
+}

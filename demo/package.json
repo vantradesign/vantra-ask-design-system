@@ -1,0 +1,23 @@
+{
+  "name": "ask-design-system-demo",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Demo app for @vantra-design/ask-design-system-vue — iframe-ready for vantra.design",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@vantra-design/ask-design-system": "workspace:^",
+    "@vantra-design/ask-design-system-vue": "workspace:^",
+    "vue": "^3.5.17"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^5.2.4",
+    "typescript": "^5.9.3",
+    "vite": "^6.3.5",
+    "vue-tsc": "^2.2.12"
+  }
+}

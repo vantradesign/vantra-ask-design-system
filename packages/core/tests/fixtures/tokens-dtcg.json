@@ -1,0 +1,74 @@
+{
+  "color": {
+    "primary": {
+      "$value": "#0066cc",
+      "$type": "color"
+    },
+    "secondary": {
+      "$value": "#6b7280",
+      "$type": "color"
+    },
+    "background": {
+      "default": {
+        "$value": "#ffffff",
+        "$type": "color"
+      },
+      "subtle": {
+        "$value": "#f8f9fa",
+        "$type": "color"
+      },
+      "inverse": {
+        "$value": "#1a1a2e",
+        "$type": "color"
+      }
+    }
+  },
+  "spacing": {
+    "xs": {
+      "$value": "4px",
+      "$type": "dimension"
+    },
+    "sm": {
+      "$value": "8px",
+      "$type": "dimension"
+    },
+    "md": {
+      "$value": "16px",
+      "$type": "dimension"
+    },
+    "lg": {
+      "$value": "24px",
+      "$type": "dimension"
+    },
+    "xl": {
+      "$value": "32px",
+      "$type": "dimension"
+    }
+  },
+  "typography": {
+    "fontFamily": {
+      "heading": {
+        "$value": "Inter, sans-serif",
+        "$type": "fontFamily"
+      },
+      "body": {
+        "$value": "system-ui, sans-serif",
+        "$type": "fontFamily"
+      }
+    },
+    "fontSize": {
+      "sm": {
+        "$value": "14px",
+        "$type": "dimension"
+      },
+      "md": {
+        "$value": "16px",
+        "$type": "dimension"
+      },
+      "lg": {
+        "$value": "20px",
+        "$type": "dimension"
+      }
+    }
+  }
+}

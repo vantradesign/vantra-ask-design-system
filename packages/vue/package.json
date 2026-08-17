@@ -1,0 +1,72 @@
+{
+  "name": "@vantra-design/ask-design-system-vue",
+  "version": "0.1.0",
+  "description": "Vue 3 component for @vantra-design/ask-design-system — a local-first AI assistant for design systems.",
+  "keywords": [
+    "design-system",
+    "vue",
+    "vue3",
+    "ai",
+    "local-first",
+    "vantra"
+  ],
+  "license": "Apache-2.0",
+  "author": "Vantra Design <vantra@kauper.co>",
+  "homepage": "https://github.com/vantradesign/vantra-ask-design-system#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vantradesign/vantra-ask-design-system.git",
+    "directory": "packages/vue"
+  },
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "style": "./dist/ask-design-system-vue.css",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    },
+    "./style.css": "./dist/ask-design-system-vue.css",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "sideEffects": [
+    "./dist/ask-design-system-vue.css"
+  ],
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
+  },
+  "scripts": {
+    "build": "vite build",
+    "dev": "vite build --watch",
+    "typecheck": "vue-tsc --noEmit",
+    "tsc": "vue-tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage",
+    "clean": "rm -rf dist coverage"
+  },
+  "peerDependencies": {
+    "@vantra-design/ask-design-system": "workspace:^",
+    "vue": "^3.4.0"
+  },
+  "devDependencies": {
+    "@vantra-design/ask-design-system": "workspace:^",
+    "@vitejs/plugin-vue": "^5.2.4",
+    "@vitest/coverage-v8": "^4.1.10",
+    "vite": "^6.3.5",
+    "vite-plugin-dts": "^4.5.4",
+    "typescript": "^5.9.3",
+    "jsdom": "^26.1.0",
+    "vitest": "^4.1.10",
+    "vue": "^3.5.17",
+    "vue-tsc": "^2.2.12"
+  }
+}

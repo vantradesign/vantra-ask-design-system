@@ -1,0 +1,15 @@
+packages:
+  - 'packages/*'
+  - 'demo'
+
+autoInstallPeers: true
+strictPeerDependencies: false
+
+allowBuilds:
+  esbuild: true
+  onnxruntime-node: true
+  protobufjs: true
+  sharp: true
+
+minimumReleaseAgeExclude:
+  - '@vantra-design/local-inference@0.1.0'

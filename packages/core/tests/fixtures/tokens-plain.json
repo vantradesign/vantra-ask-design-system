@@ -1,0 +1,15 @@
+{
+  "color": {
+    "primary": "#0066cc",
+    "secondary": "#6b7280",
+    "background": {
+      "default": "#ffffff",
+      "subtle": "#f8f9fa"
+    }
+  },
+  "spacing": {
+    "sm": "8px",
+    "md": "16px",
+    "lg": "24px"
+  }
+}

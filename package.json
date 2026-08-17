@@ -1,0 +1,45 @@
+{
+  "name": "vantra-ask-design-system",
+  "version": "0.1.0",
+  "private": true,
+  "description": "A local-first AI assistant for your design system — ask questions about your tokens in natural language. Nothing leaves your browser.",
+  "license": "Apache-2.0",
+  "author": "Vantra Design <vantra@kauper.co>",
+  "homepage": "https://github.com/vantradesign/vantra-ask-design-system#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vantradesign/vantra-ask-design-system.git"
+  },
+  "bugs": {
+    "url": "https://github.com/vantradesign/vantra-ask-design-system/issues"
+  },
+  "type": "module",
+  "engines": {
+    "node": ">=20.11.0"
+  },
+  "packageManager": "pnpm@11.20.0",
+  "scripts": {
+    "build": "pnpm -r run build",
+    "dev": "pnpm --filter @vantra-design/ask-design-system dev",
+    "demo": "pnpm --filter ask-design-system-demo dev",
+    "clean": "pnpm -r run clean",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "typecheck": "pnpm -r --parallel run typecheck",
+    "tsc": "pnpm -r --parallel run tsc",
+    "test": "pnpm -r run test",
+    "test:watch": "pnpm --filter @vantra-design/ask-design-system test:watch",
+    "test:coverage": "pnpm -r run test:coverage",
+    "changeset": "changeset",
+    "version-packages": "changeset version",
+    "release": "pnpm run build && changeset publish",
+    "verify": "pnpm run lint && pnpm run typecheck && pnpm run test && pnpm run build"
+  },
+  "devDependencies": {
+    "@changesets/cli": "^2.31.1",
+    "@eslint/js": "^10.0.1",
+    "eslint": "^10.8.1",
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.66.0"
+  }
+}
