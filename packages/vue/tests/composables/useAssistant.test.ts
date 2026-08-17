@@ -30,7 +30,7 @@ vi.mock('@vantra-design/ask-design-system', () => {
     abort() { /* noop */ }
     async updateSchema() { /* noop */ }
     async destroy() { /* noop */ }
-    static isSupported() { return false }
+    static isSupported() { return true }
     static async isCached() { return false }
   }
 
@@ -60,6 +60,7 @@ const sampleSchema = {
 describe('useAssistant', () => {
   beforeEach(() => {
     vi.clearAllMocks()
+    localStorage.clear()
   })
 
   it('initializes with correct defaults', () => {

@@ -1,33 +1,62 @@
 {
   "color": {
     "$type": "color",
-    "primary": { "$value": "#0066cc" },
-    "primary-hover": { "$value": "#0052a3" },
-    "secondary": { "$value": "#6b7280" },
-    "accent": { "$value": "#8b5cf6" },
-    "success": { "$value": "#16a34a" },
-    "warning": { "$value": "#f59e0b" },
-    "error": { "$value": "#dc2626" },
-    "background": {
-      "default": { "$value": "#ffffff" },
-      "subtle": { "$value": "#f8f9fa" },
-      "muted": { "$value": "#f1f3f5" },
-      "inverse": { "$value": "#1a1a2e" }
+    "paper": {
+      "$value": "#f5f2f3",
+      "$description": "Default page background. Warm off-white with a hint of rose."
     },
-    "text": {
-      "default": { "$value": "#1a1a2e" },
-      "muted": { "$value": "#6b7280" },
-      "inverse": { "$value": "#ffffff" },
-      "link": { "$value": "#0066cc" }
+    "surface": {
+      "$value": "#e2dfe0",
+      "$description": "Elevated surface background for cards, panels, and overlays."
     },
-    "border": {
-      "default": { "$value": "#e5e7eb" },
-      "strong": { "$value": "#9ca3af" },
-      "focus": { "$value": "#0066cc" }
+    "ink": {
+      "$value": "#001619",
+      "$description": "Primary text and foreground colour. Near-black with a teal undertone."
+    },
+    "ink-muted": {
+      "$value": "#4a585a",
+      "$description": "Secondary text, captions, and placeholder content."
+    },
+    "ink-faint": {
+      "$value": "#626e70",
+      "$description": "Tertiary text for metadata and timestamps."
+    },
+    "blue": {
+      "$value": "#021f94",
+      "$description": "Primary brand accent. Used for links, focus rings, and CTAs."
+    },
+    "cyan": {
+      "$value": "#50e8f4",
+      "$description": "Secondary accent for highlights, selection backgrounds, and badges."
+    },
+    "cyan-soft": {
+      "$value": "#c7f8fe",
+      "$description": "Pale cyan for subtle highlighted regions and active states."
+    },
+    "success": {
+      "$value": "#0f6b3a",
+      "$description": "Positive state colour for confirmations and success banners."
+    },
+    "warning": {
+      "$value": "#8a6500",
+      "$description": "Cautionary state colour for warnings and validation hints."
+    },
+    "fail": {
+      "$value": "#8f1d13",
+      "$description": "Error state colour for destructive actions and error messages."
+    },
+    "rule": {
+      "$value": "rgba(0, 22, 25, 0.12)",
+      "$description": "Hairline border and divider colour. Semi-transparent ink."
+    },
+    "overlay": {
+      "$value": "rgba(0, 22, 25, 0.45)",
+      "$description": "Modal and dialog backdrop overlay."
     }
   },
   "spacing": {
     "$type": "dimension",
+    "$description": "Spacing scale based on a 4px grid with a power-of-two progression.",
     "2xs": { "$value": "2px" },
     "xs": { "$value": "4px" },
     "sm": { "$value": "8px" },
@@ -35,74 +64,150 @@
     "lg": { "$value": "24px" },
     "xl": { "$value": "32px" },
     "2xl": { "$value": "48px" },
-    "3xl": { "$value": "64px" }
+    "3xl": { "$value": "64px" },
+    "4xl": { "$value": "96px" },
+    "5xl": { "$value": "128px" }
   },
   "typography": {
     "fontFamily": {
       "$type": "fontFamily",
-      "heading": { "$value": "Inter, system-ui, sans-serif" },
-      "body": { "$value": "system-ui, -apple-system, sans-serif" },
-      "mono": { "$value": "'JetBrains Mono', 'Fira Code', monospace" }
+      "display": {
+        "$value": "'Bricolage Grotesque', ui-sans-serif, system-ui, sans-serif",
+        "$description": "Display and heading typeface. Geometric grotesque with optical sizing."
+      },
+      "sans": {
+        "$value": "'Inclusive Sans', ui-sans-serif, system-ui, sans-serif",
+        "$description": "Body and UI typeface. Designed for readability and accessibility."
+      },
+      "mono": {
+        "$value": "'JetBrains Mono', 'Fira Code', ui-monospace, monospace",
+        "$description": "Code and technical content typeface."
+      }
     },
     "fontSize": {
       "$type": "dimension",
-      "xs": { "$value": "12px" },
+      "$description": "Font size scale. Body text starts at md (17px).",
+      "xs": { "$value": "11px" },
       "sm": { "$value": "14px" },
-      "md": { "$value": "16px" },
+      "md": { "$value": "17px" },
       "lg": { "$value": "20px" },
       "xl": { "$value": "24px" },
       "2xl": { "$value": "30px" },
-      "3xl": { "$value": "36px" }
+      "3xl": { "$value": "40px" },
+      "4xl": { "$value": "56px" }
     },
     "fontWeight": {
       "regular": { "$value": "400" },
       "medium": { "$value": "500" },
-      "semibold": { "$value": "600" },
       "bold": { "$value": "700" }
     },
     "lineHeight": {
-      "tight": { "$value": "1.25" },
-      "normal": { "$value": "1.5" },
-      "relaxed": { "$value": "1.75" }
+      "tight": {
+        "$value": "1.1",
+        "$description": "For headings and display text."
+      },
+      "normal": {
+        "$value": "1.65",
+        "$description": "Default line height for body text. Generous for readability."
+      }
+    },
+    "letterSpacing": {
+      "tight": {
+        "$value": "-0.015em",
+        "$description": "Negative tracking for headings."
+      },
+      "caps": {
+        "$value": "0.08em",
+        "$description": "Wide tracking for uppercase labels and captions."
+      }
     }
   },
   "borderRadius": {
     "$type": "dimension",
-    "sm": { "$value": "4px" },
-    "md": { "$value": "8px" },
-    "lg": { "$value": "12px" },
-    "xl": { "$value": "16px" },
-    "full": { "$value": "9999px" }
+    "$description": "Vantra uses square corners exclusively. Border radius is 0 everywhere.",
+    "none": { "$value": "0" },
+    "full": {
+      "$value": "9999px",
+      "$description": "Only used for avatars and pill badges."
+    }
   },
   "shadow": {
     "$type": "shadow",
-    "sm": { "$value": "0 1px 2px rgba(0, 0, 0, 0.05)" },
-    "md": { "$value": "0 4px 6px -1px rgba(0, 0, 0, 0.1)" },
-    "lg": { "$value": "0 10px 15px -3px rgba(0, 0, 0, 0.1)" },
-    "xl": { "$value": "0 20px 25px -5px rgba(0, 0, 0, 0.1)" }
+    "$description": "Minimal shadow scale. Vantra prefers borders over elevation.",
+    "sm": { "$value": "0 1px 2px rgba(0, 22, 25, 0.06)" },
+    "md": { "$value": "0 4px 8px rgba(0, 22, 25, 0.08)" },
+    "lg": { "$value": "0 12px 24px rgba(0, 22, 25, 0.1)" }
   },
   "opacity": {
-    "disabled": { "$value": "0.4" },
-    "hover": { "$value": "0.8" },
-    "overlay": { "$value": "0.5" }
+    "disabled": {
+      "$value": "0.4",
+      "$description": "Disabled interactive elements."
+    },
+    "hover": {
+      "$value": "0.06",
+      "$description": "Hover overlay opacity on interactive surfaces."
+    },
+    "overlay": {
+      "$value": "0.45",
+      "$description": "Modal backdrop opacity."
+    }
   },
-  "zIndex": {
-    "dropdown": { "$value": "1000" },
-    "modal": { "$value": "1100" },
-    "popover": { "$value": "1200" },
-    "tooltip": { "$value": "1300" },
-    "toast": { "$value": "1400" }
+  "focus": {
+    "$description": "Focus ring tokens for keyboard navigation. Two-tone ring: accent outline + paper halo.",
+    "ring-color": {
+      "$type": "color",
+      "$value": "#021f94",
+      "$description": "Focus ring colour. Matches the blue accent."
+    },
+    "ring-width": {
+      "$type": "dimension",
+      "$value": "2px"
+    },
+    "ring-offset": {
+      "$type": "dimension",
+      "$value": "3px"
+    },
+    "halo-color": {
+      "$type": "color",
+      "$value": "#f5f2f3",
+      "$description": "Background halo behind the focus ring for contrast."
+    },
+    "halo-width": {
+      "$type": "dimension",
+      "$value": "5px"
+    }
   },
   "motion": {
+    "$description": "Animation durations and easings. Respect prefers-reduced-motion.",
     "duration": {
-      "fast": { "$value": "100ms" },
-      "normal": { "$value": "200ms" },
-      "slow": { "$value": "400ms" }
+      "$type": "duration",
+      "instant": { "$value": "100ms" },
+      "fast": { "$value": "200ms" },
+      "normal": { "$value": "350ms" },
+      "slow": { "$value": "500ms" }
     },
     "easing": {
-      "default": { "$value": "cubic-bezier(0.4, 0, 0.2, 1)" },
-      "in": { "$value": "cubic-bezier(0.4, 0, 1, 1)" },
-      "out": { "$value": "cubic-bezier(0, 0, 0.2, 1)" }
+      "default": {
+        "$value": "cubic-bezier(0.4, 0, 0.2, 1)",
+        "$description": "Standard ease-in-out for most transitions."
+      },
+      "enter": {
+        "$value": "cubic-bezier(0, 0, 0.2, 1)",
+        "$description": "Ease-out for elements entering the viewport."
+      },
+      "exit": {
+        "$value": "cubic-bezier(0.4, 0, 1, 1)",
+        "$description": "Ease-in for elements leaving the viewport."
+      }
     }
+  },
+  "zIndex": {
+    "$description": "Stacking order for layered UI. Increments of 100.",
+    "dropdown": { "$value": "1000" },
+    "sticky": { "$value": "1100" },
+    "modal": { "$value": "1200" },
+    "popover": { "$value": "1300" },
+    "tooltip": { "$value": "1400" },
+    "toast": { "$value": "1500" }
   }
 }

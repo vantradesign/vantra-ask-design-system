@@ -97,7 +97,7 @@ describe('DesignSystemAssistant', () => {
   })
 
   describe('init', () => {
-    it('initializes successfully', async () => {
+    it('initializes successfully without loading LLM', async () => {
       const onReady = vi.fn()
       const assistant = new DesignSystemAssistant({
         schema: sampleSchema,
@@ -106,20 +106,22 @@ describe('DesignSystemAssistant', () => {
 
       await assistant.init()
 
-      expect(mockInit).toHaveBeenCalledOnce()
+      // LLM is NOT loaded at init — it is lazy-loaded
+      expect(mockInit).not.toHaveBeenCalled()
       expect(onReady).toHaveBeenCalledOnce()
     })
 
     it('does not reinitialize when already initialized', async () => {
-      const assistant = new DesignSystemAssistant({ schema: sampleSchema })
+      const onReady = vi.fn()
+      const assistant = new DesignSystemAssistant({ schema: sampleSchema, onReady })
 
       await assistant.init()
       await assistant.init()
 
-      expect(mockInit).toHaveBeenCalledOnce()
+      expect(onReady).toHaveBeenCalledOnce()
     })
 
-    it('calls onError and throws when engine init fails', async () => {
+    it('lazy-loads engine and calls onError when engine init fails', async () => {
       mockInit.mockRejectedValue(new Error('GPU not available'))
       const onError = vi.fn()
       const assistant = new DesignSystemAssistant({
@@ -127,20 +129,27 @@ describe('DesignSystemAssistant', () => {
         onError,
       })
 
-      await expect(assistant.init()).rejects.toThrow()
-      // onError is called for both embedding failure and engine init failure
+      await assistant.init()
+
+      // Engine failure happens on first query that needs LLM
+      async function* fakeGenerate() { yield 'x' }
+      mockGenerate.mockReturnValue(fakeGenerate())
+      await expect(assistant.ask('xyznonexistent')).rejects.toThrow()
       expect(onError).toHaveBeenCalled()
-      const lastCall = onError.mock.calls[onError.mock.calls.length - 1]
-      expect(lastCall?.[0]).toBeInstanceOf(AssistantError)
     })
 
-    it('passes model config to engine', async () => {
+    it('passes model config to engine on lazy load', async () => {
+      async function* fakeGenerate() { yield 'ok' }
+      mockGenerate.mockReturnValue(fakeGenerate())
+
       const assistant = new DesignSystemAssistant({
         schema: sampleSchema,
         model: 'custom-model',
       })
 
       await assistant.init()
+      // Trigger LLM path with a query that won't keyword-match
+      await assistant.ask('xyznonexistent')
 
       const Engine = await getLocalLLMEngine()
       expect(Engine).toHaveBeenCalledWith(
@@ -156,7 +165,7 @@ describe('DesignSystemAssistant', () => {
       await expect(assistant.ask('test')).rejects.toThrow(AssistantError)
     })
 
-    it('returns concatenated tokens', async () => {
+    it('returns concatenated tokens via LLM when no search match', async () => {
       async function* fakeGenerate() {
         yield 'Hello'
         yield ' world'
@@ -166,11 +175,21 @@ describe('DesignSystemAssistant', () => {
       const assistant = new DesignSystemAssistant({ schema: sampleSchema })
       await assistant.init()
 
-      const answer = await assistant.ask('What colors are available?')
+      const answer = await assistant.ask('xyznonexistent')
       expect(answer).toBe('Hello world')
     })
 
-    it('passes system prompt to engine', async () => {
+    it('returns direct formatted answer when keywords match', async () => {
+      const assistant = new DesignSystemAssistant({ schema: sampleSchema })
+      await assistant.init()
+
+      const answer = await assistant.ask('What colors are available?')
+      expect(answer).toContain('color.primary')
+      expect(answer).toContain('#0066cc')
+      expect(mockGenerate).not.toHaveBeenCalled()
+    })
+
+    it('passes system prompt to engine on LLM fallback', async () => {
       async function* fakeGenerate() {
         yield 'ok'
       }
@@ -179,11 +198,12 @@ describe('DesignSystemAssistant', () => {
       const assistant = new DesignSystemAssistant({ schema: sampleSchema })
       await assistant.init()
 
-      await assistant.ask('test')
+      await assistant.ask('xyznonexistent')
 
       expect(mockGenerate).toHaveBeenCalledWith(
-        'test',
-        expect.stringContaining('CONTEXT:'),
+        'xyznonexistent',
+        expect.stringContaining('CONTEXT'),
+        expect.anything(),
       )
     })
   })
@@ -197,7 +217,7 @@ describe('DesignSystemAssistant', () => {
       ).rejects.toThrow(AssistantError)
     })
 
-    it('calls onToken for each token', async () => {
+    it('calls onToken for each token via LLM fallback', async () => {
       async function* fakeGenerate() {
         yield 'Hello'
         yield ' world'
@@ -209,12 +229,26 @@ describe('DesignSystemAssistant', () => {
 
       const onToken = vi.fn()
       const onComplete = vi.fn()
-      await assistant.askStream('test', { onToken, onComplete })
+      await assistant.askStream('xyznonexistent', { onToken, onComplete })
 
       expect(onToken).toHaveBeenCalledTimes(2)
       expect(onToken).toHaveBeenCalledWith('Hello')
       expect(onToken).toHaveBeenCalledWith(' world')
       expect(onComplete).toHaveBeenCalledWith('Hello world')
+    })
+
+    it('returns direct answer instantly when keywords match', async () => {
+      const assistant = new DesignSystemAssistant({ schema: sampleSchema })
+      await assistant.init()
+
+      const onToken = vi.fn()
+      const onComplete = vi.fn()
+      await assistant.askStream('What spacing values exist?', { onToken, onComplete })
+
+      expect(onToken).toHaveBeenCalledOnce()
+      expect(onComplete).toHaveBeenCalledOnce()
+      expect(onComplete.mock.calls[0]![0]).toContain('spacing.sm')
+      expect(mockGenerate).not.toHaveBeenCalled()
     })
 
     it('calls onError when generation fails', async () => {
@@ -229,7 +263,7 @@ describe('DesignSystemAssistant', () => {
 
       const onError = vi.fn()
       await expect(
-        assistant.askStream('test', { onError }),
+        assistant.askStream('xyznonexistent', { onError }),
       ).rejects.toThrow()
       expect(onError).toHaveBeenCalledOnce()
     })
@@ -241,9 +275,14 @@ describe('DesignSystemAssistant', () => {
       expect(() => assistant.abort()).not.toThrow()
     })
 
-    it('calls engine abort when initialized', async () => {
+    it('calls engine abort after engine is loaded', async () => {
+      async function* fakeGenerate() { yield 'ok' }
+      mockGenerate.mockReturnValue(fakeGenerate())
+
       const assistant = new DesignSystemAssistant({ schema: sampleSchema })
       await assistant.init()
+      // Trigger lazy engine load
+      await assistant.ask('xyznonexistent')
       assistant.abort()
 
       expect(mockAbort).toHaveBeenCalledOnce()
@@ -263,17 +302,9 @@ describe('DesignSystemAssistant', () => {
 
       await assistant.updateSchema(newSchema)
 
-      // Verify by asking — the context should now contain the new token
-      async function* fakeGenerate() {
-        yield 'ok'
-      }
-      mockGenerate.mockReturnValue(fakeGenerate())
-      await assistant.ask('test')
-
-      expect(mockGenerate).toHaveBeenCalledWith(
-        'test',
-        expect.stringContaining('CONTEXT:'),
-      )
+      // Verify by asking — the direct answer should contain the new token
+      const answer = await assistant.ask('What brand colors exist?')
+      expect(answer).toContain('#ff0000')
     })
   })
 
@@ -283,9 +314,14 @@ describe('DesignSystemAssistant', () => {
       await expect(assistant.destroy()).resolves.toBeUndefined()
     })
 
-    it('destroys engine when initialized', async () => {
+    it('destroys engine when it has been loaded', async () => {
+      async function* fakeGenerate() { yield 'ok' }
+      mockGenerate.mockReturnValue(fakeGenerate())
+
       const assistant = new DesignSystemAssistant({ schema: sampleSchema })
       await assistant.init()
+      // Trigger lazy engine load
+      await assistant.ask('xyznonexistent')
       await assistant.destroy()
 
       expect(mockDestroy).toHaveBeenCalledOnce()

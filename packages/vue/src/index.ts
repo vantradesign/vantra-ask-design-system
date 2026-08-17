@@ -1,6 +1,7 @@
 export { default as AskDesignSystem } from './AskDesignSystem.vue'
 
 export { useAssistant } from './composables/useAssistant'
+export { useChatSessions } from './composables/useChatSessions'
 export { useVoiceInput } from './composables/useVoiceInput'
 export { useVoiceOutput } from './composables/useVoiceOutput'
 
@@ -9,7 +10,9 @@ export { default as ChatInput } from './components/ChatInput.vue'
 export { default as ModelLoader } from './components/ModelLoader.vue'
 export { default as SuggestedQuestions } from './components/SuggestedQuestions.vue'
 export { default as ErrorBanner } from './components/ErrorBanner.vue'
+export { default as ChatSidebar } from './components/ChatSidebar.vue'
 
 export type { ChatMessage as ChatMessageType, UseAssistantOptions, UseAssistantReturn } from './composables/useAssistant'
+export type { ChatSession, UseChatSessionsReturn } from './composables/useChatSessions'
 export type { UseVoiceInputOptions } from './composables/useVoiceInput'
 export type { UseVoiceOutputOptions } from './composables/useVoiceOutput'

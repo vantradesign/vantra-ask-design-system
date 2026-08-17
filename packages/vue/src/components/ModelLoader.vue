@@ -48,7 +48,7 @@ function formatBytes(bytes: number): string {
         </div>
         <div class="ads-loader__stats">
           <span>{{ progress.percentage }}%</span>
-          <span v-if="progress.total > 0">
+          <span v-if="progress.total > 1024">
             {{ formatBytes(progress.loaded) }} / {{ formatBytes(progress.total) }}
           </span>
         </div>
@@ -67,31 +67,31 @@ function formatBytes(bytes: number): string {
 }
 
 .ads-loader__content {
-  background: var(--ads-loader-bg, #f8fafc);
-  border: 1px solid var(--ads-border, #e5e7eb);
-  border-radius: 0.75rem;
-  padding: 1.25rem;
+  background: var(--ads-loader-bg, rgba(0, 22, 25, 0.02));
+  border: 1px solid var(--ads-border, rgba(0, 22, 25, 0.12));
+  padding: 1.5rem;
 }
 
 .ads-loader__icon {
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   margin-bottom: 0.75rem;
 }
 
 .ads-loader__text {
-  margin-bottom: 1rem;
+  margin-bottom: 1.25rem;
 }
 
 .ads-loader__title {
+  font-family: var(--ads-font-display, 'Bricolage Grotesque', ui-sans-serif, system-ui, sans-serif);
   font-size: 0.9375rem;
   font-weight: 600;
-  color: var(--ads-text, #1a1a2e);
+  color: var(--ads-text, #001619);
   margin: 0 0 0.25rem;
 }
 
 .ads-loader__subtitle {
   font-size: 0.8125rem;
-  color: var(--ads-text-muted, #6b7280);
+  color: var(--ads-text-muted, #4a585a);
   margin: 0;
 }
 
@@ -101,16 +101,14 @@ function formatBytes(bytes: number): string {
 
 .ads-loader__bar-container {
   width: 100%;
-  height: 0.5rem;
-  background: var(--ads-bar-bg, #e5e7eb);
-  border-radius: 0.25rem;
+  height: 4px;
+  background: var(--ads-bar-bg, rgba(0, 22, 25, 0.08));
   overflow: hidden;
 }
 
 .ads-loader__bar {
   height: 100%;
-  background: var(--ads-accent, #0066cc);
-  border-radius: 0.25rem;
+  background: var(--ads-accent, #021f94);
   transition: width 0.3s ease-out;
 }
 
@@ -118,8 +116,8 @@ function formatBytes(bytes: number): string {
   display: flex;
   justify-content: space-between;
   font-size: 0.75rem;
-  color: var(--ads-text-muted, #6b7280);
-  margin-top: 0.375rem;
+  color: var(--ads-text-muted, #4a585a);
+  margin-top: 0.5rem;
 }
 
 .ads-loader__spinner {
@@ -129,10 +127,10 @@ function formatBytes(bytes: number): string {
 }
 
 .ads-loader__spinner-ring {
-  width: 1.5rem;
-  height: 1.5rem;
-  border: 2px solid var(--ads-border, #e5e7eb);
-  border-top-color: var(--ads-accent, #0066cc);
+  width: 1.25rem;
+  height: 1.25rem;
+  border: 2px solid var(--ads-border, rgba(0, 22, 25, 0.12));
+  border-top-color: var(--ads-accent, #021f94);
   border-radius: 50%;
   animation: ads-spin 0.8s linear infinite;
 }
@@ -144,7 +142,6 @@ function formatBytes(bytes: number): string {
 @media (prefers-reduced-motion: reduce) {
   .ads-loader__spinner-ring {
     animation: none;
-    border-top-color: var(--ads-accent, #0066cc);
     opacity: 0.6;
   }
   .ads-loader__bar {

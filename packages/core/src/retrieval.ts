@@ -103,20 +103,47 @@ export function searchChunks(
 /**
  * Fall back to keyword search over token paths/text when embeddings fail.
  */
+const STOP_WORDS = new Set([
+  'a', 'an', 'the', 'is', 'are', 'was', 'were', 'be', 'been',
+  'do', 'does', 'did', 'has', 'have', 'had', 'will', 'would',
+  'can', 'could', 'should', 'may', 'might', 'shall',
+  'i', 'we', 'you', 'he', 'she', 'it', 'they',
+  'my', 'your', 'his', 'her', 'its', 'our', 'their',
+  'this', 'that', 'these', 'those',
+  'what', 'which', 'who', 'whom', 'where', 'when', 'how', 'why',
+  'and', 'or', 'but', 'not', 'no', 'if', 'then',
+  'of', 'in', 'on', 'at', 'to', 'for', 'with', 'by', 'from',
+  'about', 'into', 'as', 'up', 'out',
+  'used', 'using', 'available', 'defined', 'exist',
+])
+
 export function keywordSearch(
   query: string,
   chunks: TokenChunk[],
   topK: number,
 ): SearchResult[] {
-  const terms = query.toLowerCase().split(/\s+/).filter(Boolean)
+  const rawTerms = query.toLowerCase().split(/[\s.]+/)
+    .map((t) => t.replace(/[^\w#-]/g, ''))
+    .filter((t) => t.length > 0 && !STOP_WORDS.has(t))
+
+  // Basic plural stemming: 'colors' → 'color', 'fonts' → 'font'
+  const terms = rawTerms.flatMap((t) =>
+    t.length > 3 && t.endsWith('s') ? [t, t.slice(0, -1)] : [t],
+  )
 
   const scored = chunks.map((chunk) => {
     const text = chunk.text.toLowerCase()
     const path = chunk.path.toLowerCase()
+    const segments = path.split('.')
     let score = 0
 
     for (const term of terms) {
-      if (path.includes(term)) score += 2
+      // Exact segment match (e.g. "fontfamily" matches segment "fontfamily")
+      if (segments.some((s) => s === term)) {
+        score += 3
+      } else if (path.includes(term)) {
+        score += 2
+      }
       if (text.includes(term)) score += 1
     }
 

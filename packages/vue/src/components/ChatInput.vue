@@ -25,12 +25,26 @@ function handleSubmit(): void {
   if (!question || props.disabled) return
   emit('send', question)
   input.value = ''
+  resetHeight()
 }
 
 function handleKeydown(event: KeyboardEvent): void {
   if (event.key === 'Enter' && !event.shiftKey) {
     event.preventDefault()
     handleSubmit()
+  }
+}
+
+function autoGrow(event: Event): void {
+  const el = event.target as HTMLTextAreaElement
+  el.style.height = 'auto'
+  el.style.height = el.scrollHeight + 'px'
+}
+
+function resetHeight(): void {
+  const el = document.querySelector('.ads-input__field') as HTMLTextAreaElement | null
+  if (el) {
+    el.style.height = 'auto'
   }
 }
 
@@ -56,6 +70,7 @@ defineExpose({
         rows="1"
         aria-label="Question input"
         @keydown="handleKeydown"
+        @input="autoGrow"
       />
 
       <div class="ads-input__actions">
@@ -122,30 +137,32 @@ defineExpose({
         </button>
       </div>
     </div>
+    <p class="ads-input__footer">
+      Answers are generated locally — nothing leaves your browser.
+    </p>
   </div>
 </template>
 
 <style scoped>
 .ads-input {
-  border-top: 1px solid var(--ads-border, #e5e7eb);
-  padding: 0.75rem;
-  background: var(--ads-input-bg, #ffffff);
+  padding: 0.75rem 1.5rem 1rem;
+  background: var(--ads-bg, #ffffff);
 }
 
 .ads-input__row {
   display: flex;
   align-items: flex-end;
   gap: 0.5rem;
-  background: var(--ads-input-field-bg, #f9fafb);
-  border: 1px solid var(--ads-border, #e5e7eb);
-  border-radius: 0.75rem;
-  padding: 0.5rem 0.75rem;
-  transition: border-color 0.15s;
+  background: var(--ads-input-field-bg, #f4f4f4);
+  border: 1px solid transparent;
+  border-radius: 1.5rem;
+  padding: 0.5rem 0.5rem 0.5rem 1rem;
+  transition: border-color 200ms, box-shadow 200ms;
 }
 
 .ads-input__row:focus-within {
-  border-color: var(--ads-focus, #0066cc);
-  box-shadow: 0 0 0 2px var(--ads-focus-ring, rgba(0, 102, 204, 0.15));
+  border-color: var(--ads-border, rgba(0, 22, 25, 0.15));
+  box-shadow: 0 1px 6px rgba(0, 22, 25, 0.06);
 }
 
 .ads-input__field {
@@ -157,13 +174,17 @@ defineExpose({
   line-height: 1.5;
   resize: none;
   outline: none;
-  color: var(--ads-text, #1a1a2e);
+  color: var(--ads-text, #001619);
   min-height: 1.5em;
-  max-height: 6em;
+  max-height: 12em;
+  overflow-y: auto;
+  padding: 0.3125rem 0;
+  margin: 0;
+  caret-color: var(--ads-text, #001619);
 }
 
 .ads-input__field::placeholder {
-  color: var(--ads-text-muted, #9ca3af);
+  color: var(--ads-text-faint, #8e9899);
 }
 
 .ads-input__field:disabled {
@@ -173,7 +194,7 @@ defineExpose({
 
 .ads-input__actions {
   display: flex;
-  gap: 0.25rem;
+  gap: 0.125rem;
   flex-shrink: 0;
 }
 
@@ -181,44 +202,52 @@ defineExpose({
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 2rem;
-  height: 2rem;
-  border: none;
-  border-radius: 0.5rem;
+  width: 2.25rem;
+  height: 2.25rem;
+  border: 1px solid transparent;
+  border-radius: 50%;
   background: none;
-  color: var(--ads-text-muted, #6b7280);
+  color: var(--ads-text-muted, #4a585a);
   cursor: pointer;
-  transition: background 0.15s, color 0.15s;
+  transition:
+    color 200ms,
+    background-color 200ms,
+    border-color 200ms;
 }
 
 .ads-input__btn:hover:not(:disabled) {
-  background: var(--ads-hover-bg, #e5e7eb);
-  color: var(--ads-text, #1a1a2e);
+  background: rgba(0, 22, 25, 0.06);
+  color: var(--ads-text, #001619);
 }
 
 .ads-input__btn:disabled {
-  opacity: 0.35;
+  opacity: 0.3;
   cursor: not-allowed;
 }
 
+.ads-input__btn:focus-visible {
+  outline: 2px solid var(--ads-accent, #021f94);
+  outline-offset: 2px;
+}
+
 .ads-input__btn--active {
-  color: var(--ads-accent, #0066cc);
-  background: var(--ads-accent-bg, #e8f0fe);
+  color: var(--ads-accent, #021f94);
+  background: rgba(2, 31, 148, 0.06);
 }
 
 .ads-input__btn--active:hover:not(:disabled) {
-  background: var(--ads-accent-bg-hover, #d2e3fc);
+  background: rgba(2, 31, 148, 0.1);
 }
 
 .ads-input__btn--mic.ads-input__btn--active {
-  color: var(--ads-recording, #dc2626);
-  background: var(--ads-recording-bg, #fef2f2);
+  color: var(--ads-recording, #8f1d13);
+  background: rgba(143, 29, 19, 0.06);
   animation: ads-pulse 2s ease-in-out infinite;
 }
 
 @keyframes ads-pulse {
-  0%, 100% { box-shadow: 0 0 0 0 rgba(220, 38, 38, 0.2); }
-  50% { box-shadow: 0 0 0 6px rgba(220, 38, 38, 0); }
+  0%, 100% { box-shadow: 0 0 0 0 rgba(143, 29, 19, 0.15); }
+  50% { box-shadow: 0 0 0 6px rgba(143, 29, 19, 0); }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -228,10 +257,29 @@ defineExpose({
 }
 
 .ads-input__btn--send {
-  color: var(--ads-accent, #0066cc);
+  background: var(--ads-text, #001619);
+  color: #ffffff;
+}
+
+.ads-input__btn--send:hover:not(:disabled) {
+  background: var(--ads-text-muted, #4a585a);
+  color: #ffffff;
+}
+
+.ads-input__btn--send:disabled {
+  background: var(--ads-text-faint, #8e9899);
+  color: #ffffff;
+  opacity: 0.4;
 }
 
 .ads-input__btn--abort {
-  color: var(--ads-error-color, #dc2626);
+  color: var(--ads-error-color, #8f1d13);
+}
+
+.ads-input__footer {
+  font-size: 0.6875rem;
+  color: var(--ads-text-faint, #8e9899);
+  text-align: center;
+  margin: 0.375rem 0 0;
 }
 </style>

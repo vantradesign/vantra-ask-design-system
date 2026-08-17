@@ -13,3 +13,6 @@ allowBuilds:
 
 minimumReleaseAgeExclude:
   - '@vantra-design/local-inference@0.1.0'
+
+overrides:
+  '@vantra-design/local-inference': link:../vantra-local-inference

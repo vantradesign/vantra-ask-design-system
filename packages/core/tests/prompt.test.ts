@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest'
-import { buildSystemPrompt, deriveSuggestedQuestions } from '../src/prompt.js'
+import { buildSystemPrompt, formatDirectAnswer, deriveSuggestedQuestions } from '../src/prompt.js'
 import type { SearchResult } from '../src/retrieval.js'
 import type { TokenChunk } from '../src/types.js'
 
@@ -23,7 +23,7 @@ describe('buildSystemPrompt', () => {
 
     const prompt = buildSystemPrompt(results)
 
-    expect(prompt).toContain('CONTEXT:')
+    expect(prompt).toContain('CONTEXT (design tokens available):')
     expect(prompt).toContain('color.primary (color) = #0066cc')
     expect(prompt).toContain('color.secondary (color) = #6b7280')
   })
@@ -35,8 +35,8 @@ describe('buildSystemPrompt', () => {
 
     const prompt = buildSystemPrompt(results)
 
-    expect(prompt).toContain('design system assistant')
-    expect(prompt).toContain('Do not invent tokens')
+    expect(prompt).toContain('design-token assistant')
+    expect(prompt).toContain('Do not invent tokens.')
   })
 
   it('uses custom prefix when provided', () => {
@@ -54,7 +54,55 @@ describe('buildSystemPrompt', () => {
     const prompt = buildSystemPrompt([])
 
     expect(prompt).toContain('CONTEXT:')
-    expect(prompt).toContain('No relevant tokens found')
+    expect(prompt).toContain('No relevant tokens were found')
+  })
+})
+
+describe('formatDirectAnswer', () => {
+  it('formats token chunks as markdown list', () => {
+    const results: SearchResult[] = [
+      {
+        chunk: {
+          path: 'color.primary',
+          text: 'color.primary (color) = #0066cc — Main brand colour.',
+          value: '#0066cc',
+          type: 'color',
+          category: 'color',
+        },
+        score: 4,
+      },
+    ]
+
+    const answer = formatDirectAnswer(results)
+
+    expect(answer).toContain('color.primary: #0066cc;')
+    expect(answer).toContain('```css')
+    expect(answer).toContain('Main brand colour.')
+  })
+
+  it('returns fallback text for empty results', () => {
+    const answer = formatDirectAnswer([])
+    expect(answer).toContain('No matching design tokens')
+  })
+
+  it('handles tokens without descriptions', () => {
+    const results: SearchResult[] = [
+      {
+        chunk: {
+          path: 'spacing.sm',
+          text: 'spacing.sm (dimension) = 8px',
+          value: '8px',
+          type: 'dimension',
+          category: 'spacing',
+        },
+        score: 3,
+      },
+    ]
+
+    const answer = formatDirectAnswer(results)
+    expect(answer).toContain('spacing.sm: 8px;')
+    expect(answer).toContain('```css')
+    expect(answer).not.toContain('—')
   })
 })
 

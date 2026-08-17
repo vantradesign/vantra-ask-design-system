@@ -28,7 +28,7 @@ export function flattenTokens(schema: Record<string, unknown>): TokenChunk[] {
   const format = detectFormat(schema)
   const chunks: TokenChunk[] = []
 
-  walkTokenTree(schema, [], format, chunks)
+  walkTokenTree(schema, [], format, chunks, undefined)
 
   return chunks
 }
@@ -38,7 +38,11 @@ function walkTokenTree(
   path: string[],
   format: TokenFormat,
   chunks: TokenChunk[],
+  inheritedType: string | undefined,
 ): void {
+  // DTCG $type inheritance: groups can set $type for all children
+  const groupType = typeof node['$type'] === 'string' ? node['$type'] : inheritedType
+
   for (const [key, value] of Object.entries(node)) {
     if (key.startsWith('$')) continue
 
@@ -46,10 +50,11 @@ function walkTokenTree(
 
     if (isTokenNode(value, format)) {
       const tokenValue = extractValue(value as Record<string, unknown>, format)
-      const tokenType = extractType(value as Record<string, unknown>, format)
+      const tokenType = extractType(value as Record<string, unknown>, format) ?? groupType
+      const description = extractDescription(value as Record<string, unknown>, format)
       const category = currentPath[0] ?? 'unknown'
       const pathStr = currentPath.join('.')
-      const text = formatChunkText(pathStr, tokenValue, tokenType)
+      const text = formatChunkText(pathStr, tokenValue, tokenType, description)
 
       chunks.push({
         path: pathStr,
@@ -59,11 +64,11 @@ function walkTokenTree(
         category,
       })
     } else if (typeof value === 'object' && value !== null && !Array.isArray(value)) {
-      walkTokenTree(value as Record<string, unknown>, currentPath, format, chunks)
+      walkTokenTree(value as Record<string, unknown>, currentPath, format, chunks, groupType)
     } else if (isPrimitiveValue(value)) {
       const category = currentPath[0] ?? 'unknown'
       const pathStr = currentPath.join('.')
-      const text = formatChunkText(pathStr, value, undefined)
+      const text = formatChunkText(pathStr, value, undefined, undefined)
 
       chunks.push({
         path: pathStr,
@@ -115,12 +120,29 @@ function extractType(node: Record<string, unknown>, format: TokenFormat): string
   }
 }
 
-function formatChunkText(path: string, value: unknown, type: string | undefined): string {
+function extractDescription(node: Record<string, unknown>, format: TokenFormat): string | undefined {
+  switch (format) {
+    case 'dtcg':
+      return typeof node['$description'] === 'string' ? node['$description'] : undefined
+    case 'style-dictionary':
+      return typeof node['description'] === 'string' ? node['description'] : undefined
+    case 'plain':
+      return undefined
+  }
+}
+
+function formatChunkText(
+  path: string,
+  value: unknown,
+  type: string | undefined,
+  description: string | undefined,
+): string {
   const valueStr = typeof value === 'object' ? JSON.stringify(value) : String(value)
   const parts = [path]
   if (type) parts.push(`(${type})`)
   parts.push('=')
   parts.push(valueStr)
+  if (description) parts.push(`— ${description}`)
   return parts.join(' ')
 }
 

@@ -13,7 +13,7 @@ const emit = defineEmits<{
 const browserHints: Record<string, string> = {
   'webgpu-unavailable': 'Your browser doesn\'t support WebGPU, which is required for local AI. Try Chrome 113+ or Edge 113+.',
   'model-download-failed': 'Model download was interrupted. Check your connection and try again.',
-  'model-load-failed': 'Failed to load the language model. Try reloading the page.',
+  'model-load-failed': 'Failed to load the language model. Check your connection and try again.',
   'inference-failed': 'Something went wrong generating the answer.',
   'embedding-failed': 'Token embedding failed. Keyword search is being used as a fallback.',
 }
@@ -30,6 +30,9 @@ const browserHints: Record<string, string> = {
     <div class="ads-error__content">
       <p class="ads-error__message">
         {{ browserHints[error.code] ?? error.message }}
+      </p>
+      <p v-if="browserHints[error.code] && error.message" class="ads-error__detail">
+        {{ error.message }}
       </p>
       <div class="ads-error__actions">
         <button
@@ -57,11 +60,11 @@ const browserHints: Record<string, string> = {
 .ads-error {
   display: flex;
   gap: 0.75rem;
-  padding: 0.75rem 1rem;
-  margin: 0.5rem 0.75rem;
-  background: var(--ads-error-bg, #fef2f2);
-  border: 1px solid var(--ads-error-border, #fca5a5);
-  border-radius: 0.75rem;
+  align-items: flex-start;
+  padding: 1rem 1.25rem;
+  margin: 0.75rem 1.5rem;
+  background: var(--ads-error-bg, rgba(143, 29, 19, 0.04));
+  border: 1px solid var(--ads-error-border, rgba(143, 29, 19, 0.15));
   animation: ads-fade-in 0.15s ease-out;
 }
 
@@ -78,7 +81,7 @@ const browserHints: Record<string, string> = {
 
 .ads-error__icon {
   flex-shrink: 0;
-  font-size: 1.125rem;
+  font-size: 1rem;
   line-height: 1.5;
 }
 
@@ -89,47 +92,70 @@ const browserHints: Record<string, string> = {
 
 .ads-error__message {
   font-size: 0.875rem;
-  color: var(--ads-error-color, #991b1b);
+  color: var(--ads-error-color, #8f1d13);
   margin: 0;
   line-height: 1.5;
+}
+
+.ads-error__detail {
+  font-size: 0.75rem;
+  color: var(--ads-text-muted, #4a585a);
+  margin: 0.375rem 0 0;
+  line-height: 1.4;
+  font-family: ui-monospace, 'SF Mono', 'Cascadia Code', monospace;
+  word-break: break-word;
 }
 
 .ads-error__actions {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  margin-top: 0.5rem;
+  margin-top: 0.75rem;
 }
 
 .ads-error__btn {
   display: inline-flex;
   align-items: center;
-  border: none;
+  justify-content: center;
+  min-height: 2rem;
+  border: 1px solid transparent;
   background: none;
   font: inherit;
-  cursor: pointer;
-  border-radius: 0.375rem;
-  padding: 0.25rem 0.625rem;
   font-size: 0.8125rem;
-  transition: background 0.15s;
+  cursor: pointer;
+  transition:
+    color 200ms,
+    background-color 200ms,
+    border-color 200ms;
+}
+
+.ads-error__btn:focus-visible {
+  outline: 2px solid var(--ads-accent, #021f94);
+  outline-offset: 2px;
 }
 
 .ads-error__btn--retry {
-  color: var(--ads-error-color, #991b1b);
-  background: var(--ads-error-btn-bg, rgba(153, 27, 27, 0.08));
+  padding: 0.375rem 1rem;
+  color: var(--ads-error-color, #8f1d13);
+  border-color: rgba(143, 29, 19, 0.25);
+  background: transparent;
   font-weight: 500;
 }
 
 .ads-error__btn--retry:hover {
-  background: var(--ads-error-btn-bg-hover, rgba(153, 27, 27, 0.15));
+  background: rgba(143, 29, 19, 0.08);
+  border-color: var(--ads-error-color, #8f1d13);
 }
 
 .ads-error__btn--dismiss {
-  color: var(--ads-text-muted, #6b7280);
-  padding: 0.25rem;
+  width: 2rem;
+  height: 2rem;
+  padding: 0;
+  color: var(--ads-text-muted, #4a585a);
+  border: none;
 }
 
 .ads-error__btn--dismiss:hover {
-  color: var(--ads-text, #1a1a2e);
+  color: var(--ads-text, #001619);
 }
 </style>

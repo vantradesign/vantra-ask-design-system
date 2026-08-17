@@ -29,6 +29,9 @@ export interface AssistantConfig {
   /** Number of context chunks to retrieve per query. Default: 5 */
   topK?: number
 
+  /** Maximum tokens to generate per answer. Default: 256 */
+  maxTokens?: number
+
   /** Called during model download with progress info */
   onModelProgress?: (progress: ModelProgress) => void
 

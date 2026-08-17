@@ -1,13 +1,40 @@
 import type { SearchResult } from './retrieval.js'
 
-const DEFAULT_SYSTEM_PROMPT = `You are a design system assistant. Answer questions using ONLY the following design token data. If the answer is not in the data, say so. Do not invent tokens that don't exist.
+const DEFAULT_SYSTEM_PROMPT = `You are a design-token assistant. Answer using ONLY the CONTEXT below. Use markdown: \`inline code\` for token names, fenced code blocks (\`\`\`css) for code snippets and token values. Be brief. Do not invent tokens.`
 
-Rules:
-- Be concise and specific.
-- Reference token paths using inline code (e.g. \`color.primary\`).
-- When listing tokens, format them as a readable list.
-- If the user asks about something not in the data, say "I don't have information about that in the current token set."
-`
+/**
+ * Format retrieved token chunks directly as a readable answer.
+ * Used as the primary response path — bypasses the LLM for instant,
+ * accurate, deterministic answers from keyword-matched results.
+ */
+export function formatDirectAnswer(results: SearchResult[]): string {
+  if (results.length === 0) {
+    return 'No matching design tokens found for that query.'
+  }
+
+  const tokenLines = results.map((r) => {
+    const c = r.chunk
+    const value = typeof c.value === 'string' ? c.value : JSON.stringify(c.value)
+    return `  ${c.path}: ${value};`
+  })
+
+  const descriptions = results
+    .filter((r) => r.chunk.text.includes(' — '))
+    .map((r) => {
+      const c = r.chunk
+      const desc = c.text.split(' — ')[1]
+      return `- \`${c.path}\` — ${desc}`
+    })
+
+  let answer = 'Here are the matching design tokens:\n\n'
+  answer += '```css\n' + tokenLines.join('\n') + '\n```'
+
+  if (descriptions.length > 0) {
+    answer += '\n\n' + descriptions.join('\n')
+  }
+
+  return answer
+}
 
 /**
  * Build the full system prompt with retrieved context chunks.
@@ -19,14 +46,14 @@ export function buildSystemPrompt(
   const prefix = customPrefix ?? DEFAULT_SYSTEM_PROMPT
 
   if (results.length === 0) {
-    return `${prefix}\n\nCONTEXT:\nNo relevant tokens found for this query.`
+    return `${prefix}\n\nCONTEXT:\nNo relevant tokens were found. Tell the user you don't have information about that in the current token set.`
   }
 
   const context = results
     .map((r) => r.chunk.text)
     .join('\n')
 
-  return `${prefix}\n\nCONTEXT:\n${context}`
+  return `${prefix}\n\nCONTEXT (design tokens available):\n${context}`
 }
 
 /**

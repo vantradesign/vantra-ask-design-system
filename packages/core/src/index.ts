@@ -7,7 +7,7 @@ export {
   searchChunks,
   keywordSearch,
 } from './retrieval.js'
-export { buildSystemPrompt, deriveSuggestedQuestions } from './prompt.js'
+export { buildSystemPrompt, formatDirectAnswer, deriveSuggestedQuestions } from './prompt.js'
 
 export type {
   TokenFormat,

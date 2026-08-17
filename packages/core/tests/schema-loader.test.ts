@@ -170,5 +170,49 @@ describe('flattenTokens', () => {
       expect(chunks).toHaveLength(2)
       expect(chunks.map((c) => c.path)).toEqual(['shallow', 'deep.nested.token'])
     })
+
+    it('inherits $type from parent group in DTCG', () => {
+      const schema = {
+        color: {
+          $type: 'color',
+          primary: { $value: '#f00' },
+          secondary: { $value: '#0f0', $type: 'custom' },
+        },
+      }
+      const chunks = flattenTokens(schema)
+      const primary = chunks.find((c) => c.path === 'color.primary')
+      const secondary = chunks.find((c) => c.path === 'color.secondary')
+
+      expect(primary!.type).toBe('color')
+      expect(secondary!.type).toBe('custom')
+    })
+
+    it('includes $description in chunk text', () => {
+      const schema = {
+        color: {
+          primary: {
+            $value: '#f00',
+            $type: 'color',
+            $description: 'Primary brand colour.',
+          },
+        },
+      }
+      const chunks = flattenTokens(schema)
+      const primary = chunks.find((c) => c.path === 'color.primary')
+
+      expect(primary!.text).toBe('color.primary (color) = #f00 \u2014 Primary brand colour.')
+    })
+
+    it('omits description separator when no $description', () => {
+      const schema = {
+        color: {
+          primary: { $value: '#f00', $type: 'color' },
+        },
+      }
+      const chunks = flattenTokens(schema)
+      const primary = chunks.find((c) => c.path === 'color.primary')
+
+      expect(primary!.text).toBe('color.primary (color) = #f00')
+    })
   })
 })

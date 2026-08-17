@@ -151,4 +151,43 @@ describe('keywordSearch', () => {
 
     expect(results).toEqual([])
   })
+
+  it('splits dot-separated terms to match partial paths', () => {
+    const dotChunks: TokenChunk[] = [
+      makeChunk('color.ink-faint', 'color.ink-faint (color) = #626e70', 'color'),
+      makeChunk('color.primary', 'color.primary (color) = #0066cc', 'color'),
+    ]
+    const results = keywordSearch('color.faint', dotChunks, 5)
+
+    expect(results.length).toBeGreaterThan(0)
+    expect(results[0]!.chunk.path).toBe('color.ink-faint')
+  })
+
+  it('strips trailing punctuation from query terms', () => {
+    const results = keywordSearch('color?', chunks, 5)
+
+    expect(results.length).toBeGreaterThan(0)
+    expect(results[0]!.chunk.path).toContain('color')
+  })
+
+  it('filters stop words from query', () => {
+    const results = keywordSearch('what is the color?', chunks, 5)
+
+    // Only 'color' should be used as a search term
+    expect(results.length).toBeGreaterThan(0)
+    expect(results.every((r) => r.chunk.category === 'color')).toBe(true)
+  })
+
+  it('gives higher score for exact segment matches', () => {
+    const segChunks: TokenChunk[] = [
+      makeChunk('typography.fontFamily.display', 'typography.fontFamily.display = Inter', 'typography'),
+      makeChunk('typography.fontSize.md', 'typography.fontSize.md = 17px', 'typography'),
+    ]
+
+    const results = keywordSearch('fontFamily', segChunks, 5)
+
+    // fontFamily.display has an exact segment match, fontSize.md does not
+    expect(results.length).toBeGreaterThan(0)
+    expect(results[0]!.chunk.path).toBe('typography.fontFamily.display')
+  })
 })

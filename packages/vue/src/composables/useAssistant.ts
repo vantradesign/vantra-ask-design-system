@@ -20,6 +20,35 @@ export interface UseAssistantOptions {
   model?: string
   systemPrompt?: string
   topK?: number
+  /** localStorage key for persisting chat history. Set to false to disable. */
+  storageKey?: string | false
+}
+
+const DEFAULT_STORAGE_KEY = 'ads-chat-history'
+
+function loadHistory(key: string): ChatMessage[] {
+  try {
+    const raw = localStorage.getItem(key)
+    if (!raw) return []
+    const parsed = JSON.parse(raw)
+    if (!Array.isArray(parsed)) return []
+    return parsed.filter(
+      (m: unknown): m is ChatMessage =>
+        typeof m === 'object' && m !== null &&
+        'id' in m && 'role' in m && 'content' in m && 'status' in m,
+    )
+  } catch {
+    return []
+  }
+}
+
+function saveHistory(key: string, msgs: ChatMessage[]): void {
+  try {
+    const completed = msgs.filter((m) => m.status === 'complete')
+    localStorage.setItem(key, JSON.stringify(completed))
+  } catch {
+    // storage full or unavailable — silently ignore
+  }
 }
 
 export interface UseAssistantReturn {
@@ -35,6 +64,7 @@ export interface UseAssistantReturn {
   abort: () => void
   init: () => Promise<void>
   destroy: () => Promise<void>
+  clearHistory: () => void
 }
 
 let messageCounter = 0
@@ -43,7 +73,11 @@ function nextId(): string {
 }
 
 export function useAssistant(options: UseAssistantOptions): UseAssistantReturn {
-  const messages = ref<ChatMessage[]>([])
+  const storageKey = options.storageKey !== false
+    ? (options.storageKey ?? DEFAULT_STORAGE_KEY)
+    : null
+
+  const messages = ref<ChatMessage[]>(storageKey ? loadHistory(storageKey) : [])
   const isReady = ref(false)
   const isLoading = ref(false)
   const isStreaming = ref(false)
@@ -69,6 +103,14 @@ export function useAssistant(options: UseAssistantOptions): UseAssistantReturn {
 
   async function init(): Promise<void> {
     if (isLoading.value || isReady.value) return
+
+    if (!supported) {
+      error.value = new AssistantError(
+        'webgpu-unavailable',
+        'WebGPU is not available in this browser.',
+      )
+      return
+    }
 
     isLoading.value = true
     error.value = null
@@ -116,42 +158,48 @@ export function useAssistant(options: UseAssistantOptions): UseAssistantReturn {
       content: question,
       status: 'complete',
     }
-    messages.value = [...messages.value, userMsg]
 
-    const assistantMsg: ChatMessage = {
-      id: nextId(),
-      role: 'assistant',
-      content: '',
-      status: 'streaming',
-    }
-    messages.value = [...messages.value, assistantMsg]
+    const assistantId = nextId()
+    let streamedContent = ''
+
+    messages.value = [
+      ...messages.value,
+      userMsg,
+      { id: assistantId, role: 'assistant', content: '', status: 'streaming' },
+    ]
 
     isStreaming.value = true
     error.value = null
 
+    function replaceLastMessage(patch: Partial<ChatMessage>): void {
+      const msgs = messages.value
+      const last = msgs[msgs.length - 1]!
+      messages.value = [
+        ...msgs.slice(0, -1),
+        { ...last, ...patch },
+      ]
+    }
+
     try {
       await assistant.value.askStream(question, {
         onToken: (token) => {
-          assistantMsg.content += token
-          messages.value = [...messages.value]
+          streamedContent += token
+          replaceLastMessage({ content: streamedContent })
         },
         onComplete: (fullText) => {
-          assistantMsg.content = fullText
-          assistantMsg.status = 'complete'
-          messages.value = [...messages.value]
+          replaceLastMessage({ content: fullText, status: 'complete' })
           isStreaming.value = false
+          if (storageKey) saveHistory(storageKey, messages.value)
         },
         onError: (err) => {
-          assistantMsg.status = 'error'
-          messages.value = [...messages.value]
+          replaceLastMessage({ status: 'error' })
           error.value = err
           isStreaming.value = false
         },
       })
     } catch {
       if (isStreaming.value) {
-        assistantMsg.status = 'error'
-        messages.value = [...messages.value]
+        replaceLastMessage({ status: 'error' })
         isStreaming.value = false
       }
     }
@@ -161,10 +209,13 @@ export function useAssistant(options: UseAssistantOptions): UseAssistantReturn {
     assistant.value?.abort()
     isStreaming.value = false
 
-    const last = messages.value[messages.value.length - 1]
+    const msgs = messages.value
+    const last = msgs[msgs.length - 1]
     if (last && last.status === 'streaming') {
-      last.status = 'complete'
-      messages.value = [...messages.value]
+      messages.value = [
+        ...msgs.slice(0, -1),
+        { ...last, status: 'complete' as const },
+      ]
     }
   }
 
@@ -189,6 +240,13 @@ export function useAssistant(options: UseAssistantOptions): UseAssistantReturn {
     })
   }
 
+  function clearHistory(): void {
+    messages.value = []
+    if (storageKey) {
+      try { localStorage.removeItem(storageKey) } catch { /* noop */ }
+    }
+  }
+
   onUnmounted(() => {
     destroy()
   })
@@ -206,5 +264,6 @@ export function useAssistant(options: UseAssistantOptions): UseAssistantReturn {
     abort,
     init,
     destroy,
+    clearHistory,
   }
 }
