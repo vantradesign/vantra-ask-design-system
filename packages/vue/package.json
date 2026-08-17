@@ -1,6 +1,6 @@
 {
   "name": "@vantra-design/ask-design-system-vue",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Vue 3 component for @vantra-design/ask-design-system — a local-first AI assistant for design systems.",
   "keywords": [
     "design-system",
