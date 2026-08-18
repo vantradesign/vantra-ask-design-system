@@ -6,7 +6,7 @@
 
 A local-first AI assistant for your design system. Ask questions about your tokens and patterns in natural language — with optional voice input and output — and get answers grounded in your actual data. **Nothing leaves your browser.**
 
-> **Privacy guarantee:** The language model runs entirely in your browser via WebGPU. Your design tokens are never sent to any server. The only network request is the one-time model download (~500 MB), which is cached locally for instant subsequent loads.
+> **Privacy guarantee:** Everything runs in your browser. Your design tokens are never sent to any server. Most queries are answered instantly via keyword and embedding search — no LLM needed. When a question does require generation, a small language model is downloaded once (~250 MB) and cached locally. The embedding model (~23 MB) is also cached after first use.
 
 ---
 
@@ -44,10 +44,10 @@ console.log(answer)
 | --- | --- | --- |
 | Core package (JS, gzipped) | 5.6 KB | — |
 | Vue package (JS + CSS, gzipped) | 8.3 KB | — |
-| Llama-3.2-1B-Instruct (q4f32_1) | ~500 MB | ✓ Cache API |
+| SmolLM2-360M-Instruct (q4f32_1) | ~250 MB | ✓ Cache API |
 | MiniLM-L6-v2 embeddings | ~23 MB | ✓ Cache API |
 
-> Models are downloaded once and cached in the browser via the Cache API. If `@vantra-design/screenreader-empathy` is also installed, both tools share the LLM cache — download once, both tools use it.
+> Models are downloaded once and cached in the browser via the Cache API. The LLM is lazy-loaded only when keyword and embedding search both fail to find an answer — most queries never trigger a download. The MiniLM embedding model (~23 MB) is always loaded. If `@vantra-design/screenreader-empathy` is also installed, both tools share the model caches.
 
 ## Content Security Policy
 
