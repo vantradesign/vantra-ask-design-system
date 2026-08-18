@@ -1,213 +1,2735 @@
 {
   "color": {
     "$type": "color",
-    "paper": {
-      "$value": "#f5f2f3",
-      "$description": "Default page background. Warm off-white with a hint of rose."
+    "primitive": {
+      "$description": "Raw colour values. Reference these via semantic tokens, not directly in components.",
+      "white": {
+        "$value": "#ffffff",
+        "$description": "Pure white. Base for light-theme backgrounds and text on dark surfaces."
+      },
+      "black": {
+        "$value": "#000000",
+        "$description": "Pure black. Base for dark-theme backgrounds and highest-contrast text."
+      },
+      "blue": {
+        "10": {
+          "$value": "#edf5ff",
+          "$description": "Blue at step 10. A light shade suitable for tinted backgrounds and subtle fills. Use on dark backgrounds for sufficient contrast."
+        },
+        "20": {
+          "$value": "#d0e2ff",
+          "$description": "Blue at step 20. A light shade suitable for tinted backgrounds and subtle fills. Use on dark backgrounds for sufficient contrast."
+        },
+        "30": {
+          "$value": "#a6c8ff",
+          "$description": "Blue at step 30. A light shade suitable for hover states and decorative borders. Use on dark backgrounds for sufficient contrast."
+        },
+        "40": {
+          "$value": "#78a9ff",
+          "$description": "Blue at step 40. A mid-light shade suitable for hover states and decorative borders. Use on dark backgrounds for sufficient contrast."
+        },
+        "50": {
+          "$value": "#4589ff",
+          "$description": "Blue at step 50. A mid-light shade suitable for primary interactive elements and icons. Use on dark backgrounds for sufficient contrast."
+        },
+        "60": {
+          "$value": "#0f62fe",
+          "$description": "Blue at step 60. A mid-dark shade suitable for primary interactive elements and icons. Passes WCAG AA contrast on white backgrounds."
+        },
+        "70": {
+          "$value": "#0043ce",
+          "$description": "Blue at step 70. A mid-dark shade suitable for text on light backgrounds and active states. Passes WCAG AA contrast on white backgrounds."
+        },
+        "80": {
+          "$value": "#002d9c",
+          "$description": "Blue at step 80. A dark shade suitable for text on light backgrounds and active states. Passes WCAG AA contrast on white backgrounds."
+        },
+        "90": {
+          "$value": "#001d6c",
+          "$description": "Blue at step 90. A dark shade suitable for high-contrast text and dark-mode surfaces. Passes WCAG AA contrast on white backgrounds."
+        },
+        "100": {
+          "$value": "#001141",
+          "$description": "Blue at step 100. A dark shade suitable for high-contrast text and dark-mode surfaces. Passes WCAG AA contrast on white backgrounds."
+        },
+        "$description": "Blue hue ramp. Primary brand and interactive colour family."
+      },
+      "teal": {
+        "10": {
+          "$value": "#d9fbfb",
+          "$description": "Teal at step 10. A light shade suitable for tinted backgrounds and subtle fills. Use on dark backgrounds for sufficient contrast."
+        },
+        "20": {
+          "$value": "#9ef0f0",
+          "$description": "Teal at step 20. A light shade suitable for tinted backgrounds and subtle fills. Use on dark backgrounds for sufficient contrast."
+        },
+        "30": {
+          "$value": "#3ddbd9",
+          "$description": "Teal at step 30. A light shade suitable for hover states and decorative borders. Use on dark backgrounds for sufficient contrast."
+        },
+        "40": {
+          "$value": "#08bdba",
+          "$description": "Teal at step 40. A mid-light shade suitable for hover states and decorative borders. Use on dark backgrounds for sufficient contrast."
+        },
+        "50": {
+          "$value": "#009d9a",
+          "$description": "Teal at step 50. A mid-light shade suitable for primary interactive elements and icons. Use on dark backgrounds for sufficient contrast."
+        },
+        "60": {
+          "$value": "#007d79",
+          "$description": "Teal at step 60. A mid-dark shade suitable for primary interactive elements and icons. Passes WCAG AA contrast on white backgrounds."
+        },
+        "70": {
+          "$value": "#005d5d",
+          "$description": "Teal at step 70. A mid-dark shade suitable for text on light backgrounds and active states. Passes WCAG AA contrast on white backgrounds."
+        },
+        "80": {
+          "$value": "#004144",
+          "$description": "Teal at step 80. A dark shade suitable for text on light backgrounds and active states. Passes WCAG AA contrast on white backgrounds."
+        },
+        "90": {
+          "$value": "#022b30",
+          "$description": "Teal at step 90. A dark shade suitable for high-contrast text and dark-mode surfaces. Passes WCAG AA contrast on white backgrounds."
+        },
+        "100": {
+          "$value": "#081a1c",
+          "$description": "Teal at step 100. A dark shade suitable for high-contrast text and dark-mode surfaces. Passes WCAG AA contrast on white backgrounds."
+        },
+        "$description": "Teal hue ramp. Used for data visualisation accents and secondary interactive elements."
+      },
+      "green": {
+        "10": {
+          "$value": "#defbe6",
+          "$description": "Green at step 10. A light shade suitable for tinted backgrounds and subtle fills. Use on dark backgrounds for sufficient contrast."
+        },
+        "20": {
+          "$value": "#a7f0ba",
+          "$description": "Green at step 20. A light shade suitable for tinted backgrounds and subtle fills. Use on dark backgrounds for sufficient contrast."
+        },
+        "30": {
+          "$value": "#6fdc8c",
+          "$description": "Green at step 30. A light shade suitable for hover states and decorative borders. Use on dark backgrounds for sufficient contrast."
+        },
+        "40": {
+          "$value": "#42be65",
+          "$description": "Green at step 40. A mid-light shade suitable for hover states and decorative borders. Use on dark backgrounds for sufficient contrast."
+        },
+        "50": {
+          "$value": "#24a148",
+          "$description": "Green at step 50. A mid-light shade suitable for primary interactive elements and icons. Use on dark backgrounds for sufficient contrast."
+        },
+        "60": {
+          "$value": "#198038",
+          "$description": "Green at step 60. A mid-dark shade suitable for primary interactive elements and icons. Passes WCAG AA contrast on white backgrounds."
+        },
+        "70": {
+          "$value": "#0e6027",
+          "$description": "Green at step 70. A mid-dark shade suitable for text on light backgrounds and active states. Passes WCAG AA contrast on white backgrounds."
+        },
+        "80": {
+          "$value": "#044317",
+          "$description": "Green at step 80. A dark shade suitable for text on light backgrounds and active states. Passes WCAG AA contrast on white backgrounds."
+        },
+        "90": {
+          "$value": "#022d0d",
+          "$description": "Green at step 90. A dark shade suitable for high-contrast text and dark-mode surfaces. Passes WCAG AA contrast on white backgrounds."
+        },
+        "100": {
+          "$value": "#071908",
+          "$description": "Green at step 100. A dark shade suitable for high-contrast text and dark-mode surfaces. Passes WCAG AA contrast on white backgrounds."
+        },
+        "$description": "Green hue ramp. Used for success states, positive indicators, and nature-related contexts."
+      },
+      "yellow": {
+        "10": {
+          "$value": "#fcf4d6",
+          "$description": "Yellow at step 10. A light shade suitable for tinted backgrounds and subtle fills. Use on dark backgrounds for sufficient contrast."
+        },
+        "20": {
+          "$value": "#fddc69",
+          "$description": "Yellow at step 20. A light shade suitable for tinted backgrounds and subtle fills. Use on dark backgrounds for sufficient contrast."
+        },
+        "30": {
+          "$value": "#f1c21b",
+          "$description": "Yellow at step 30. A light shade suitable for hover states and decorative borders. Use on dark backgrounds for sufficient contrast."
+        },
+        "40": {
+          "$value": "#d2a106",
+          "$description": "Yellow at step 40. A mid-light shade suitable for hover states and decorative borders. Use on dark backgrounds for sufficient contrast."
+        },
+        "50": {
+          "$value": "#b28600",
+          "$description": "Yellow at step 50. A mid-light shade suitable for primary interactive elements and icons. Use on dark backgrounds for sufficient contrast."
+        },
+        "60": {
+          "$value": "#8e6a00",
+          "$description": "Yellow at step 60. A mid-dark shade suitable for primary interactive elements and icons. Passes WCAG AA contrast on white backgrounds."
+        },
+        "70": {
+          "$value": "#684e00",
+          "$description": "Yellow at step 70. A mid-dark shade suitable for text on light backgrounds and active states. Passes WCAG AA contrast on white backgrounds."
+        },
+        "80": {
+          "$value": "#483700",
+          "$description": "Yellow at step 80. A dark shade suitable for text on light backgrounds and active states. Passes WCAG AA contrast on white backgrounds."
+        },
+        "90": {
+          "$value": "#302400",
+          "$description": "Yellow at step 90. A dark shade suitable for high-contrast text and dark-mode surfaces. Passes WCAG AA contrast on white backgrounds."
+        },
+        "100": {
+          "$value": "#1c1500",
+          "$description": "Yellow at step 100. A dark shade suitable for high-contrast text and dark-mode surfaces. Passes WCAG AA contrast on white backgrounds."
+        },
+        "$description": "Yellow hue ramp. Used for warning states, cautionary indicators, and attention-drawing elements."
+      },
+      "orange": {
+        "10": {
+          "$value": "#fff2e8",
+          "$description": "Orange at step 10. A light shade suitable for tinted backgrounds and subtle fills. Use on dark backgrounds for sufficient contrast."
+        },
+        "20": {
+          "$value": "#ffd8a8",
+          "$description": "Orange at step 20. A light shade suitable for tinted backgrounds and subtle fills. Use on dark backgrounds for sufficient contrast."
+        },
+        "30": {
+          "$value": "#ffb784",
+          "$description": "Orange at step 30. A light shade suitable for hover states and decorative borders. Use on dark backgrounds for sufficient contrast."
+        },
+        "40": {
+          "$value": "#ff832b",
+          "$description": "Orange at step 40. A mid-light shade suitable for hover states and decorative borders. Use on dark backgrounds for sufficient contrast."
+        },
+        "50": {
+          "$value": "#eb6200",
+          "$description": "Orange at step 50. A mid-light shade suitable for primary interactive elements and icons. Use on dark backgrounds for sufficient contrast."
+        },
+        "60": {
+          "$value": "#ba4e00",
+          "$description": "Orange at step 60. A mid-dark shade suitable for primary interactive elements and icons. Passes WCAG AA contrast on white backgrounds."
+        },
+        "70": {
+          "$value": "#8a3800",
+          "$description": "Orange at step 70. A mid-dark shade suitable for text on light backgrounds and active states. Passes WCAG AA contrast on white backgrounds."
+        },
+        "80": {
+          "$value": "#5e2900",
+          "$description": "Orange at step 80. A dark shade suitable for text on light backgrounds and active states. Passes WCAG AA contrast on white backgrounds."
+        },
+        "90": {
+          "$value": "#3e1a00",
+          "$description": "Orange at step 90. A dark shade suitable for high-contrast text and dark-mode surfaces. Passes WCAG AA contrast on white backgrounds."
+        },
+        "100": {
+          "$value": "#231000",
+          "$description": "Orange at step 100. A dark shade suitable for high-contrast text and dark-mode surfaces. Passes WCAG AA contrast on white backgrounds."
+        },
+        "$description": "Orange hue ramp. Used for alert states and warm accent elements."
+      },
+      "red": {
+        "10": {
+          "$value": "#fff1f1",
+          "$description": "Red at step 10. A light shade suitable for tinted backgrounds and subtle fills. Use on dark backgrounds for sufficient contrast."
+        },
+        "20": {
+          "$value": "#ffd7d9",
+          "$description": "Red at step 20. A light shade suitable for tinted backgrounds and subtle fills. Use on dark backgrounds for sufficient contrast."
+        },
+        "30": {
+          "$value": "#ffb3b8",
+          "$description": "Red at step 30. A light shade suitable for hover states and decorative borders. Use on dark backgrounds for sufficient contrast."
+        },
+        "40": {
+          "$value": "#ff8389",
+          "$description": "Red at step 40. A mid-light shade suitable for hover states and decorative borders. Use on dark backgrounds for sufficient contrast."
+        },
+        "50": {
+          "$value": "#fa4d56",
+          "$description": "Red at step 50. A mid-light shade suitable for primary interactive elements and icons. Use on dark backgrounds for sufficient contrast."
+        },
+        "60": {
+          "$value": "#da1e28",
+          "$description": "Red at step 60. A mid-dark shade suitable for primary interactive elements and icons. Passes WCAG AA contrast on white backgrounds."
+        },
+        "70": {
+          "$value": "#a2191f",
+          "$description": "Red at step 70. A mid-dark shade suitable for text on light backgrounds and active states. Passes WCAG AA contrast on white backgrounds."
+        },
+        "80": {
+          "$value": "#750e13",
+          "$description": "Red at step 80. A dark shade suitable for text on light backgrounds and active states. Passes WCAG AA contrast on white backgrounds."
+        },
+        "90": {
+          "$value": "#520408",
+          "$description": "Red at step 90. A dark shade suitable for high-contrast text and dark-mode surfaces. Passes WCAG AA contrast on white backgrounds."
+        },
+        "100": {
+          "$value": "#2d0709",
+          "$description": "Red at step 100. A dark shade suitable for high-contrast text and dark-mode surfaces. Passes WCAG AA contrast on white backgrounds."
+        },
+        "$description": "Red hue ramp. Used for error states, destructive actions, and critical alerts."
+      },
+      "magenta": {
+        "10": {
+          "$value": "#fff0f7",
+          "$description": "Magenta at step 10. A light shade suitable for tinted backgrounds and subtle fills. Use on dark backgrounds for sufficient contrast."
+        },
+        "20": {
+          "$value": "#ffd6e8",
+          "$description": "Magenta at step 20. A light shade suitable for tinted backgrounds and subtle fills. Use on dark backgrounds for sufficient contrast."
+        },
+        "30": {
+          "$value": "#ffafd2",
+          "$description": "Magenta at step 30. A light shade suitable for hover states and decorative borders. Use on dark backgrounds for sufficient contrast."
+        },
+        "40": {
+          "$value": "#ff7eb6",
+          "$description": "Magenta at step 40. A mid-light shade suitable for hover states and decorative borders. Use on dark backgrounds for sufficient contrast."
+        },
+        "50": {
+          "$value": "#ee5396",
+          "$description": "Magenta at step 50. A mid-light shade suitable for primary interactive elements and icons. Use on dark backgrounds for sufficient contrast."
+        },
+        "60": {
+          "$value": "#d02670",
+          "$description": "Magenta at step 60. A mid-dark shade suitable for primary interactive elements and icons. Passes WCAG AA contrast on white backgrounds."
+        },
+        "70": {
+          "$value": "#9f1853",
+          "$description": "Magenta at step 70. A mid-dark shade suitable for text on light backgrounds and active states. Passes WCAG AA contrast on white backgrounds."
+        },
+        "80": {
+          "$value": "#740937",
+          "$description": "Magenta at step 80. A dark shade suitable for text on light backgrounds and active states. Passes WCAG AA contrast on white backgrounds."
+        },
+        "90": {
+          "$value": "#510224",
+          "$description": "Magenta at step 90. A dark shade suitable for high-contrast text and dark-mode surfaces. Passes WCAG AA contrast on white backgrounds."
+        },
+        "100": {
+          "$value": "#2a0a18",
+          "$description": "Magenta at step 100. A dark shade suitable for high-contrast text and dark-mode surfaces. Passes WCAG AA contrast on white backgrounds."
+        },
+        "$description": "Magenta hue ramp. Used for expressive accents, highlights, and creative contexts."
+      },
+      "purple": {
+        "10": {
+          "$value": "#f6f2ff",
+          "$description": "Purple at step 10. A light shade suitable for tinted backgrounds and subtle fills. Use on dark backgrounds for sufficient contrast."
+        },
+        "20": {
+          "$value": "#e8daff",
+          "$description": "Purple at step 20. A light shade suitable for tinted backgrounds and subtle fills. Use on dark backgrounds for sufficient contrast."
+        },
+        "30": {
+          "$value": "#d4bbff",
+          "$description": "Purple at step 30. A light shade suitable for hover states and decorative borders. Use on dark backgrounds for sufficient contrast."
+        },
+        "40": {
+          "$value": "#be95ff",
+          "$description": "Purple at step 40. A mid-light shade suitable for hover states and decorative borders. Use on dark backgrounds for sufficient contrast."
+        },
+        "50": {
+          "$value": "#a56eff",
+          "$description": "Purple at step 50. A mid-light shade suitable for primary interactive elements and icons. Use on dark backgrounds for sufficient contrast."
+        },
+        "60": {
+          "$value": "#8a3ffc",
+          "$description": "Purple at step 60. A mid-dark shade suitable for primary interactive elements and icons. Passes WCAG AA contrast on white backgrounds."
+        },
+        "70": {
+          "$value": "#6929c4",
+          "$description": "Purple at step 70. A mid-dark shade suitable for text on light backgrounds and active states. Passes WCAG AA contrast on white backgrounds."
+        },
+        "80": {
+          "$value": "#491d8b",
+          "$description": "Purple at step 80. A dark shade suitable for text on light backgrounds and active states. Passes WCAG AA contrast on white backgrounds."
+        },
+        "90": {
+          "$value": "#31135e",
+          "$description": "Purple at step 90. A dark shade suitable for high-contrast text and dark-mode surfaces. Passes WCAG AA contrast on white backgrounds."
+        },
+        "100": {
+          "$value": "#1c0f30",
+          "$description": "Purple at step 100. A dark shade suitable for high-contrast text and dark-mode surfaces. Passes WCAG AA contrast on white backgrounds."
+        },
+        "$description": "Purple hue ramp. Used for visited links, premium features, and decorative accents."
+      },
+      "cyan": {
+        "10": {
+          "$value": "#e5f6ff",
+          "$description": "Cyan at step 10. A light shade suitable for tinted backgrounds and subtle fills. Use on dark backgrounds for sufficient contrast."
+        },
+        "20": {
+          "$value": "#bae6ff",
+          "$description": "Cyan at step 20. A light shade suitable for tinted backgrounds and subtle fills. Use on dark backgrounds for sufficient contrast."
+        },
+        "30": {
+          "$value": "#82cfff",
+          "$description": "Cyan at step 30. A light shade suitable for hover states and decorative borders. Use on dark backgrounds for sufficient contrast."
+        },
+        "40": {
+          "$value": "#33b1ff",
+          "$description": "Cyan at step 40. A mid-light shade suitable for hover states and decorative borders. Use on dark backgrounds for sufficient contrast."
+        },
+        "50": {
+          "$value": "#1192e8",
+          "$description": "Cyan at step 50. A mid-light shade suitable for primary interactive elements and icons. Use on dark backgrounds for sufficient contrast."
+        },
+        "60": {
+          "$value": "#0072c3",
+          "$description": "Cyan at step 60. A mid-dark shade suitable for primary interactive elements and icons. Passes WCAG AA contrast on white backgrounds."
+        },
+        "70": {
+          "$value": "#00539a",
+          "$description": "Cyan at step 70. A mid-dark shade suitable for text on light backgrounds and active states. Passes WCAG AA contrast on white backgrounds."
+        },
+        "80": {
+          "$value": "#003a6d",
+          "$description": "Cyan at step 80. A dark shade suitable for text on light backgrounds and active states. Passes WCAG AA contrast on white backgrounds."
+        },
+        "90": {
+          "$value": "#012749",
+          "$description": "Cyan at step 90. A dark shade suitable for high-contrast text and dark-mode surfaces. Passes WCAG AA contrast on white backgrounds."
+        },
+        "100": {
+          "$value": "#061727",
+          "$description": "Cyan at step 100. A dark shade suitable for high-contrast text and dark-mode surfaces. Passes WCAG AA contrast on white backgrounds."
+        },
+        "$description": "Cyan hue ramp. Used for informational states and cool accent elements."
+      },
+      "warm-gray": {
+        "10": {
+          "$value": "#f7f3f2",
+          "$description": "Warm-gray at step 10. A light shade suitable for tinted backgrounds and subtle fills. Use on dark backgrounds for sufficient contrast."
+        },
+        "20": {
+          "$value": "#e5e0df",
+          "$description": "Warm-gray at step 20. A light shade suitable for tinted backgrounds and subtle fills. Use on dark backgrounds for sufficient contrast."
+        },
+        "30": {
+          "$value": "#cac5c4",
+          "$description": "Warm-gray at step 30. A light shade suitable for hover states and decorative borders. Use on dark backgrounds for sufficient contrast."
+        },
+        "40": {
+          "$value": "#ada8a8",
+          "$description": "Warm-gray at step 40. A mid-light shade suitable for hover states and decorative borders. Use on dark backgrounds for sufficient contrast."
+        },
+        "50": {
+          "$value": "#8f8b8b",
+          "$description": "Warm-gray at step 50. A mid-light shade suitable for primary interactive elements and icons. Use on dark backgrounds for sufficient contrast."
+        },
+        "60": {
+          "$value": "#726e6e",
+          "$description": "Warm-gray at step 60. A mid-dark shade suitable for primary interactive elements and icons. Passes WCAG AA contrast on white backgrounds."
+        },
+        "70": {
+          "$value": "#565151",
+          "$description": "Warm-gray at step 70. A mid-dark shade suitable for text on light backgrounds and active states. Passes WCAG AA contrast on white backgrounds."
+        },
+        "80": {
+          "$value": "#3c3838",
+          "$description": "Warm-gray at step 80. A dark shade suitable for text on light backgrounds and active states. Passes WCAG AA contrast on white backgrounds."
+        },
+        "90": {
+          "$value": "#272525",
+          "$description": "Warm-gray at step 90. A dark shade suitable for high-contrast text and dark-mode surfaces. Passes WCAG AA contrast on white backgrounds."
+        },
+        "100": {
+          "$value": "#171414",
+          "$description": "Warm-gray at step 100. A dark shade suitable for high-contrast text and dark-mode surfaces. Passes WCAG AA contrast on white backgrounds."
+        },
+        "$description": "Warm gray ramp with a slight red undertone. Used for backgrounds and neutral surfaces in warm palettes."
+      },
+      "cool-gray": {
+        "10": {
+          "$value": "#f2f4f8",
+          "$description": "Cool-gray at step 10. A light shade suitable for tinted backgrounds and subtle fills. Use on dark backgrounds for sufficient contrast."
+        },
+        "20": {
+          "$value": "#dde1e6",
+          "$description": "Cool-gray at step 20. A light shade suitable for tinted backgrounds and subtle fills. Use on dark backgrounds for sufficient contrast."
+        },
+        "30": {
+          "$value": "#c1c7cd",
+          "$description": "Cool-gray at step 30. A light shade suitable for hover states and decorative borders. Use on dark backgrounds for sufficient contrast."
+        },
+        "40": {
+          "$value": "#a2a9b0",
+          "$description": "Cool-gray at step 40. A mid-light shade suitable for hover states and decorative borders. Use on dark backgrounds for sufficient contrast."
+        },
+        "50": {
+          "$value": "#878d96",
+          "$description": "Cool-gray at step 50. A mid-light shade suitable for primary interactive elements and icons. Use on dark backgrounds for sufficient contrast."
+        },
+        "60": {
+          "$value": "#697077",
+          "$description": "Cool-gray at step 60. A mid-dark shade suitable for primary interactive elements and icons. Passes WCAG AA contrast on white backgrounds."
+        },
+        "70": {
+          "$value": "#4d5358",
+          "$description": "Cool-gray at step 70. A mid-dark shade suitable for text on light backgrounds and active states. Passes WCAG AA contrast on white backgrounds."
+        },
+        "80": {
+          "$value": "#343a3f",
+          "$description": "Cool-gray at step 80. A dark shade suitable for text on light backgrounds and active states. Passes WCAG AA contrast on white backgrounds."
+        },
+        "90": {
+          "$value": "#21272a",
+          "$description": "Cool-gray at step 90. A dark shade suitable for high-contrast text and dark-mode surfaces. Passes WCAG AA contrast on white backgrounds."
+        },
+        "100": {
+          "$value": "#121619",
+          "$description": "Cool-gray at step 100. A dark shade suitable for high-contrast text and dark-mode surfaces. Passes WCAG AA contrast on white backgrounds."
+        },
+        "$description": "Cool gray ramp with a slight blue undertone. Used for backgrounds and neutral surfaces in cool palettes."
+      },
+      "gray": {
+        "10": {
+          "$value": "#f4f4f4",
+          "$description": "Gray at step 10. A light shade suitable for tinted backgrounds and subtle fills. Use on dark backgrounds for sufficient contrast."
+        },
+        "20": {
+          "$value": "#e0e0e0",
+          "$description": "Gray at step 20. A light shade suitable for tinted backgrounds and subtle fills. Use on dark backgrounds for sufficient contrast."
+        },
+        "30": {
+          "$value": "#c6c6c6",
+          "$description": "Gray at step 30. A light shade suitable for hover states and decorative borders. Use on dark backgrounds for sufficient contrast."
+        },
+        "40": {
+          "$value": "#a8a8a8",
+          "$description": "Gray at step 40. A mid-light shade suitable for hover states and decorative borders. Use on dark backgrounds for sufficient contrast."
+        },
+        "50": {
+          "$value": "#8d8d8d",
+          "$description": "Gray at step 50. A mid-light shade suitable for primary interactive elements and icons. Use on dark backgrounds for sufficient contrast."
+        },
+        "60": {
+          "$value": "#6f6f6f",
+          "$description": "Gray at step 60. A mid-dark shade suitable for primary interactive elements and icons. Passes WCAG AA contrast on white backgrounds."
+        },
+        "70": {
+          "$value": "#525252",
+          "$description": "Gray at step 70. A mid-dark shade suitable for text on light backgrounds and active states. Passes WCAG AA contrast on white backgrounds."
+        },
+        "80": {
+          "$value": "#393939",
+          "$description": "Gray at step 80. A dark shade suitable for text on light backgrounds and active states. Passes WCAG AA contrast on white backgrounds."
+        },
+        "90": {
+          "$value": "#262626",
+          "$description": "Gray at step 90. A dark shade suitable for high-contrast text and dark-mode surfaces. Passes WCAG AA contrast on white backgrounds."
+        },
+        "100": {
+          "$value": "#161616",
+          "$description": "Gray at step 100. A dark shade suitable for high-contrast text and dark-mode surfaces. Passes WCAG AA contrast on white backgrounds."
+        },
+        "$description": "Pure neutral gray ramp. Used for borders, disabled states, and structural UI elements."
+      }
     },
-    "surface": {
-      "$value": "#e2dfe0",
-      "$description": "Elevated surface background for cards, panels, and overlays."
-    },
-    "ink": {
-      "$value": "#001619",
-      "$description": "Primary text and foreground colour. Near-black with a teal undertone."
-    },
-    "ink-muted": {
-      "$value": "#4a585a",
-      "$description": "Secondary text, captions, and placeholder content."
-    },
-    "ink-faint": {
-      "$value": "#626e70",
-      "$description": "Tertiary text for metadata and timestamps."
-    },
-    "blue": {
-      "$value": "#021f94",
-      "$description": "Primary brand accent. Used for links, focus rings, and CTAs."
-    },
-    "cyan": {
-      "$value": "#50e8f4",
-      "$description": "Secondary accent for highlights, selection backgrounds, and badges."
-    },
-    "cyan-soft": {
-      "$value": "#c7f8fe",
-      "$description": "Pale cyan for subtle highlighted regions and active states."
-    },
-    "success": {
-      "$value": "#0f6b3a",
-      "$description": "Positive state colour for confirmations and success banners."
-    },
-    "warning": {
-      "$value": "#8a6500",
-      "$description": "Cautionary state colour for warnings and validation hints."
-    },
-    "fail": {
-      "$value": "#8f1d13",
-      "$description": "Error state colour for destructive actions and error messages."
-    },
-    "rule": {
-      "$value": "rgba(0, 22, 25, 0.12)",
-      "$description": "Hairline border and divider colour. Semi-transparent ink."
-    },
-    "overlay": {
-      "$value": "rgba(0, 22, 25, 0.45)",
-      "$description": "Modal and dialog backdrop overlay."
+    "semantic": {
+      "$description": "Role-based colour aliases. Always reference these instead of primitives in application code.",
+      "background": {
+        "$description": "Page and region background colours.",
+        "default": {
+          "$value": "{color.primitive.white}",
+          "$description": "Default page background. The base canvas for all content. Resolved value: #ffffff."
+        },
+        "subtle": {
+          "$value": "{color.primitive.cool-gray.10}",
+          "$description": "Subtle background for secondary regions, sidebars, and alternating table rows. Resolved value: #f2f4f8."
+        },
+        "inverse": {
+          "$value": "{color.primitive.gray.100}",
+          "$description": "Inverse background for dark sections, footer, and high-contrast containers. Resolved value: #161616."
+        },
+        "brand": {
+          "$value": "{color.primitive.blue.60}",
+          "$description": "Brand-coloured background for hero sections and promotional banners. Resolved value: #0f62fe."
+        },
+        "overlay": {
+          "$value": "rgba(22, 22, 22, 0.5)",
+          "$description": "Semi-transparent overlay for modal backdrops and focus-trapping layers."
+        },
+        "hover": {
+          "$value": "{color.primitive.cool-gray.10}",
+          "$description": "Hover state background for interactive rows and list items. Resolved value: #f2f4f8."
+        },
+        "active": {
+          "$value": "{color.primitive.cool-gray.20}",
+          "$description": "Active/pressed state background for interactive rows and list items. Resolved value: #dde1e6."
+        },
+        "selected": {
+          "$value": "{color.primitive.blue.10}",
+          "$description": "Selected state background for chosen items in lists, tables, and tree views. Resolved value: #edf5ff."
+        },
+        "disabled": {
+          "$value": "{color.primitive.gray.10}",
+          "$description": "Background for disabled containers and inactive regions. Resolved value: #f4f4f4."
+        }
+      },
+      "surface": {
+        "$description": "Elevated surface colours for cards, panels, popovers, and modals.",
+        "default": {
+          "$value": "{color.primitive.white}",
+          "$description": "Default surface. Cards, panels, and content containers at the base elevation. Resolved value: #ffffff."
+        },
+        "raised": {
+          "$value": "{color.primitive.white}",
+          "$description": "Raised surface with shadow. Dropdowns, menus, and floating elements. Resolved value: #ffffff."
+        },
+        "overlay": {
+          "$value": "{color.primitive.white}",
+          "$description": "Overlay surface for modals, dialogs, and side panels. Resolved value: #ffffff."
+        },
+        "sunken": {
+          "$value": "{color.primitive.cool-gray.10}",
+          "$description": "Sunken surface for wells, inset regions, and code blocks. Resolved value: #f2f4f8."
+        }
+      },
+      "text": {
+        "$description": "Text and foreground colours for readability and hierarchy.",
+        "primary": {
+          "$value": "{color.primitive.gray.100}",
+          "$description": "Primary text colour. Headings, body copy, and labels. Highest readability. Resolved value: #161616."
+        },
+        "secondary": {
+          "$value": "{color.primitive.gray.70}",
+          "$description": "Secondary text for supporting content, captions, and metadata. Resolved value: #525252."
+        },
+        "placeholder": {
+          "$value": "{color.primitive.gray.50}",
+          "$description": "Placeholder text in empty form fields. Meets WCAG AA for large text only. Resolved value: #8d8d8d."
+        },
+        "disabled": {
+          "$value": "{color.primitive.gray.30}",
+          "$description": "Disabled text. Used with disabled backgrounds for reduced emphasis. Resolved value: #c6c6c6."
+        },
+        "on-color": {
+          "$value": "{color.primitive.white}",
+          "$description": "Text on coloured backgrounds (brand, interactive, status). Ensures contrast. Resolved value: #ffffff."
+        },
+        "inverse": {
+          "$value": "{color.primitive.white}",
+          "$description": "Text on inverse/dark backgrounds. Headers and body in dark sections. Resolved value: #ffffff."
+        },
+        "link": {
+          "$value": "{color.primitive.blue.60}",
+          "$description": "Default link colour. Underlined text linking to another page or resource. Resolved value: #0f62fe."
+        },
+        "visited-link": {
+          "$value": "{color.primitive.purple.60}",
+          "$description": "Visited link colour. Indicates previously followed navigation. Resolved value: #8a3ffc."
+        }
+      },
+      "border": {
+        "$description": "Border colours for containers, dividers, and interactive outlines.",
+        "default": {
+          "$value": "{color.primitive.gray.30}",
+          "$description": "Default border for cards, inputs, and container edges. Resolved value: #c6c6c6."
+        },
+        "subtle": {
+          "$value": "{color.primitive.gray.20}",
+          "$description": "Subtle border for dividers, table cell borders, and low-emphasis separators. Resolved value: #e0e0e0."
+        },
+        "strong": {
+          "$value": "{color.primitive.gray.50}",
+          "$description": "Strong border for high-emphasis containers and active inputs. Resolved value: #8d8d8d."
+        },
+        "interactive": {
+          "$value": "{color.primitive.blue.60}",
+          "$description": "Interactive border for focused or selected form elements. Resolved value: #0f62fe."
+        },
+        "disabled": {
+          "$value": "{color.primitive.gray.20}",
+          "$description": "Disabled border for inactive inputs and containers. Resolved value: #e0e0e0."
+        },
+        "error": {
+          "$value": "{color.primitive.red.60}",
+          "$description": "Error border for invalid form fields and error states. Resolved value: #da1e28."
+        },
+        "success": {
+          "$value": "{color.primitive.green.60}",
+          "$description": "Success border for validated form fields and positive states. Resolved value: #198038."
+        },
+        "warning": {
+          "$value": "{color.primitive.yellow.50}",
+          "$description": "Warning border for cautionary form fields and alerts. Resolved value: #b28600."
+        },
+        "info": {
+          "$value": "{color.primitive.blue.50}",
+          "$description": "Informational border for info banners and helper states. Resolved value: #4589ff."
+        },
+        "inverse": {
+          "$value": "{color.primitive.gray.80}",
+          "$description": "Border colour on inverse/dark surfaces. Resolved value: #393939."
+        }
+      },
+      "icon": {
+        "$description": "Icon fill colours for system icons and pictograms.",
+        "primary": {
+          "$value": "{color.primitive.gray.100}",
+          "$description": "Primary icon colour. Default for navigation icons and UI pictograms. Resolved value: #161616."
+        },
+        "secondary": {
+          "$value": "{color.primitive.gray.70}",
+          "$description": "Secondary icon colour for supporting icons and non-critical indicators. Resolved value: #525252."
+        },
+        "disabled": {
+          "$value": "{color.primitive.gray.30}",
+          "$description": "Disabled icon colour. Reduced emphasis for inactive controls. Resolved value: #c6c6c6."
+        },
+        "on-color": {
+          "$value": "{color.primitive.white}",
+          "$description": "Icon colour on coloured backgrounds. Buttons, badges, and status pills. Resolved value: #ffffff."
+        },
+        "interactive": {
+          "$value": "{color.primitive.blue.60}",
+          "$description": "Interactive icon colour for clickable icons and action triggers. Resolved value: #0f62fe."
+        },
+        "success": {
+          "$value": "{color.primitive.green.60}",
+          "$description": "Success icon for check marks, confirmations, and positive states. Resolved value: #198038."
+        },
+        "warning": {
+          "$value": "{color.primitive.yellow.60}",
+          "$description": "Warning icon for alert triangles and cautionary indicators. Resolved value: #8e6a00."
+        },
+        "error": {
+          "$value": "{color.primitive.red.60}",
+          "$description": "Error icon for cross marks, failures, and critical indicators. Resolved value: #da1e28."
+        },
+        "info": {
+          "$value": "{color.primitive.blue.50}",
+          "$description": "Informational icon for info circles and helper indicators. Resolved value: #4589ff."
+        }
+      },
+      "interactive": {
+        "$description": "Colours for interactive elements: buttons, links, toggles.",
+        "primary": {
+          "$value": "{color.primitive.blue.60}",
+          "$description": "Primary interactive colour. Default state for primary buttons, toggles, and selection indicators. Resolved value: #0f62fe."
+        },
+        "primary-hover": {
+          "$value": "{color.primitive.blue.70}",
+          "$description": "Primary interactive hover. Darkened for visual feedback on mouse-over. Resolved value: #0043ce."
+        },
+        "primary-active": {
+          "$value": "{color.primitive.blue.80}",
+          "$description": "Primary interactive active/pressed state. Resolved value: #002d9c."
+        },
+        "secondary": {
+          "$value": "{color.primitive.gray.80}",
+          "$description": "Secondary interactive colour. Default for secondary buttons and less prominent actions. Resolved value: #393939."
+        },
+        "secondary-hover": {
+          "$value": "{color.primitive.gray.70}",
+          "$description": "Secondary interactive hover state. Resolved value: #525252."
+        },
+        "secondary-active": {
+          "$value": "{color.primitive.gray.60}",
+          "$description": "Secondary interactive active/pressed state. Resolved value: #6f6f6f."
+        },
+        "danger": {
+          "$value": "{color.primitive.red.60}",
+          "$description": "Danger interactive colour. Destructive or irreversible actions. Resolved value: #da1e28."
+        },
+        "danger-hover": {
+          "$value": "{color.primitive.red.70}",
+          "$description": "Danger interactive hover. Darkened red for delete/remove hover feedback. Resolved value: #a2191f."
+        },
+        "danger-active": {
+          "$value": "{color.primitive.red.80}",
+          "$description": "Danger interactive active/pressed state. Resolved value: #750e13."
+        }
+      },
+      "support": {
+        "$description": "Semantic support colours for status communication: success, warning, error, informational.",
+        "success": {
+          "$value": "{color.primitive.green.60}",
+          "$description": "Success colour for positive outcomes, confirmations, and completion indicators. Resolved value: #198038."
+        },
+        "warning": {
+          "$value": "{color.primitive.yellow.50}",
+          "$description": "Warning colour for cautionary messages and non-blocking alerts. Resolved value: #b28600."
+        },
+        "error": {
+          "$value": "{color.primitive.red.60}",
+          "$description": "Error colour for failures, validation errors, and destructive alerts. Resolved value: #da1e28."
+        },
+        "info": {
+          "$value": "{color.primitive.blue.50}",
+          "$description": "Informational colour for tips, guidance, and neutral status messages. Resolved value: #4589ff."
+        },
+        "success-subtle": {
+          "$value": "{color.primitive.green.10}",
+          "$description": "Subtle success background for inline notifications and banners. Resolved value: #defbe6."
+        },
+        "warning-subtle": {
+          "$value": "{color.primitive.yellow.10}",
+          "$description": "Subtle warning background for inline notifications and banners. Resolved value: #fcf4d6."
+        },
+        "error-subtle": {
+          "$value": "{color.primitive.red.10}",
+          "$description": "Subtle error background for inline notifications and banners. Resolved value: #fff1f1."
+        },
+        "info-subtle": {
+          "$value": "{color.primitive.blue.10}",
+          "$description": "Subtle informational background for inline notifications and banners. Resolved value: #edf5ff."
+        }
+      },
+      "focus": {
+        "$description": "Focus ring colours for keyboard accessibility.",
+        "outline": {
+          "$value": "{color.primitive.blue.60}",
+          "$description": "Focus outline colour. Visible ring for keyboard-navigated elements. Meets WCAG 2.2 focus-visible requirements. Resolved value: #0f62fe."
+        },
+        "inset": {
+          "$value": "{color.primitive.white}",
+          "$description": "Inner focus ring (halo). Creates a two-tone focus indicator for contrast on any background. Resolved value: #ffffff."
+        }
+      },
+      "brand": {
+        "$description": "Brand identity colours for logos, marketing, and themed sections.",
+        "primary": {
+          "$value": "{color.primitive.blue.60}",
+          "$description": "Primary brand colour. The signature blue for logos, hero CTAs, and brand expressions. Resolved value: #0f62fe."
+        },
+        "secondary": {
+          "$value": "{color.primitive.teal.50}",
+          "$description": "Secondary brand colour. Complementary teal for accents and brand pairings. Resolved value: #009d9a."
+        },
+        "tertiary": {
+          "$value": "{color.primitive.purple.50}",
+          "$description": "Tertiary brand colour. Purple for premium features and creative sections. Resolved value: #a56eff."
+        }
+      },
+      "highlight": {
+        "$description": "Highlight colours for search results, selection, and emphasis.",
+        "default": {
+          "$value": "{color.primitive.yellow.20}",
+          "$description": "Default highlight for search-result matches and text selection. Resolved value: #fddc69."
+        },
+        "hover": {
+          "$value": "{color.primitive.yellow.10}",
+          "$description": "Hover highlight for selectable search results and filter chips. Resolved value: #fcf4d6."
+        }
+      },
+      "skeleton": {
+        "$description": "Colours for skeleton/loading placeholder patterns.",
+        "background": {
+          "$value": "{color.primitive.cool-gray.10}",
+          "$description": "Skeleton background. Static base for shimmer loading animations. Resolved value: #f2f4f8."
+        },
+        "element": {
+          "$value": "{color.primitive.cool-gray.20}",
+          "$description": "Skeleton foreground. Animated shimmer stripe colour. Resolved value: #dde1e6."
+        }
+      }
     }
-  },
-  "spacing": {
-    "$type": "dimension",
-    "$description": "Spacing scale based on a 4px grid with a power-of-two progression.",
-    "2xs": { "$value": "2px" },
-    "xs": { "$value": "4px" },
-    "sm": { "$value": "8px" },
-    "md": { "$value": "16px" },
-    "lg": { "$value": "24px" },
-    "xl": { "$value": "32px" },
-    "2xl": { "$value": "48px" },
-    "3xl": { "$value": "64px" },
-    "4xl": { "$value": "96px" },
-    "5xl": { "$value": "128px" }
   },
   "typography": {
     "fontFamily": {
       "$type": "fontFamily",
-      "display": {
-        "$value": "'Bricolage Grotesque', ui-sans-serif, system-ui, sans-serif",
-        "$description": "Display and heading typeface. Geometric grotesque with optical sizing."
-      },
+      "$description": "Available typeface stacks for headings, body, and code.",
       "sans": {
-        "$value": "'Inclusive Sans', ui-sans-serif, system-ui, sans-serif",
-        "$description": "Body and UI typeface. Designed for readability and accessibility."
+        "$value": "'IBM Plex Sans', 'Helvetica Neue', Arial, sans-serif",
+        "$description": "Primary sans-serif typeface. Used for body text, UI labels, and most content. Designed for on-screen readability."
+      },
+      "serif": {
+        "$value": "'IBM Plex Serif', Georgia, 'Times New Roman', serif",
+        "$description": "Serif typeface for editorial content, pull quotes, and long-form articles."
       },
       "mono": {
-        "$value": "'JetBrains Mono', 'Fira Code', ui-monospace, monospace",
-        "$description": "Code and technical content typeface."
+        "$value": "'IBM Plex Mono', 'Fira Code', 'Courier New', monospace",
+        "$description": "Monospaced typeface for code snippets, terminal output, and technical data."
       }
     },
     "fontSize": {
       "$type": "dimension",
-      "$description": "Font size scale. Body text starts at md (17px).",
-      "xs": { "$value": "11px" },
-      "sm": { "$value": "14px" },
-      "md": { "$value": "17px" },
-      "lg": { "$value": "20px" },
-      "xl": { "$value": "24px" },
-      "2xl": { "$value": "30px" },
-      "3xl": { "$value": "40px" },
-      "4xl": { "$value": "56px" }
+      "$description": "Font size scale in rem, based on 16px root.",
+      "xs": {
+        "$value": "0.75rem",
+        "$description": "Extra-small text (12px). Fine print, legal copy, and compact labels."
+      },
+      "sm": {
+        "$value": "0.875rem",
+        "$description": "Small text (14px). Captions, helper text, and secondary labels."
+      },
+      "md": {
+        "$value": "1rem",
+        "$description": "Base body text (16px). Paragraphs, list items, and form labels."
+      },
+      "lg": {
+        "$value": "1.125rem",
+        "$description": "Large body text (18px). Lead paragraphs and emphasized content."
+      },
+      "xl": {
+        "$value": "1.25rem",
+        "$description": "Extra-large text (20px). Sub-headings and prominent labels."
+      },
+      "2xl": {
+        "$value": "1.5rem",
+        "$description": "Display small (24px). Section headings and card titles."
+      },
+      "3xl": {
+        "$value": "1.875rem",
+        "$description": "Display medium (30px). Page headings and feature titles."
+      },
+      "4xl": {
+        "$value": "2.25rem",
+        "$description": "Display large (36px). Hero headings and primary page titles."
+      },
+      "5xl": {
+        "$value": "3rem",
+        "$description": "Display extra-large (48px). Marketing headlines and splash screens."
+      },
+      "6xl": {
+        "$value": "3.75rem",
+        "$description": "Display jumbo (60px). Billboard text and oversized hero headings."
+      }
     },
     "fontWeight": {
-      "regular": { "$value": "400" },
-      "medium": { "$value": "500" },
-      "bold": { "$value": "700" }
+      "$description": "Font weight scale from light to bold.",
+      "light": {
+        "$value": "300",
+        "$description": "Light weight. For large display text where a delicate appearance is desired."
+      },
+      "regular": {
+        "$value": "400",
+        "$description": "Regular weight. Default for body text and UI labels."
+      },
+      "medium": {
+        "$value": "500",
+        "$description": "Medium weight. Slightly bolder for emphasis in compact spaces."
+      },
+      "semibold": {
+        "$value": "600",
+        "$description": "Semibold weight. For sub-headings, table headers, and navigation items."
+      },
+      "bold": {
+        "$value": "700",
+        "$description": "Bold weight. For headings, CTAs, and strong emphasis."
+      }
     },
     "lineHeight": {
+      "$description": "Line height scale for vertical rhythm and readability.",
       "tight": {
-        "$value": "1.1",
-        "$description": "For headings and display text."
+        "$value": "1.125",
+        "$description": "Tight line height. For headings and display text where vertical space is limited."
+      },
+      "snug": {
+        "$value": "1.25",
+        "$description": "Snug line height. For sub-headings and medium-length titles."
       },
       "normal": {
-        "$value": "1.65",
-        "$description": "Default line height for body text. Generous for readability."
+        "$value": "1.5",
+        "$description": "Normal line height. Default for body text. Balances readability and density."
+      },
+      "relaxed": {
+        "$value": "1.625",
+        "$description": "Relaxed line height. For long-form reading and accessibility-sensitive contexts."
+      },
+      "loose": {
+        "$value": "2",
+        "$description": "Loose line height. For single-line labels with generous vertical padding."
       }
     },
     "letterSpacing": {
-      "tight": {
-        "$value": "-0.015em",
-        "$description": "Negative tracking for headings."
+      "$description": "Letter spacing (tracking) scale.",
+      "tighter": {
+        "$value": "-0.02em",
+        "$description": "Tighter tracking. For large display headings where letters should optically close."
       },
-      "caps": {
-        "$value": "0.08em",
-        "$description": "Wide tracking for uppercase labels and captions."
+      "tight": {
+        "$value": "-0.01em",
+        "$description": "Tight tracking. For headings and sub-headings."
+      },
+      "normal": {
+        "$value": "0em",
+        "$description": "Normal tracking. Default for body text."
+      },
+      "wide": {
+        "$value": "0.025em",
+        "$description": "Wide tracking. For all-caps labels, badges, and overline text."
+      },
+      "wider": {
+        "$value": "0.05em",
+        "$description": "Wider tracking. For spaced-out small-caps and brand wordmarks."
+      }
+    },
+    "semantic": {
+      "$description": "Composite type tokens bundling font size, weight, line height, and tracking into role-based presets.",
+      "heading-01": {
+        "$value": {
+          "fontSize": "{typography.fontSize.6xl}",
+          "fontWeight": "{typography.fontWeight.bold}",
+          "lineHeight": "{typography.lineHeight.tight}",
+          "letterSpacing": "{typography.letterSpacing.tighter}"
+        },
+        "$description": "Display heading level 1 (60px bold). Page hero headings and splash titles."
+      },
+      "heading-02": {
+        "$value": {
+          "fontSize": "{typography.fontSize.5xl}",
+          "fontWeight": "{typography.fontWeight.bold}",
+          "lineHeight": "{typography.lineHeight.tight}",
+          "letterSpacing": "{typography.letterSpacing.tighter}"
+        },
+        "$description": "Display heading level 2 (48px bold). Section hero headings."
+      },
+      "heading-03": {
+        "$value": {
+          "fontSize": "{typography.fontSize.4xl}",
+          "fontWeight": "{typography.fontWeight.bold}",
+          "lineHeight": "{typography.lineHeight.snug}",
+          "letterSpacing": "{typography.letterSpacing.tight}"
+        },
+        "$description": "Heading level 3 (36px bold). Primary page titles and feature headings."
+      },
+      "heading-04": {
+        "$value": {
+          "fontSize": "{typography.fontSize.3xl}",
+          "fontWeight": "{typography.fontWeight.semibold}",
+          "lineHeight": "{typography.lineHeight.snug}",
+          "letterSpacing": "{typography.letterSpacing.tight}"
+        },
+        "$description": "Heading level 4 (30px semibold). Section headings and card group titles."
+      },
+      "heading-05": {
+        "$value": {
+          "fontSize": "{typography.fontSize.2xl}",
+          "fontWeight": "{typography.fontWeight.semibold}",
+          "lineHeight": "{typography.lineHeight.snug}"
+        },
+        "$description": "Heading level 5 (24px semibold). Card titles and sub-section headings."
+      },
+      "heading-06": {
+        "$value": {
+          "fontSize": "{typography.fontSize.xl}",
+          "fontWeight": "{typography.fontWeight.semibold}",
+          "lineHeight": "{typography.lineHeight.normal}"
+        },
+        "$description": "Heading level 6 (20px semibold). Minor headings, list group titles."
+      },
+      "body-01": {
+        "$value": {
+          "fontSize": "{typography.fontSize.md}",
+          "fontWeight": "{typography.fontWeight.regular}",
+          "lineHeight": "{typography.lineHeight.normal}"
+        },
+        "$description": "Default body text (16px regular). Paragraphs, descriptions, and general content."
+      },
+      "body-02": {
+        "$value": {
+          "fontSize": "{typography.fontSize.lg}",
+          "fontWeight": "{typography.fontWeight.regular}",
+          "lineHeight": "{typography.lineHeight.relaxed}"
+        },
+        "$description": "Large body text (18px regular). Lead paragraphs and featured descriptions."
+      },
+      "body-compact-01": {
+        "$value": {
+          "fontSize": "{typography.fontSize.sm}",
+          "fontWeight": "{typography.fontWeight.regular}",
+          "lineHeight": "{typography.lineHeight.normal}"
+        },
+        "$description": "Compact body text (14px regular). Dense lists, table cells, and sidebar content."
+      },
+      "body-compact-02": {
+        "$value": {
+          "fontSize": "{typography.fontSize.md}",
+          "fontWeight": "{typography.fontWeight.regular}",
+          "lineHeight": "{typography.lineHeight.snug}"
+        },
+        "$description": "Compact body text (16px regular, snug). Data-dense layouts with reduced line height."
+      },
+      "label-01": {
+        "$value": {
+          "fontSize": "{typography.fontSize.sm}",
+          "fontWeight": "{typography.fontWeight.medium}",
+          "lineHeight": "{typography.lineHeight.tight}"
+        },
+        "$description": "Label text (14px medium). Form labels, chip text, and navigation items."
+      },
+      "label-02": {
+        "$value": {
+          "fontSize": "{typography.fontSize.xs}",
+          "fontWeight": "{typography.fontWeight.medium}",
+          "lineHeight": "{typography.lineHeight.tight}",
+          "letterSpacing": "{typography.letterSpacing.wide}"
+        },
+        "$description": "Small label/overline text (12px medium, wide tracking). Category tags, tab labels."
+      },
+      "caption-01": {
+        "$value": {
+          "fontSize": "{typography.fontSize.xs}",
+          "fontWeight": "{typography.fontWeight.regular}",
+          "lineHeight": "{typography.lineHeight.normal}"
+        },
+        "$description": "Caption text (12px regular). Image captions, timestamps, and helper text below form fields."
+      },
+      "code-01": {
+        "$value": {
+          "fontSize": "{typography.fontSize.sm}",
+          "fontWeight": "{typography.fontWeight.regular}",
+          "lineHeight": "{typography.lineHeight.relaxed}"
+        },
+        "$description": "Inline code text (14px regular, mono). Code snippets and terminal output. Pair with fontFamily.mono."
+      },
+      "legal-01": {
+        "$value": {
+          "fontSize": "{typography.fontSize.xs}",
+          "fontWeight": "{typography.fontWeight.regular}",
+          "lineHeight": "{typography.lineHeight.relaxed}"
+        },
+        "$description": "Legal/fine-print text (12px regular, relaxed). Terms, disclaimers, and footnotes."
       }
     }
   },
-  "borderRadius": {
+  "spacing": {
     "$type": "dimension",
-    "$description": "Vantra uses square corners exclusively. Border radius is 0 everywhere.",
-    "none": { "$value": "0" },
-    "full": {
-      "$value": "9999px",
-      "$description": "Only used for avatars and pill badges."
+    "$description": "Spacing scale based on a 0.25rem (4px) base unit.",
+    "primitive": {
+      "10": {
+        "$value": "3rem",
+        "$description": "48px. 2×Large spacing for page margins and major section gaps."
+      },
+      "11": {
+        "$value": "4rem",
+        "$description": "64px. 3×Large spacing for hero section padding and page-level gaps."
+      },
+      "12": {
+        "$value": "5rem",
+        "$description": "80px. Jumbo spacing for hero sections and splash layouts."
+      },
+      "13": {
+        "$value": "6rem",
+        "$description": "96px. Maximum spacing for full-bleed hero sections."
+      },
+      "$description": "Raw spacing values. Reference via semantic spacing tokens.",
+      "01": {
+        "$value": "0.125rem",
+        "$description": "2px. Micro spacing for tight icon gaps and hairline separators."
+      },
+      "02": {
+        "$value": "0.25rem",
+        "$description": "4px. Extra-small spacing for compact padding and icon-text gaps."
+      },
+      "03": {
+        "$value": "0.5rem",
+        "$description": "8px. Small spacing for internal padding and button icon gaps."
+      },
+      "04": {
+        "$value": "0.75rem",
+        "$description": "12px. Medium-small spacing for form field padding and list item gaps."
+      },
+      "05": {
+        "$value": "1rem",
+        "$description": "16px. Base spacing unit. Default padding, gap between related elements."
+      },
+      "06": {
+        "$value": "1.25rem",
+        "$description": "20px. Slightly above base. Padding for medium containers."
+      },
+      "07": {
+        "$value": "1.5rem",
+        "$description": "24px. Medium spacing for card padding and section gaps."
+      },
+      "08": {
+        "$value": "2rem",
+        "$description": "32px. Large spacing for section padding and major element gaps."
+      },
+      "09": {
+        "$value": "2.5rem",
+        "$description": "40px. Extra-large spacing for section breaks and hero padding."
+      }
+    },
+    "semantic": {
+      "$description": "Role-based spacing tokens for consistent layout patterns.",
+      "inset": {
+        "$description": "Equal padding on all four sides of a container.",
+        "xs": {
+          "$value": "{spacing.primitive.02}",
+          "$description": "Extra-small inset (4px). Tight padding for tags, badges, and compact buttons."
+        },
+        "sm": {
+          "$value": "{spacing.primitive.03}",
+          "$description": "Small inset (8px). Padding for input fields, small cards, and list items."
+        },
+        "md": {
+          "$value": "{spacing.primitive.05}",
+          "$description": "Medium inset (16px). Default container padding for cards, panels, and modals."
+        },
+        "lg": {
+          "$value": "{spacing.primitive.07}",
+          "$description": "Large inset (24px). Generous padding for large cards and feature sections."
+        },
+        "xl": {
+          "$value": "{spacing.primitive.08}",
+          "$description": "Extra-large inset (32px). Roomy padding for hero sections and landing page blocks."
+        }
+      },
+      "stack": {
+        "$description": "Vertical spacing between stacked elements (margin-bottom or gap).",
+        "xs": {
+          "$value": "{spacing.primitive.02}",
+          "$description": "Extra-small stack (4px). Gap between label and helper text."
+        },
+        "sm": {
+          "$value": "{spacing.primitive.03}",
+          "$description": "Small stack (8px). Gap between related form fields."
+        },
+        "md": {
+          "$value": "{spacing.primitive.05}",
+          "$description": "Medium stack (16px). Gap between content sections within a card."
+        },
+        "lg": {
+          "$value": "{spacing.primitive.07}",
+          "$description": "Large stack (24px). Gap between distinct content blocks."
+        },
+        "xl": {
+          "$value": "{spacing.primitive.10}",
+          "$description": "Extra-large stack (48px). Gap between major page sections."
+        }
+      },
+      "inline": {
+        "$description": "Horizontal spacing between inline elements (margin-right or gap).",
+        "xs": {
+          "$value": "{spacing.primitive.02}",
+          "$description": "Extra-small inline (4px). Gap between icon and text in a button."
+        },
+        "sm": {
+          "$value": "{spacing.primitive.03}",
+          "$description": "Small inline (8px). Gap between tag pills and inline actions."
+        },
+        "md": {
+          "$value": "{spacing.primitive.05}",
+          "$description": "Medium inline (16px). Gap between toolbar actions and nav items."
+        },
+        "lg": {
+          "$value": "{spacing.primitive.07}",
+          "$description": "Large inline (24px). Gap between card columns in a grid."
+        },
+        "xl": {
+          "$value": "{spacing.primitive.08}",
+          "$description": "Extra-large inline (32px). Gap between major layout regions."
+        }
+      },
+      "squish": {
+        "$description": "Asymmetric padding: less vertical, more horizontal. For buttons and pills.",
+        "sm": {
+          "$value": "{spacing.primitive.02}",
+          "$description": "Small squish vertical (4px). Pair with inline.sm for compact buttons."
+        },
+        "md": {
+          "$value": "{spacing.primitive.03}",
+          "$description": "Medium squish vertical (8px). Pair with inline.md for standard buttons."
+        },
+        "lg": {
+          "$value": "{spacing.primitive.04}",
+          "$description": "Large squish vertical (12px). Pair with inline.lg for large buttons."
+        }
+      }
+    }
+  },
+  "border": {
+    "$description": "Border width and radius tokens for containers, inputs, and interactive elements.",
+    "width": {
+      "$type": "dimension",
+      "$description": "Border width scale.",
+      "thin": {
+        "$value": "1px",
+        "$description": "Thin border (1px). Default for cards, inputs, and dividers."
+      },
+      "default": {
+        "$value": "1.5px",
+        "$description": "Default border (1.5px). Slightly heavier for interactive elements at rest."
+      },
+      "thick": {
+        "$value": "2px",
+        "$description": "Thick border (2px). For focused inputs, active tabs, and selected items."
+      },
+      "thicker": {
+        "$value": "3px",
+        "$description": "Thicker border (3px). For heavy emphasis, progress indicators, and underline navigation."
+      }
+    },
+    "radius": {
+      "$type": "dimension",
+      "$description": "Border radius scale from sharp to fully rounded.",
+      "none": {
+        "$value": "0",
+        "$description": "No radius. Sharp corners for minimal, editorial designs."
+      },
+      "sm": {
+        "$value": "0.25rem",
+        "$description": "Small radius (4px). Subtle rounding for buttons and inputs."
+      },
+      "md": {
+        "$value": "0.5rem",
+        "$description": "Medium radius (8px). Standard rounding for cards and containers."
+      },
+      "lg": {
+        "$value": "0.75rem",
+        "$description": "Large radius (12px). Generous rounding for modals and large cards."
+      },
+      "xl": {
+        "$value": "1rem",
+        "$description": "Extra-large radius (16px). Heavy rounding for panels and hero elements."
+      },
+      "full": {
+        "$value": "9999px",
+        "$description": "Fully rounded (pill shape). For avatar circles, tag pills, and toggle handles."
+      }
     }
   },
   "shadow": {
     "$type": "shadow",
-    "$description": "Minimal shadow scale. Vantra prefers borders over elevation.",
-    "sm": { "$value": "0 1px 2px rgba(0, 22, 25, 0.06)" },
-    "md": { "$value": "0 4px 8px rgba(0, 22, 25, 0.08)" },
-    "lg": { "$value": "0 12px 24px rgba(0, 22, 25, 0.1)" }
-  },
-  "opacity": {
-    "disabled": {
-      "$value": "0.4",
-      "$description": "Disabled interactive elements."
-    },
-    "hover": {
-      "$value": "0.06",
-      "$description": "Hover overlay opacity on interactive surfaces."
-    },
-    "overlay": {
-      "$value": "0.45",
-      "$description": "Modal backdrop opacity."
-    }
-  },
-  "focus": {
-    "$description": "Focus ring tokens for keyboard navigation. Two-tone ring: accent outline + paper halo.",
-    "ring-color": {
-      "$type": "color",
-      "$value": "#021f94",
-      "$description": "Focus ring colour. Matches the blue accent."
-    },
-    "ring-width": {
-      "$type": "dimension",
-      "$value": "2px"
-    },
-    "ring-offset": {
-      "$type": "dimension",
-      "$value": "3px"
-    },
-    "halo-color": {
-      "$type": "color",
-      "$value": "#f5f2f3",
-      "$description": "Background halo behind the focus ring for contrast."
-    },
-    "halo-width": {
-      "$type": "dimension",
-      "$value": "5px"
-    }
-  },
-  "motion": {
-    "$description": "Animation durations and easings. Respect prefers-reduced-motion.",
-    "duration": {
-      "$type": "duration",
-      "instant": { "$value": "100ms" },
-      "fast": { "$value": "200ms" },
-      "normal": { "$value": "350ms" },
-      "slow": { "$value": "500ms" }
-    },
-    "easing": {
-      "default": {
-        "$value": "cubic-bezier(0.4, 0, 0.2, 1)",
-        "$description": "Standard ease-in-out for most transitions."
+    "$description": "Elevation shadow scale. Higher numbers = more perceived depth.",
+    "primitive": {
+      "$description": "Raw shadow values at fixed elevation levels.",
+      "01": {
+        "$value": "0 1px 2px rgba(0,0,0,0.05)",
+        "$description": "Elevation 1 (subtle). Barely visible lift for cards at rest."
       },
-      "enter": {
-        "$value": "cubic-bezier(0, 0, 0.2, 1)",
-        "$description": "Ease-out for elements entering the viewport."
+      "02": {
+        "$value": "0 1px 3px rgba(0,0,0,0.1), 0 1px 2px rgba(0,0,0,0.06)",
+        "$description": "Elevation 2. Light shadow for raised buttons and clickable cards."
       },
-      "exit": {
-        "$value": "cubic-bezier(0.4, 0, 1, 1)",
-        "$description": "Ease-in for elements leaving the viewport."
+      "03": {
+        "$value": "0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -2px rgba(0,0,0,0.1)",
+        "$description": "Elevation 3. Medium shadow for dropdowns and menus."
+      },
+      "04": {
+        "$value": "0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -4px rgba(0,0,0,0.1)",
+        "$description": "Elevation 4. Pronounced shadow for floating panels and dialogs."
+      },
+      "05": {
+        "$value": "0 20px 25px -5px rgba(0,0,0,0.1), 0 8px 10px -6px rgba(0,0,0,0.1)",
+        "$description": "Elevation 5. Deep shadow for modals and side drawers."
+      },
+      "06": {
+        "$value": "0 25px 50px -12px rgba(0,0,0,0.25)",
+        "$description": "Elevation 6 (maximum). Ultra-deep shadow for full-screen overlays."
+      }
+    },
+    "semantic": {
+      "$description": "Role-based shadow aliases for common UI patterns.",
+      "raised": {
+        "$value": "{shadow.primitive.02}",
+        "$description": "Shadow for raised surfaces: cards, buttons, and selectable tiles."
+      },
+      "overlay": {
+        "$value": "{shadow.primitive.04}",
+        "$description": "Shadow for overlay surfaces: dropdowns, context menus, and popovers."
+      },
+      "sticky": {
+        "$value": "{shadow.primitive.03}",
+        "$description": "Shadow for sticky elements: fixed headers and bottom navigation bars."
+      },
+      "temporary": {
+        "$value": "{shadow.primitive.05}",
+        "$description": "Shadow for temporary surfaces: modals, dialogs, and side panels."
+      },
+      "popout": {
+        "$value": "{shadow.primitive.06}",
+        "$description": "Shadow for popout surfaces: full-screen overlays and lightboxes."
       }
     }
   },
-  "zIndex": {
-    "$description": "Stacking order for layered UI. Increments of 100.",
-    "dropdown": { "$value": "1000" },
-    "sticky": { "$value": "1100" },
-    "modal": { "$value": "1200" },
-    "popover": { "$value": "1300" },
-    "tooltip": { "$value": "1400" },
-    "toast": { "$value": "1500" }
+  "motion": {
+    "$description": "Duration and easing tokens for animations and transitions. Always respect prefers-reduced-motion.",
+    "duration": {
+      "$type": "duration",
+      "$description": "Transition duration scale from instant to slow.",
+      "instant": {
+        "$value": "50ms",
+        "$description": "Instant (50ms). Colour changes, opacity toggles. Imperceptible delay."
+      },
+      "fast-01": {
+        "$value": "100ms",
+        "$description": "Fast tier 1 (100ms). Micro-interactions: button feedback, icon swap."
+      },
+      "fast-02": {
+        "$value": "150ms",
+        "$description": "Fast tier 2 (150ms). Small UI transitions: tooltip show, focus ring."
+      },
+      "moderate-01": {
+        "$value": "200ms",
+        "$description": "Moderate tier 1 (200ms). Standard transitions: menu open, tab switch."
+      },
+      "moderate-02": {
+        "$value": "300ms",
+        "$description": "Moderate tier 2 (300ms). Content transitions: card expand, accordion."
+      },
+      "slow-01": {
+        "$value": "400ms",
+        "$description": "Slow tier 1 (400ms). Large transitions: modal enter, drawer slide."
+      },
+      "slow-02": {
+        "$value": "500ms",
+        "$description": "Slow tier 2 (500ms). Complex choreography: page transition, multi-step animation."
+      }
+    },
+    "easing": {
+      "$description": "Cubic-bezier easing curves for productive and expressive motion styles.",
+      "productive-standard": {
+        "$value": "cubic-bezier(0.2, 0, 0.38, 0.9)",
+        "$description": "Productive standard easing. Default for most UI transitions — efficient and unobtrusive."
+      },
+      "productive-entrance": {
+        "$value": "cubic-bezier(0, 0, 0.38, 0.9)",
+        "$description": "Productive entrance easing. For elements entering the viewport: fade-in, slide-in."
+      },
+      "productive-exit": {
+        "$value": "cubic-bezier(0.2, 0, 1, 0.9)",
+        "$description": "Productive exit easing. For elements leaving the viewport: fade-out, slide-out."
+      },
+      "expressive-standard": {
+        "$value": "cubic-bezier(0.4, 0.14, 0.3, 1)",
+        "$description": "Expressive standard easing. Playful, bouncy motion for marketing and creative contexts."
+      },
+      "expressive-entrance": {
+        "$value": "cubic-bezier(0, 0, 0.3, 1)",
+        "$description": "Expressive entrance easing. Dramatic entry for hero elements and celebration animations."
+      },
+      "expressive-exit": {
+        "$value": "cubic-bezier(0.4, 0.14, 1, 1)",
+        "$description": "Expressive exit easing. Energetic departure for dismissed elements."
+      }
+    }
+  },
+  "focus": {
+    "$description": "Focus indicator tokens for keyboard navigation accessibility. Two-tone ring pattern ensures visibility on any background.",
+    "ring-color": {
+      "$type": "color",
+      "$value": "{color.semantic.focus.outline}",
+      "$description": "Focus ring colour. The outer indicator ring visible during keyboard navigation. Matches the interactive blue."
+    },
+    "ring-width": {
+      "$type": "dimension",
+      "$value": "2px",
+      "$description": "Focus ring width. A 2px outline meets WCAG 2.2 focus indicator minimum area requirements."
+    },
+    "ring-offset": {
+      "$type": "dimension",
+      "$value": "2px",
+      "$description": "Focus ring offset. Gap between the element edge and the focus ring, creating a halo effect."
+    },
+    "inset-color": {
+      "$type": "color",
+      "$value": "{color.semantic.focus.inset}",
+      "$description": "Inner focus halo colour. White ring between the element and the outer focus ring for contrast."
+    },
+    "inset-width": {
+      "$type": "dimension",
+      "$value": "1px",
+      "$description": "Inner focus halo width. Thin white ring for two-tone focus visibility."
+    },
+    "outline-style": {
+      "$value": "solid",
+      "$description": "Focus ring outline style. Always solid for maximum visibility and consistency."
+    }
+  },
+  "layout": {
+    "$description": "Layout, grid, breakpoint, and z-index tokens for responsive design.",
+    "breakpoint": {
+      "$type": "dimension",
+      "$description": "Responsive breakpoints. Mobile-first: apply styles at and above each breakpoint.",
+      "sm": {
+        "$value": "640px",
+        "$description": "Small breakpoint (640px). Large phones in landscape and small tablets."
+      },
+      "md": {
+        "$value": "768px",
+        "$description": "Medium breakpoint (768px). Tablets in portrait and small laptops."
+      },
+      "lg": {
+        "$value": "1024px",
+        "$description": "Large breakpoint (1024px). Tablets in landscape and standard laptops."
+      },
+      "xl": {
+        "$value": "1280px",
+        "$description": "Extra-large breakpoint (1280px). Desktop monitors and wide laptops."
+      },
+      "2xl": {
+        "$value": "1536px",
+        "$description": "Double extra-large breakpoint (1536px). Large desktop monitors and ultrawide displays."
+      }
+    },
+    "container": {
+      "$type": "dimension",
+      "$description": "Maximum container widths per breakpoint tier.",
+      "sm": {
+        "$value": "640px",
+        "$description": "Small container max width (640px). Content within the sm breakpoint."
+      },
+      "md": {
+        "$value": "768px",
+        "$description": "Medium container max width (768px). Content within the md breakpoint."
+      },
+      "lg": {
+        "$value": "1024px",
+        "$description": "Large container max width (1024px). Content within the lg breakpoint."
+      },
+      "xl": {
+        "$value": "1280px",
+        "$description": "Extra-large container max width (1280px). Centered content on wide screens."
+      },
+      "2xl": {
+        "$value": "1440px",
+        "$description": "Maximum container width (1440px). Content max-width on ultrawide screens."
+      }
+    },
+    "columns": {
+      "$description": "Column counts for responsive grid layouts.",
+      "sm": {
+        "$value": "4",
+        "$description": "Small grid: 4 columns. Mobile and small tablet layouts."
+      },
+      "md": {
+        "$value": "8",
+        "$description": "Medium grid: 8 columns. Tablet and narrow desktop layouts."
+      },
+      "lg": {
+        "$value": "12",
+        "$description": "Large grid: 12 columns. Standard desktop layouts."
+      },
+      "xl": {
+        "$value": "16",
+        "$description": "Extra-large grid: 16 columns. Wide desktop and dashboard layouts."
+      }
+    },
+    "gutter": {
+      "$type": "dimension",
+      "$description": "Grid gutter (gap) sizes between columns.",
+      "sm": {
+        "$value": "{spacing.primitive.05}",
+        "$description": "Small gutter (16px). Compact layouts and mobile grids."
+      },
+      "md": {
+        "$value": "{spacing.primitive.07}",
+        "$description": "Medium gutter (24px). Standard desktop grids."
+      },
+      "lg": {
+        "$value": "{spacing.primitive.08}",
+        "$description": "Large gutter (32px). Spacious layouts and feature grids."
+      }
+    },
+    "zIndex": {
+      "$description": "Z-index stacking order. Use these tokens instead of arbitrary numbers.",
+      "base": {
+        "$value": "0",
+        "$description": "Base stacking level. Default for positioned elements."
+      },
+      "dropdown": {
+        "$value": "1000",
+        "$description": "Dropdown menus, select lists, and autocomplete panels."
+      },
+      "sticky": {
+        "$value": "1100",
+        "$description": "Sticky headers, fixed sidebars, and persistent navigation."
+      },
+      "fixed": {
+        "$value": "1200",
+        "$description": "Fixed position elements like floating action buttons."
+      },
+      "modal-backdrop": {
+        "$value": "1300",
+        "$description": "Modal backdrop overlay. Sits behind the modal content."
+      },
+      "modal": {
+        "$value": "1400",
+        "$description": "Modal dialog content. Above the backdrop."
+      },
+      "popover": {
+        "$value": "1500",
+        "$description": "Popover panels and context menus. Above modals when nested."
+      },
+      "tooltip": {
+        "$value": "1600",
+        "$description": "Tooltips. Highest interactive layer, always visible on hover/focus."
+      },
+      "toast": {
+        "$value": "1700",
+        "$description": "Toast notifications. Top-most layer for time-sensitive alerts."
+      }
+    }
+  },
+  "opacity": {
+    "$description": "Opacity tokens for disabled states, overlays, and hover feedback.",
+    "disabled": {
+      "$value": "0.4",
+      "$description": "Disabled element opacity (40%). Reduces visual prominence of inactive controls."
+    },
+    "hover-overlay": {
+      "$value": "0.08",
+      "$description": "Hover overlay opacity (8%). Subtle darkening on interactive surfaces."
+    },
+    "active-overlay": {
+      "$value": "0.12",
+      "$description": "Active/pressed overlay opacity (12%). Slightly stronger than hover."
+    },
+    "backdrop": {
+      "$value": "0.5",
+      "$description": "Backdrop overlay opacity (50%). For modal and drawer backdrops."
+    }
+  },
+  "component": {
+    "$description": "Component-scoped tokens. Each references semantic tokens and specifies property + state combinations for specific UI components.",
+    "button": {
+      "$description": "Button component tokens. Covers primary, secondary, ghost, and danger variants across all interaction states.",
+      "primary-bg-default": {
+        "$value": "{color.semantic.interactive.primary}",
+        "$description": "button bg default. Primary button default background. Solid blue call-to-action surface."
+      },
+      "primary-bg-hover": {
+        "$value": "{color.semantic.interactive.primary-hover}",
+        "$description": "button bg hover. Primary button hover background. Darkened blue on mouse-over."
+      },
+      "primary-bg-active": {
+        "$value": "{color.semantic.interactive.primary-active}",
+        "$description": "button bg active. Primary button active/pressed background."
+      },
+      "primary-bg-disabled": {
+        "$value": "{color.semantic.background.disabled}",
+        "$description": "button bg disabled. Primary button disabled background. Neutral inactive surface."
+      },
+      "primary-text-default": {
+        "$value": "{color.semantic.text.on-color}",
+        "$description": "button text default. Primary button text. White on blue for maximum contrast."
+      },
+      "primary-text-disabled": {
+        "$value": "{color.semantic.text.disabled}",
+        "$description": "button text disabled. Primary button disabled text. Low contrast on neutral background."
+      },
+      "primary-border-default": {
+        "$value": "transparent",
+        "$description": "button border default. Primary button border. Transparent — uses background colour only."
+      },
+      "primary-border-focus": {
+        "$value": "{color.semantic.focus.outline}",
+        "$description": "button border focus. Primary button focus border."
+      },
+      "primary-icon-default": {
+        "$value": "{color.semantic.icon.on-color}",
+        "$description": "button icon default. Primary button icon colour. White to match text."
+      },
+      "secondary-bg-default": {
+        "$value": "{color.semantic.interactive.secondary}",
+        "$description": "button bg default. Secondary button default background. Dark gray for prominent but non-primary actions."
+      },
+      "secondary-bg-hover": {
+        "$value": "{color.semantic.interactive.secondary-hover}",
+        "$description": "button bg hover. Secondary button hover background."
+      },
+      "secondary-bg-active": {
+        "$value": "{color.semantic.interactive.secondary-active}",
+        "$description": "button bg active. Secondary button active/pressed background."
+      },
+      "secondary-bg-disabled": {
+        "$value": "{color.semantic.background.disabled}",
+        "$description": "button bg disabled. Secondary button disabled background."
+      },
+      "secondary-text-default": {
+        "$value": "{color.semantic.text.on-color}",
+        "$description": "button text default. Secondary button text. White on dark gray."
+      },
+      "secondary-text-disabled": {
+        "$value": "{color.semantic.text.disabled}",
+        "$description": "button text disabled. Secondary button disabled text."
+      },
+      "secondary-border-default": {
+        "$value": "transparent",
+        "$description": "button border default. Secondary button border. Transparent — uses background colour."
+      },
+      "secondary-border-focus": {
+        "$value": "{color.semantic.focus.outline}",
+        "$description": "button border focus. Secondary button focus border."
+      },
+      "secondary-icon-default": {
+        "$value": "{color.semantic.icon.on-color}",
+        "$description": "button icon default. Secondary button icon colour."
+      },
+      "ghost-bg-default": {
+        "$value": "transparent",
+        "$description": "button bg default. Ghost button default background. Transparent for minimal visual weight."
+      },
+      "ghost-bg-hover": {
+        "$value": "{color.semantic.background.hover}",
+        "$description": "button bg hover. Ghost button hover background. Subtle fill on hover."
+      },
+      "ghost-bg-active": {
+        "$value": "{color.semantic.background.active}",
+        "$description": "button bg active. Ghost button active background."
+      },
+      "ghost-bg-disabled": {
+        "$value": "transparent",
+        "$description": "button bg disabled. Ghost button disabled background. Remains transparent."
+      },
+      "ghost-text-default": {
+        "$value": "{color.semantic.interactive.primary}",
+        "$description": "button text default. Ghost button text. Blue to indicate interactivity."
+      },
+      "ghost-text-hover": {
+        "$value": "{color.semantic.interactive.primary-hover}",
+        "$description": "button text hover. Ghost button hover text."
+      },
+      "ghost-text-disabled": {
+        "$value": "{color.semantic.text.disabled}",
+        "$description": "button text disabled. Ghost button disabled text."
+      },
+      "ghost-border-default": {
+        "$value": "transparent",
+        "$description": "button border default. Ghost button border. No visible border."
+      },
+      "ghost-border-focus": {
+        "$value": "{color.semantic.focus.outline}",
+        "$description": "button border focus. Ghost button focus border."
+      },
+      "ghost-icon-default": {
+        "$value": "{color.semantic.interactive.primary}",
+        "$description": "button icon default. Ghost button icon colour. Matches text."
+      },
+      "danger-bg-default": {
+        "$value": "{color.semantic.interactive.danger}",
+        "$description": "button bg default. Danger button default background. Red for destructive actions like delete."
+      },
+      "danger-bg-hover": {
+        "$value": "{color.semantic.interactive.danger-hover}",
+        "$description": "button bg hover. Danger button hover background."
+      },
+      "danger-bg-active": {
+        "$value": "{color.semantic.interactive.danger-active}",
+        "$description": "button bg active. Danger button active/pressed background."
+      },
+      "danger-bg-disabled": {
+        "$value": "{color.semantic.background.disabled}",
+        "$description": "button bg disabled. Danger button disabled background."
+      },
+      "danger-text-default": {
+        "$value": "{color.semantic.text.on-color}",
+        "$description": "button text default. Danger button text. White on red."
+      },
+      "danger-text-disabled": {
+        "$value": "{color.semantic.text.disabled}",
+        "$description": "button text disabled. Danger button disabled text."
+      },
+      "danger-border-default": {
+        "$value": "transparent",
+        "$description": "button border default. Danger button border. Transparent — uses background colour."
+      },
+      "danger-border-focus": {
+        "$value": "{color.semantic.focus.outline}",
+        "$description": "button border focus. Danger button focus border."
+      },
+      "danger-icon-default": {
+        "$value": "{color.semantic.icon.on-color}",
+        "$description": "button icon default. Danger button icon colour."
+      },
+      "padding-x-sm": {
+        "$value": "{spacing.semantic.squish.sm}",
+        "$description": "button padding x sm. Small button horizontal padding."
+      },
+      "padding-y-sm": {
+        "$value": "{spacing.primitive.02}",
+        "$description": "button padding y sm. Small button vertical padding."
+      },
+      "padding-x-md": {
+        "$value": "{spacing.semantic.squish.md}",
+        "$description": "button padding x md. Medium button horizontal padding."
+      },
+      "padding-y-md": {
+        "$value": "{spacing.primitive.03}",
+        "$description": "button padding y md. Medium button vertical padding."
+      },
+      "padding-x-lg": {
+        "$value": "{spacing.semantic.squish.lg}",
+        "$description": "button padding x lg. Large button horizontal padding."
+      },
+      "padding-y-lg": {
+        "$value": "{spacing.primitive.04}",
+        "$description": "button padding y lg. Large button vertical padding."
+      },
+      "border-radius": {
+        "$value": "{border.radius.sm}",
+        "$description": "button border radius. Button border radius. Subtle rounding."
+      },
+      "border-width": {
+        "$value": "{border.width.thin}",
+        "$description": "button border width. Button border width."
+      },
+      "font-size": {
+        "$value": "{typography.fontSize.sm}",
+        "$description": "button font size. Button font size (14px)."
+      },
+      "font-weight": {
+        "$value": "{typography.fontWeight.semibold}",
+        "$description": "button font weight. Button font weight (semibold)."
+      },
+      "line-height": {
+        "$value": "{typography.lineHeight.tight}",
+        "$description": "button line height. Button line height. Tight for single-line labels."
+      },
+      "icon-size-sm": {
+        "$value": "16px",
+        "$description": "button icon size sm. Small button icon size."
+      },
+      "icon-size-md": {
+        "$value": "20px",
+        "$description": "button icon size md. Medium button icon size."
+      },
+      "icon-size-lg": {
+        "$value": "24px",
+        "$description": "button icon size lg. Large button icon size."
+      },
+      "gap": {
+        "$value": "{spacing.primitive.02}",
+        "$description": "button gap. Gap between button icon and label text."
+      }
+    },
+    "input": {
+      "$description": "Text input and textarea component tokens. Covers default, focus, error, disabled, and read-only states.",
+      "bg-default": {
+        "$value": "{color.primitive.white}",
+        "$description": "input bg default. Input default background. Clean white surface."
+      },
+      "bg-hover": {
+        "$value": "{color.semantic.background.hover}",
+        "$description": "input bg hover. Input hover background. Subtle fill change."
+      },
+      "bg-disabled": {
+        "$value": "{color.semantic.background.disabled}",
+        "$description": "input bg disabled. Input disabled background. Muted gray."
+      },
+      "bg-read-only": {
+        "$value": "{color.semantic.surface.sunken}",
+        "$description": "input bg read only. Input read-only background. Sunken to indicate non-editable."
+      },
+      "text-default": {
+        "$value": "{color.semantic.text.primary}",
+        "$description": "input text default. Input text colour. Primary black for typed content."
+      },
+      "text-placeholder": {
+        "$value": "{color.semantic.text.placeholder}",
+        "$description": "input text placeholder. Input placeholder text colour. Muted gray."
+      },
+      "text-disabled": {
+        "$value": "{color.semantic.text.disabled}",
+        "$description": "input text disabled. Input disabled text colour."
+      },
+      "border-default": {
+        "$value": "{color.semantic.border.default}",
+        "$description": "input border default. Input default border. Visible gray outline."
+      },
+      "border-hover": {
+        "$value": "{color.semantic.border.strong}",
+        "$description": "input border hover. Input hover border. Stronger gray on mouse-over."
+      },
+      "border-focus": {
+        "$value": "{color.semantic.border.interactive}",
+        "$description": "input border focus. Input focus border. Blue to indicate active editing."
+      },
+      "border-error": {
+        "$value": "{color.semantic.border.error}",
+        "$description": "input border error. Input error border. Red for validation failures."
+      },
+      "border-success": {
+        "$value": "{color.semantic.border.success}",
+        "$description": "input border success. Input success/valid border. Green for confirmed valid input."
+      },
+      "border-disabled": {
+        "$value": "{color.semantic.border.disabled}",
+        "$description": "input border disabled. Input disabled border. Faint gray."
+      },
+      "label-default": {
+        "$value": "{color.semantic.text.primary}",
+        "$description": "input label default. Input label text colour."
+      },
+      "label-disabled": {
+        "$value": "{color.semantic.text.disabled}",
+        "$description": "input label disabled. Input disabled label colour."
+      },
+      "helper-default": {
+        "$value": "{color.semantic.text.secondary}",
+        "$description": "input helper default. Input helper text colour. Secondary gray."
+      },
+      "helper-error": {
+        "$value": "{color.semantic.support.error}",
+        "$description": "input helper error. Input error helper text. Red for error messages."
+      },
+      "icon-default": {
+        "$value": "{color.semantic.icon.secondary}",
+        "$description": "input icon default. Input trailing/leading icon colour."
+      },
+      "icon-error": {
+        "$value": "{color.semantic.icon.error}",
+        "$description": "input icon error. Input error icon colour."
+      },
+      "padding-x": {
+        "$value": "{spacing.semantic.inset.sm}",
+        "$description": "input padding x. Input horizontal padding (8px)."
+      },
+      "padding-y": {
+        "$value": "{spacing.primitive.03}",
+        "$description": "input padding y. Input vertical padding (8px)."
+      },
+      "border-radius": {
+        "$value": "{border.radius.sm}",
+        "$description": "input border radius. Input border radius (4px)."
+      },
+      "border-width": {
+        "$value": "{border.width.thin}",
+        "$description": "input border width. Input default border width."
+      },
+      "border-width-focus": {
+        "$value": "{border.width.thick}",
+        "$description": "input border width focus. Input focus border width (2px). Thicker for visibility."
+      },
+      "font-size": {
+        "$value": "{typography.fontSize.md}",
+        "$description": "input font size. Input text font size (16px). Prevents iOS zoom."
+      },
+      "line-height": {
+        "$value": "{typography.lineHeight.normal}",
+        "$description": "input line height. Input text line height."
+      },
+      "min-height": {
+        "$value": "2.5rem",
+        "$description": "input min height. Input minimum height (40px)."
+      },
+      "label-gap": {
+        "$value": "{spacing.semantic.stack.xs}",
+        "$description": "input label gap. Gap between label and input field (4px)."
+      },
+      "helper-gap": {
+        "$value": "{spacing.semantic.stack.xs}",
+        "$description": "input helper gap. Gap between input field and helper text (4px)."
+      }
+    },
+    "checkbox": {
+      "$description": "Checkbox component tokens. Covers unchecked, checked, indeterminate, focus, and disabled states.",
+      "bg-unchecked": {
+        "$value": "{color.primitive.white}",
+        "$description": "checkbox bg unchecked. Checkbox unchecked background. Empty white box."
+      },
+      "bg-checked": {
+        "$value": "{color.semantic.interactive.primary}",
+        "$description": "checkbox bg checked. Checkbox checked background. Blue filled box with checkmark."
+      },
+      "bg-indeterminate": {
+        "$value": "{color.semantic.interactive.primary}",
+        "$description": "checkbox bg indeterminate. Checkbox indeterminate background. Blue with dash icon."
+      },
+      "bg-disabled": {
+        "$value": "{color.semantic.background.disabled}",
+        "$description": "checkbox bg disabled. Checkbox disabled background."
+      },
+      "border-unchecked": {
+        "$value": "{color.semantic.border.strong}",
+        "$description": "checkbox border unchecked. Checkbox unchecked border. Visible gray outline."
+      },
+      "border-checked": {
+        "$value": "{color.semantic.interactive.primary}",
+        "$description": "checkbox border checked. Checkbox checked border. Matches background."
+      },
+      "border-hover": {
+        "$value": "{color.semantic.interactive.primary-hover}",
+        "$description": "checkbox border hover. Checkbox hover border. Darkened blue preview."
+      },
+      "border-focus": {
+        "$value": "{color.semantic.focus.outline}",
+        "$description": "checkbox border focus. Checkbox focus ring colour."
+      },
+      "border-error": {
+        "$value": "{color.semantic.border.error}",
+        "$description": "checkbox border error. Checkbox error border for required/unchecked validation."
+      },
+      "border-disabled": {
+        "$value": "{color.semantic.border.disabled}",
+        "$description": "checkbox border disabled. Checkbox disabled border."
+      },
+      "check-color": {
+        "$value": "{color.semantic.icon.on-color}",
+        "$description": "checkbox check color. Checkmark icon colour. White on blue background."
+      },
+      "label-default": {
+        "$value": "{color.semantic.text.primary}",
+        "$description": "checkbox label default. Checkbox label text colour."
+      },
+      "label-disabled": {
+        "$value": "{color.semantic.text.disabled}",
+        "$description": "checkbox label disabled. Checkbox disabled label colour."
+      },
+      "size": {
+        "$value": "1.25rem",
+        "$description": "checkbox size. Checkbox box size (20px)."
+      },
+      "border-radius": {
+        "$value": "{border.radius.sm}",
+        "$description": "checkbox border radius. Checkbox border radius (4px). Slightly rounded square."
+      },
+      "border-width": {
+        "$value": "{border.width.default}",
+        "$description": "checkbox border width. Checkbox border width."
+      },
+      "label-gap": {
+        "$value": "{spacing.primitive.03}",
+        "$description": "checkbox label gap. Gap between checkbox and label text (8px)."
+      },
+      "focus-offset": {
+        "$value": "{focus.ring-offset}",
+        "$description": "checkbox focus offset. Checkbox focus ring offset."
+      }
+    },
+    "modal": {
+      "$description": "Modal/dialog component tokens. Covers the overlay backdrop, content surface, header, body, and footer regions.",
+      "backdrop": {
+        "$value": "{color.semantic.background.overlay}",
+        "$description": "modal backdrop. Modal backdrop overlay colour. Semi-transparent dark."
+      },
+      "surface": {
+        "$value": "{color.semantic.surface.overlay}",
+        "$description": "modal surface. Modal content surface. White panel floating above backdrop."
+      },
+      "header-text": {
+        "$value": "{color.semantic.text.primary}",
+        "$description": "modal header text. Modal header/title text colour."
+      },
+      "body-text": {
+        "$value": "{color.semantic.text.secondary}",
+        "$description": "modal body text. Modal body text colour. Secondary for descriptions."
+      },
+      "border": {
+        "$value": "{color.semantic.border.subtle}",
+        "$description": "modal border. Modal internal divider border between header, body, and footer."
+      },
+      "close-icon": {
+        "$value": "{color.semantic.icon.secondary}",
+        "$description": "modal close icon. Modal close button icon colour."
+      },
+      "close-icon-hover": {
+        "$value": "{color.semantic.icon.primary}",
+        "$description": "modal close icon hover. Modal close button hover icon colour."
+      },
+      "width-sm": {
+        "$value": "28rem",
+        "$description": "modal width sm. Small modal width (448px). Confirmations and simple dialogs."
+      },
+      "width-md": {
+        "$value": "36rem",
+        "$description": "modal width md. Medium modal width (576px). Forms and detail views."
+      },
+      "width-lg": {
+        "$value": "48rem",
+        "$description": "modal width lg. Large modal width (768px). Complex forms and data tables."
+      },
+      "padding": {
+        "$value": "{spacing.semantic.inset.lg}",
+        "$description": "modal padding. Modal content padding (24px)."
+      },
+      "header-padding": {
+        "$value": "{spacing.semantic.inset.md}",
+        "$description": "modal header padding. Modal header padding (16px)."
+      },
+      "footer-padding": {
+        "$value": "{spacing.semantic.inset.md}",
+        "$description": "modal footer padding. Modal footer padding (16px)."
+      },
+      "border-radius": {
+        "$value": "{border.radius.lg}",
+        "$description": "modal border radius. Modal border radius (12px)."
+      },
+      "shadow": {
+        "$value": "{shadow.semantic.temporary}",
+        "$description": "modal shadow. Modal shadow. Deep shadow for floating panel."
+      },
+      "gap": {
+        "$value": "{spacing.semantic.stack.md}",
+        "$description": "modal gap. Gap between modal sections (16px)."
+      },
+      "z-index": {
+        "$value": "{layout.zIndex.modal}",
+        "$description": "modal z index. Modal z-index stacking level."
+      }
+    },
+    "tooltip": {
+      "$description": "Tooltip component tokens. Small floating labels that appear on hover or focus to explain UI elements.",
+      "bg": {
+        "$value": "{color.semantic.background.inverse}",
+        "$description": "tooltip bg. Tooltip background. Dark surface for contrast against page."
+      },
+      "text": {
+        "$value": "{color.semantic.text.inverse}",
+        "$description": "tooltip text. Tooltip text colour. White on dark background."
+      },
+      "border": {
+        "$value": "{color.semantic.border.inverse}",
+        "$description": "tooltip border. Tooltip border. Subtle edge definition on dark surface."
+      },
+      "padding-x": {
+        "$value": "{spacing.primitive.03}",
+        "$description": "tooltip padding x. Tooltip horizontal padding (8px)."
+      },
+      "padding-y": {
+        "$value": "{spacing.primitive.02}",
+        "$description": "tooltip padding y. Tooltip vertical padding (4px)."
+      },
+      "border-radius": {
+        "$value": "{border.radius.sm}",
+        "$description": "tooltip border radius. Tooltip border radius (4px)."
+      },
+      "font-size": {
+        "$value": "{typography.fontSize.xs}",
+        "$description": "tooltip font size. Tooltip font size (12px). Compact label text."
+      },
+      "max-width": {
+        "$value": "16rem",
+        "$description": "tooltip max width. Tooltip max width (256px). Wraps for longer labels."
+      },
+      "arrow-size": {
+        "$value": "6px",
+        "$description": "tooltip arrow size. Tooltip arrow/caret size."
+      },
+      "offset": {
+        "$value": "{spacing.primitive.02}",
+        "$description": "tooltip offset. Tooltip offset from trigger element (4px)."
+      },
+      "shadow": {
+        "$value": "{shadow.semantic.overlay}",
+        "$description": "tooltip shadow. Tooltip shadow."
+      },
+      "z-index": {
+        "$value": "{layout.zIndex.tooltip}",
+        "$description": "tooltip z index. Tooltip z-index stacking level."
+      }
+    },
+    "tag": {
+      "$description": "Tag/badge component tokens. Compact labels for categories, statuses, and counts.",
+      "bg-default": {
+        "$value": "{color.semantic.surface.sunken}",
+        "$description": "tag bg default. Default tag background. Neutral gray for generic labels."
+      },
+      "bg-blue": {
+        "$value": "{color.primitive.blue.10}",
+        "$description": "tag bg blue. Blue tag background. Informational or category label."
+      },
+      "bg-green": {
+        "$value": "{color.primitive.green.10}",
+        "$description": "tag bg green. Green tag background. Success or positive status."
+      },
+      "bg-yellow": {
+        "$value": "{color.primitive.yellow.10}",
+        "$description": "tag bg yellow. Yellow tag background. Warning or pending status."
+      },
+      "bg-red": {
+        "$value": "{color.primitive.red.10}",
+        "$description": "tag bg red. Red tag background. Error, critical, or removed status."
+      },
+      "bg-purple": {
+        "$value": "{color.primitive.purple.10}",
+        "$description": "tag bg purple. Purple tag background. Premium or special category."
+      },
+      "bg-teal": {
+        "$value": "{color.primitive.teal.10}",
+        "$description": "tag bg teal. Teal tag background. Data or metric category."
+      },
+      "text-default": {
+        "$value": "{color.semantic.text.secondary}",
+        "$description": "tag text default. Default tag text colour."
+      },
+      "text-blue": {
+        "$value": "{color.primitive.blue.80}",
+        "$description": "tag text blue. Blue tag text colour."
+      },
+      "text-green": {
+        "$value": "{color.primitive.green.80}",
+        "$description": "tag text green. Green tag text colour."
+      },
+      "text-yellow": {
+        "$value": "{color.primitive.yellow.80}",
+        "$description": "tag text yellow. Yellow tag text colour."
+      },
+      "text-red": {
+        "$value": "{color.primitive.red.80}",
+        "$description": "tag text red. Red tag text colour."
+      },
+      "text-purple": {
+        "$value": "{color.primitive.purple.80}",
+        "$description": "tag text purple. Purple tag text colour."
+      },
+      "text-teal": {
+        "$value": "{color.primitive.teal.80}",
+        "$description": "tag text teal. Teal tag text colour."
+      },
+      "border-default": {
+        "$value": "{color.semantic.border.subtle}",
+        "$description": "tag border default. Default tag border."
+      },
+      "close-icon": {
+        "$value": "{color.semantic.icon.secondary}",
+        "$description": "tag close icon. Tag dismiss/close icon colour."
+      },
+      "close-icon-hover": {
+        "$value": "{color.semantic.icon.primary}",
+        "$description": "tag close icon hover. Tag dismiss icon hover colour."
+      },
+      "padding-x": {
+        "$value": "{spacing.primitive.03}",
+        "$description": "tag padding x. Tag horizontal padding (8px)."
+      },
+      "padding-y": {
+        "$value": "{spacing.primitive.01}",
+        "$description": "tag padding y. Tag vertical padding (2px)."
+      },
+      "border-radius": {
+        "$value": "{border.radius.full}",
+        "$description": "tag border radius. Tag border radius (pill shape)."
+      },
+      "font-size": {
+        "$value": "{typography.fontSize.xs}",
+        "$description": "tag font size. Tag font size (12px)."
+      },
+      "font-weight": {
+        "$value": "{typography.fontWeight.medium}",
+        "$description": "tag font weight. Tag font weight (medium)."
+      },
+      "gap": {
+        "$value": "{spacing.primitive.02}",
+        "$description": "tag gap. Gap between tag text and dismiss icon (4px)."
+      },
+      "close-size": {
+        "$value": "12px",
+        "$description": "tag close size. Tag dismiss icon size."
+      }
+    },
+    "tabs": {
+      "$description": "Tab navigation component tokens. Horizontal or vertical tab sets for switching between views.",
+      "bg-default": {
+        "$value": "transparent",
+        "$description": "tabs bg default. Tab default background. Transparent at rest."
+      },
+      "bg-hover": {
+        "$value": "{color.semantic.background.hover}",
+        "$description": "tabs bg hover. Tab hover background."
+      },
+      "bg-selected": {
+        "$value": "transparent",
+        "$description": "tabs bg selected. Selected tab background. Transparent — uses border indicator."
+      },
+      "bg-disabled": {
+        "$value": "transparent",
+        "$description": "tabs bg disabled. Disabled tab background."
+      },
+      "text-default": {
+        "$value": "{color.semantic.text.secondary}",
+        "$description": "tabs text default. Tab default text colour. Secondary emphasis."
+      },
+      "text-hover": {
+        "$value": "{color.semantic.text.primary}",
+        "$description": "tabs text hover. Tab hover text colour. Promoted to primary."
+      },
+      "text-selected": {
+        "$value": "{color.semantic.text.primary}",
+        "$description": "tabs text selected. Selected tab text colour. Primary emphasis."
+      },
+      "text-disabled": {
+        "$value": "{color.semantic.text.disabled}",
+        "$description": "tabs text disabled. Disabled tab text colour."
+      },
+      "border-default": {
+        "$value": "{color.semantic.border.subtle}",
+        "$description": "tabs border default. Tab list bottom border. Continuous line beneath all tabs."
+      },
+      "border-selected": {
+        "$value": "{color.semantic.interactive.primary}",
+        "$description": "tabs border selected. Selected tab indicator border. Blue underline."
+      },
+      "border-focus": {
+        "$value": "{color.semantic.focus.outline}",
+        "$description": "tabs border focus. Tab focus indicator."
+      },
+      "icon-default": {
+        "$value": "{color.semantic.icon.secondary}",
+        "$description": "tabs icon default. Tab icon colour at rest."
+      },
+      "icon-selected": {
+        "$value": "{color.semantic.icon.primary}",
+        "$description": "tabs icon selected. Selected tab icon colour."
+      },
+      "padding-x": {
+        "$value": "{spacing.semantic.inset.md}",
+        "$description": "tabs padding x. Tab horizontal padding (16px)."
+      },
+      "padding-y": {
+        "$value": "{spacing.primitive.03}",
+        "$description": "tabs padding y. Tab vertical padding (8px)."
+      },
+      "gap": {
+        "$value": "{spacing.primitive.01}",
+        "$description": "tabs gap. Gap between tabs (2px)."
+      },
+      "border-width": {
+        "$value": "{border.width.thick}",
+        "$description": "tabs border width. Selected tab indicator thickness (2px)."
+      },
+      "font-size": {
+        "$value": "{typography.fontSize.sm}",
+        "$description": "tabs font size. Tab label font size (14px)."
+      },
+      "font-weight": {
+        "$value": "{typography.fontWeight.semibold}",
+        "$description": "tabs font weight. Selected tab font weight."
+      },
+      "icon-size": {
+        "$value": "16px",
+        "$description": "tabs icon size. Tab icon size."
+      },
+      "icon-gap": {
+        "$value": "{spacing.primitive.02}",
+        "$description": "tabs icon gap. Gap between tab icon and label (4px)."
+      }
+    },
+    "notification": {
+      "$description": "Notification/toast component tokens. Inline or floating messages for success, warning, error, and info feedback.",
+      "bg-success": {
+        "$value": "{color.semantic.support.success-subtle}",
+        "$description": "notification bg success. Success notification background. Light green."
+      },
+      "bg-warning": {
+        "$value": "{color.semantic.support.warning-subtle}",
+        "$description": "notification bg warning. Warning notification background. Light yellow."
+      },
+      "bg-error": {
+        "$value": "{color.semantic.support.error-subtle}",
+        "$description": "notification bg error. Error notification background. Light red."
+      },
+      "bg-info": {
+        "$value": "{color.semantic.support.info-subtle}",
+        "$description": "notification bg info. Info notification background. Light blue."
+      },
+      "text-success": {
+        "$value": "{color.primitive.green.90}",
+        "$description": "notification text success. Success notification text colour. Dark green."
+      },
+      "text-warning": {
+        "$value": "{color.primitive.yellow.90}",
+        "$description": "notification text warning. Warning notification text colour. Dark yellow."
+      },
+      "text-error": {
+        "$value": "{color.primitive.red.90}",
+        "$description": "notification text error. Error notification text colour. Dark red."
+      },
+      "text-info": {
+        "$value": "{color.primitive.blue.90}",
+        "$description": "notification text info. Info notification text colour. Dark blue."
+      },
+      "icon-success": {
+        "$value": "{color.semantic.icon.success}",
+        "$description": "notification icon success. Success notification icon colour."
+      },
+      "icon-warning": {
+        "$value": "{color.semantic.icon.warning}",
+        "$description": "notification icon warning. Warning notification icon colour."
+      },
+      "icon-error": {
+        "$value": "{color.semantic.icon.error}",
+        "$description": "notification icon error. Error notification icon colour."
+      },
+      "icon-info": {
+        "$value": "{color.semantic.icon.info}",
+        "$description": "notification icon info. Info notification icon colour."
+      },
+      "border-success": {
+        "$value": "{color.semantic.border.success}",
+        "$description": "notification border success. Success notification accent border."
+      },
+      "border-warning": {
+        "$value": "{color.semantic.border.warning}",
+        "$description": "notification border warning. Warning notification accent border."
+      },
+      "border-error": {
+        "$value": "{color.semantic.border.error}",
+        "$description": "notification border error. Error notification accent border."
+      },
+      "border-info": {
+        "$value": "{color.semantic.border.info}",
+        "$description": "notification border info. Info notification accent border."
+      },
+      "close-icon": {
+        "$value": "{color.semantic.icon.secondary}",
+        "$description": "notification close icon. Notification dismiss button icon colour."
+      },
+      "close-hover": {
+        "$value": "{color.semantic.icon.primary}",
+        "$description": "notification close hover. Notification dismiss button hover icon colour."
+      },
+      "padding": {
+        "$value": "{spacing.semantic.inset.md}",
+        "$description": "notification padding. Notification content padding (16px)."
+      },
+      "border-radius": {
+        "$value": "{border.radius.md}",
+        "$description": "notification border radius. Notification border radius (8px)."
+      },
+      "border-width": {
+        "$value": "{border.width.thick}",
+        "$description": "notification border width. Notification accent border width (left stripe)."
+      },
+      "icon-size": {
+        "$value": "20px",
+        "$description": "notification icon size. Notification status icon size."
+      },
+      "gap": {
+        "$value": "{spacing.primitive.03}",
+        "$description": "notification gap. Gap between icon and notification text (8px)."
+      },
+      "shadow": {
+        "$value": "{shadow.semantic.raised}",
+        "$description": "notification shadow. Toast notification shadow (floating variant)."
+      },
+      "z-index": {
+        "$value": "{layout.zIndex.toast}",
+        "$description": "notification z index. Toast notification z-index."
+      },
+      "max-width": {
+        "$value": "28rem",
+        "$description": "notification max width. Toast notification max width (448px)."
+      }
+    },
+    "data-table": {
+      "$description": "Data table component tokens. Rows, headers, cell borders, sorting indicators, and row states.",
+      "header-bg": {
+        "$value": "{color.semantic.surface.sunken}",
+        "$description": "data table header bg. Table header background. Subtle gray to differentiate from body."
+      },
+      "header-text": {
+        "$value": "{color.semantic.text.primary}",
+        "$description": "data table header text. Table header text colour."
+      },
+      "header-sort-icon": {
+        "$value": "{color.semantic.icon.secondary}",
+        "$description": "data table header sort icon. Table sort indicator icon colour."
+      },
+      "header-sort-active": {
+        "$value": "{color.semantic.icon.primary}",
+        "$description": "data table header sort active. Active sort column icon colour."
+      },
+      "row-bg-default": {
+        "$value": "{color.primitive.white}",
+        "$description": "data table row bg default. Table row default background. White."
+      },
+      "row-bg-hover": {
+        "$value": "{color.semantic.background.hover}",
+        "$description": "data table row bg hover. Table row hover background."
+      },
+      "row-bg-selected": {
+        "$value": "{color.semantic.background.selected}",
+        "$description": "data table row bg selected. Table row selected background. Light blue."
+      },
+      "row-bg-stripe": {
+        "$value": "{color.semantic.surface.sunken}",
+        "$description": "data table row bg stripe. Table striped row background (alternating rows)."
+      },
+      "cell-text": {
+        "$value": "{color.semantic.text.primary}",
+        "$description": "data table cell text. Table cell text colour."
+      },
+      "cell-text-secondary": {
+        "$value": "{color.semantic.text.secondary}",
+        "$description": "data table cell text secondary. Table secondary cell text (metadata columns)."
+      },
+      "border": {
+        "$value": "{color.semantic.border.subtle}",
+        "$description": "data table border. Table cell and header border colour."
+      },
+      "row-border": {
+        "$value": "{color.semantic.border.subtle}",
+        "$description": "data table row border. Table row separator border."
+      },
+      "cell-padding-x": {
+        "$value": "{spacing.semantic.inset.md}",
+        "$description": "data table cell padding x. Table cell horizontal padding (16px)."
+      },
+      "cell-padding-y": {
+        "$value": "{spacing.primitive.04}",
+        "$description": "data table cell padding y. Table cell vertical padding (12px)."
+      },
+      "header-padding-y": {
+        "$value": "{spacing.primitive.03}",
+        "$description": "data table header padding y. Table header cell vertical padding (8px)."
+      },
+      "border-width": {
+        "$value": "{border.width.thin}",
+        "$description": "data table border width. Table border width (1px)."
+      },
+      "font-size": {
+        "$value": "{typography.fontSize.sm}",
+        "$description": "data table font size. Table cell font size (14px). Compact for data density."
+      },
+      "header-font-weight": {
+        "$value": "{typography.fontWeight.semibold}",
+        "$description": "data table header font weight. Table header font weight."
+      },
+      "row-height": {
+        "$value": "3rem",
+        "$description": "data table row height. Table row minimum height (48px)."
+      },
+      "sort-icon-size": {
+        "$value": "16px",
+        "$description": "data table sort icon size. Table sort indicator icon size."
+      }
+    },
+    "nav": {
+      "$description": "Navigation item component tokens. Sidebar nav links, main nav items, and breadcrumb elements.",
+      "bg-default": {
+        "$value": "transparent",
+        "$description": "nav bg default. Nav item default background. Transparent at rest."
+      },
+      "bg-hover": {
+        "$value": "{color.semantic.background.hover}",
+        "$description": "nav bg hover. Nav item hover background."
+      },
+      "bg-active": {
+        "$value": "{color.semantic.background.active}",
+        "$description": "nav bg active. Nav item active/current-page background."
+      },
+      "bg-selected": {
+        "$value": "{color.semantic.background.selected}",
+        "$description": "nav bg selected. Nav item selected background (sidebar tree)."
+      },
+      "text-default": {
+        "$value": "{color.semantic.text.secondary}",
+        "$description": "nav text default. Nav item default text colour. Secondary emphasis."
+      },
+      "text-hover": {
+        "$value": "{color.semantic.text.primary}",
+        "$description": "nav text hover. Nav item hover text colour."
+      },
+      "text-active": {
+        "$value": "{color.semantic.text.primary}",
+        "$description": "nav text active. Nav item active text colour."
+      },
+      "text-disabled": {
+        "$value": "{color.semantic.text.disabled}",
+        "$description": "nav text disabled. Nav item disabled text colour."
+      },
+      "icon-default": {
+        "$value": "{color.semantic.icon.secondary}",
+        "$description": "nav icon default. Nav item icon colour at rest."
+      },
+      "icon-active": {
+        "$value": "{color.semantic.icon.primary}",
+        "$description": "nav icon active. Nav item active icon colour."
+      },
+      "border-active": {
+        "$value": "{color.semantic.interactive.primary}",
+        "$description": "nav border active. Nav item active indicator. Left border for sidebar items."
+      },
+      "border-focus": {
+        "$value": "{color.semantic.focus.outline}",
+        "$description": "nav border focus. Nav item focus indicator."
+      },
+      "padding-x": {
+        "$value": "{spacing.semantic.inset.md}",
+        "$description": "nav padding x. Nav item horizontal padding (16px)."
+      },
+      "padding-y": {
+        "$value": "{spacing.primitive.03}",
+        "$description": "nav padding y. Nav item vertical padding (8px)."
+      },
+      "gap": {
+        "$value": "{spacing.primitive.03}",
+        "$description": "nav gap. Gap between nav icon and label (8px)."
+      },
+      "indent": {
+        "$value": "{spacing.semantic.inset.md}",
+        "$description": "nav indent. Nav sub-item indent depth (16px per level)."
+      },
+      "border-width": {
+        "$value": "{border.width.thick}",
+        "$description": "nav border width. Nav active indicator width (2px)."
+      },
+      "font-size": {
+        "$value": "{typography.fontSize.sm}",
+        "$description": "nav font size. Nav item font size (14px)."
+      },
+      "font-weight": {
+        "$value": "{typography.fontWeight.medium}",
+        "$description": "nav font weight. Nav item font weight."
+      },
+      "font-weight-active": {
+        "$value": "{typography.fontWeight.semibold}",
+        "$description": "nav font weight active. Nav active item font weight (semibold)."
+      },
+      "icon-size": {
+        "$value": "20px",
+        "$description": "nav icon size. Nav item icon size."
+      }
+    },
+    "select": {
+      "$description": "Select/dropdown component tokens. Custom select trigger, option list, and option items.",
+      "trigger-bg": {
+        "$value": "{color.primitive.white}",
+        "$description": "select trigger bg. Select trigger background. White input surface."
+      },
+      "trigger-bg-hover": {
+        "$value": "{color.semantic.background.hover}",
+        "$description": "select trigger bg hover. Select trigger hover background."
+      },
+      "trigger-bg-disabled": {
+        "$value": "{color.semantic.background.disabled}",
+        "$description": "select trigger bg disabled. Select trigger disabled background."
+      },
+      "trigger-text": {
+        "$value": "{color.semantic.text.primary}",
+        "$description": "select trigger text. Select trigger text colour. Selected value."
+      },
+      "trigger-placeholder": {
+        "$value": "{color.semantic.text.placeholder}",
+        "$description": "select trigger placeholder. Select trigger placeholder text colour."
+      },
+      "trigger-border": {
+        "$value": "{color.semantic.border.default}",
+        "$description": "select trigger border. Select trigger border."
+      },
+      "trigger-border-focus": {
+        "$value": "{color.semantic.border.interactive}",
+        "$description": "select trigger border focus. Select trigger focus border."
+      },
+      "trigger-border-error": {
+        "$value": "{color.semantic.border.error}",
+        "$description": "select trigger border error. Select trigger error border."
+      },
+      "trigger-icon": {
+        "$value": "{color.semantic.icon.secondary}",
+        "$description": "select trigger icon. Select chevron/arrow icon colour."
+      },
+      "menu-bg": {
+        "$value": "{color.semantic.surface.raised}",
+        "$description": "select menu bg. Select dropdown menu background."
+      },
+      "option-text": {
+        "$value": "{color.semantic.text.primary}",
+        "$description": "select option text. Select option text colour."
+      },
+      "option-bg-hover": {
+        "$value": "{color.semantic.background.hover}",
+        "$description": "select option bg hover. Select option hover background."
+      },
+      "option-bg-selected": {
+        "$value": "{color.semantic.background.selected}",
+        "$description": "select option bg selected. Select option selected background."
+      },
+      "option-check-icon": {
+        "$value": "{color.semantic.interactive.primary}",
+        "$description": "select option check icon. Select option checkmark icon for selected item."
+      },
+      "trigger-padding-x": {
+        "$value": "{spacing.semantic.inset.sm}",
+        "$description": "select trigger padding x. Select trigger horizontal padding."
+      },
+      "trigger-padding-y": {
+        "$value": "{spacing.primitive.03}",
+        "$description": "select trigger padding y. Select trigger vertical padding."
+      },
+      "trigger-border-radius": {
+        "$value": "{border.radius.sm}",
+        "$description": "select trigger border radius. Select trigger border radius."
+      },
+      "trigger-min-height": {
+        "$value": "2.5rem",
+        "$description": "select trigger min height. Select trigger minimum height (40px)."
+      },
+      "menu-border-radius": {
+        "$value": "{border.radius.md}",
+        "$description": "select menu border radius. Select dropdown menu border radius."
+      },
+      "menu-shadow": {
+        "$value": "{shadow.semantic.overlay}",
+        "$description": "select menu shadow. Select dropdown menu shadow."
+      },
+      "menu-max-height": {
+        "$value": "15rem",
+        "$description": "select menu max height. Select dropdown menu max height (240px). Scrolls beyond."
+      },
+      "option-padding-x": {
+        "$value": "{spacing.semantic.inset.sm}",
+        "$description": "select option padding x. Select option horizontal padding."
+      },
+      "option-padding-y": {
+        "$value": "{spacing.primitive.03}",
+        "$description": "select option padding y. Select option vertical padding."
+      },
+      "menu-z-index": {
+        "$value": "{layout.zIndex.dropdown}",
+        "$description": "select menu z index. Select dropdown z-index."
+      },
+      "font-size": {
+        "$value": "{typography.fontSize.md}",
+        "$description": "select font size. Select text font size (16px)."
+      }
+    },
+    "toggle": {
+      "$description": "Toggle/switch component tokens. Binary on/off control for settings and preferences.",
+      "track-bg-off": {
+        "$value": "{color.primitive.gray.30}",
+        "$description": "toggle track bg off. Toggle track background when off. Neutral gray."
+      },
+      "track-bg-on": {
+        "$value": "{color.semantic.interactive.primary}",
+        "$description": "toggle track bg on. Toggle track background when on. Active blue."
+      },
+      "track-bg-disabled": {
+        "$value": "{color.primitive.gray.20}",
+        "$description": "toggle track bg disabled. Toggle track disabled background."
+      },
+      "thumb-bg": {
+        "$value": "{color.primitive.white}",
+        "$description": "toggle thumb bg. Toggle thumb (handle) colour. White circle."
+      },
+      "thumb-shadow": {
+        "$value": "{shadow.primitive.02}",
+        "$description": "toggle thumb shadow. Toggle thumb shadow for slight elevation."
+      },
+      "border-focus": {
+        "$value": "{color.semantic.focus.outline}",
+        "$description": "toggle border focus. Toggle focus ring colour."
+      },
+      "label-default": {
+        "$value": "{color.semantic.text.primary}",
+        "$description": "toggle label default. Toggle label text colour."
+      },
+      "label-disabled": {
+        "$value": "{color.semantic.text.disabled}",
+        "$description": "toggle label disabled. Toggle disabled label colour."
+      },
+      "track-width": {
+        "$value": "2.75rem",
+        "$description": "toggle track width. Toggle track width (44px)."
+      },
+      "track-height": {
+        "$value": "1.5rem",
+        "$description": "toggle track height. Toggle track height (24px)."
+      },
+      "track-radius": {
+        "$value": "{border.radius.full}",
+        "$description": "toggle track radius. Toggle track border radius (pill)."
+      },
+      "thumb-size": {
+        "$value": "1.25rem",
+        "$description": "toggle thumb size. Toggle thumb diameter (20px)."
+      },
+      "thumb-offset": {
+        "$value": "{spacing.primitive.01}",
+        "$description": "toggle thumb offset. Toggle thumb offset from track edge (2px)."
+      },
+      "label-gap": {
+        "$value": "{spacing.primitive.03}",
+        "$description": "toggle label gap. Gap between toggle and label (8px)."
+      }
+    }
   }
 }

@@ -79,7 +79,7 @@
   },
   "dependencies": {
     "@huggingface/transformers": "^3.6.0",
-    "@vantra-design/local-inference": "^0.1.0"
+    "@vantra-design/local-inference": "^0.3.0"
   },
   "devDependencies": {
     "@vitest/coverage-v8": "^4.1.10",
