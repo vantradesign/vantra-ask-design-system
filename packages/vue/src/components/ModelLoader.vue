@@ -21,16 +21,18 @@ function formatBytes(bytes: number): string {
 <template>
   <div v-if="isLoading" class="ads-loader" role="status" aria-live="polite">
     <div class="ads-loader__content">
-      <div class="ads-loader__icon" aria-hidden="true">⚙️</div>
       <div class="ads-loader__text">
         <p class="ads-loader__title">
           {{ progress?.phase === 'download'
-            ? 'Downloading language model (~500 MB, one-time only)'
-            : 'Initializing model…'
+            ? 'Downloading embedding model (one-time only)'
+            : 'Preparing token embeddings…'
           }}
         </p>
         <p class="ads-loader__subtitle">
-          The model is cached in your browser. Future loads take under 3 seconds.
+          {{ progress?.phase === 'download'
+            ? 'The model is cached in your browser for future visits.'
+            : 'Indexing your design tokens for semantic search.'
+          }}
         </p>
       </div>
 
@@ -48,8 +50,11 @@ function formatBytes(bytes: number): string {
         </div>
         <div class="ads-loader__stats">
           <span>{{ progress.percentage }}%</span>
-          <span v-if="progress.total > 1024">
+          <span v-if="progress.phase === 'download' && progress.total > 1024">
             {{ formatBytes(progress.loaded) }} / {{ formatBytes(progress.total) }}
+          </span>
+          <span v-else-if="progress.phase === 'initialize'">
+            {{ progress.loaded }} / {{ progress.total }} tokens
           </span>
         </div>
       </div>
@@ -63,6 +68,8 @@ function formatBytes(bytes: number): string {
 
 <style scoped>
 .ads-loader {
+  display: flex;
+  justify-content: center;
   padding: 1.5rem;
 }
 
@@ -70,11 +77,9 @@ function formatBytes(bytes: number): string {
   background: var(--ads-loader-bg, rgba(0, 22, 25, 0.02));
   border: 1px solid var(--ads-border, rgba(0, 22, 25, 0.12));
   padding: 1.5rem;
-}
-
-.ads-loader__icon {
-  font-size: 1.25rem;
-  margin-bottom: 0.75rem;
+  width: fit-content;
+  min-width: 20rem;
+  max-width: 32rem;
 }
 
 .ads-loader__text {

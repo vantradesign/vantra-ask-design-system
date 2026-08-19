@@ -326,6 +326,8 @@ const showVoiceOutput = props.voiceOutput && tts.supported
   flex: 1;
   min-width: 0;
   position: relative;
+  container-type: inline-size;
+  container-name: ads-main;
 }
 
 /* Sidebar toggle button */

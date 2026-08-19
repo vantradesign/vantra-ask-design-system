@@ -87,14 +87,17 @@ function groupByDate(sessions: ChatSession[]): { label: string; sessions: ChatSe
         class="ads-sidebar__group"
       >
         <p class="ads-sidebar__group-label">{{ group.label }}</p>
-        <button
+        <div
           v-for="session in group.sessions"
           :key="session.id"
-          type="button"
+          role="button"
+          tabindex="0"
           class="ads-sidebar__session"
           :class="{ 'ads-sidebar__session--active': session.id === activeSessionId }"
           :title="session.title"
           @click="emit('select-session', session.id)"
+          @keydown.enter="emit('select-session', session.id)"
+          @keydown.space.prevent="emit('select-session', session.id)"
         >
           <span class="ads-sidebar__session-title">{{ session.title }}</span>
           <button
@@ -108,7 +111,7 @@ function groupByDate(sessions: ChatSession[]): { label: string; sessions: ChatSe
               <line x1="6" x2="18" y1="6" y2="18" />
             </svg>
           </button>
-        </button>
+        </div>
       </div>
 
       <p v-if="sessions.length === 0" class="ads-sidebar__empty">

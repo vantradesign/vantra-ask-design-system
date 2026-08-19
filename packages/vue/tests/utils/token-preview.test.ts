@@ -3,6 +3,7 @@ import {
   detectPreviewType,
   parseTokenPreviews,
   renderPreviewsHtml,
+  wcagChecksOnWhite,
   type TokenPreview,
 } from '../../src/utils/token-preview'
 
@@ -80,6 +81,20 @@ describe('detectPreviewType', () => {
 
   it('does not detect non-standard weight values', () => {
     expect(detectPreviewType('typography.fontWeight.custom', '450')).toBeNull()
+  })
+
+  // --- Composite typography detection ---
+  it('detects composite typography with fontSize JSON', () => {
+    expect(
+      detectPreviewType(
+        'typography.semantic.heading-01',
+        '{"fontSize":"{typography.font-size.6xl}","fontWeight":"{typography.font-weight.bold}","lineHeight":"{typography.line-height.tight}"}',
+      ),
+    ).toBe('typography')
+  })
+
+  it('does not detect typography for plain JSON without fontSize', () => {
+    expect(detectPreviewType('some.token', '{"foo":"bar"}')).toBeNull()
   })
 
   // --- Shadow detection ---
@@ -205,7 +220,7 @@ describe('renderPreviewsHtml', () => {
     expect(renderPreviewsHtml([])).toBe('')
   })
 
-  it('renders color preview with swatch', () => {
+  it('renders color preview as card with color block, HSL, and WCAG checks', () => {
     const previews: TokenPreview[] = [
       { path: 'color.ink', value: '#001619', type: 'color' },
     ]
@@ -213,10 +228,55 @@ describe('renderPreviewsHtml', () => {
     const html = renderPreviewsHtml(previews)
 
     expect(html).toContain('ads-previews')
-    expect(html).toContain('ads-preview--color')
-    expect(html).toContain('ads-preview__swatch')
+    expect(html).toContain('ads-preview--color-card')
+    expect(html).toContain('ads-preview__color-block')
     expect(html).toContain('background:#001619')
     expect(html).toContain('color.ink')
+    // HSL values
+    expect(html).toContain('ads-preview__hsl')
+    expect(html).toMatch(/H:\d+ S:\d+ L:\d+/)
+    // WCAG checks
+    expect(html).toContain('ads-preview__checks')
+    expect(html).toContain('AA Normal')
+    expect(html).toContain('AA Large')
+    expect(html).toContain('AAA')
+  })
+
+  it('renders WCAG pass/fail classes for color checks', () => {
+    // Dark color — should pass AA on white
+    const dark: TokenPreview[] = [
+      { path: 'color.ink', value: '#001619', type: 'color' },
+    ]
+    const darkHtml = renderPreviewsHtml(dark)
+    expect(darkHtml).toContain('ads-preview__check--pass')
+
+    // Light color — should fail AA Normal on white
+    const light: TokenPreview[] = [
+      { path: 'color.paper', value: '#f5f2f3', type: 'color' },
+    ]
+    const lightHtml = renderPreviewsHtml(light)
+    expect(lightHtml).toContain('ads-preview__check--fail')
+  })
+
+  it('renders composite typography card with live-size sample', () => {
+    const previews: TokenPreview[] = [
+      {
+        path: 'typography.semantic.heading-01',
+        value: '{"fontSize":"{typography.font-size.6xl}","fontWeight":"{typography.font-weight.bold}","lineHeight":"{typography.line-height.tight}"}',
+        type: 'typography',
+      },
+    ]
+
+    const html = renderPreviewsHtml(previews)
+
+    expect(html).toContain('ads-preview--typography-card')
+    expect(html).toContain('ads-preview__type-sample')
+    expect(html).toContain('font-size:clamp(12px,3.75rem,64px)')
+    expect(html).toContain('font-weight:700')
+    expect(html).toContain('line-height:1.125')
+    expect(html).toContain('Aa')
+    expect(html).toContain('ads-preview__type-info')
+    expect(html).toContain('3.75rem bold /1.125')
   })
 
   it('renders font family preview with sample text', () => {
@@ -256,27 +316,33 @@ describe('renderPreviewsHtml', () => {
     expect(html).toContain('>Aa<')
   })
 
-  it('renders shadow preview', () => {
+  it('renders shadow preview as card with elevated surface', () => {
     const previews: TokenPreview[] = [
       { path: 'shadow.md', value: '0 4px 8px rgba(0, 22, 25, 0.08)', type: 'shadow' },
     ]
 
     const html = renderPreviewsHtml(previews)
 
-    expect(html).toContain('ads-preview--shadow')
+    expect(html).toContain('ads-preview--shadow-card')
+    expect(html).toContain('ads-preview__shadow-stage')
+    expect(html).toContain('ads-preview__shadow-surface')
     expect(html).toContain('box-shadow:0 4px 8px rgba(0, 22, 25, 0.08)')
+    expect(html).toContain('ads-preview__shadow-info')
   })
 
-  it('renders dimension preview with bar', () => {
+  it('renders dimension preview as spacing card with skeleton', () => {
     const previews: TokenPreview[] = [
       { path: 'spacing.lg', value: '24px', type: 'dimension' },
     ]
 
     const html = renderPreviewsHtml(previews)
 
-    expect(html).toContain('ads-preview--dimension')
-    expect(html).toContain('ads-preview__dim-bar')
-    expect(html).toContain('width:24px')
+    expect(html).toContain('ads-preview--dimension-card')
+    expect(html).toContain('ads-preview__spacing-skeleton')
+    expect(html).toContain('ads-preview__skeleton-block')
+    expect(html).toContain('ads-preview__spacing-gap')
+    expect(html).toContain('height:24px')
+    expect(html).toContain('ads-preview__spacing-info')
   })
 
   it('renders border radius preview', () => {
@@ -338,5 +404,25 @@ describe('renderPreviewsHtml', () => {
     expect(html).toContain('background:#ff0000bodydisplay:none')
     // But the display value is safely escaped and shown as-is
     expect(html).toContain('ads-preview__value')
+  })
+})
+
+describe('wcagChecksOnWhite', () => {
+  it('returns all passing for a very dark color', () => {
+    const checks = wcagChecksOnWhite('#000000')
+    expect(checks).toHaveLength(3)
+    expect(checks.every(c => c.passes)).toBe(true)
+  })
+
+  it('returns all failing for white on white', () => {
+    const checks = wcagChecksOnWhite('#ffffff')
+    expect(checks.every(c => !c.passes)).toBe(true)
+  })
+
+  it('returns correct thresholds', () => {
+    const checks = wcagChecksOnWhite('#001619')
+    expect(checks[0]!.threshold).toBe(4.5)
+    expect(checks[1]!.threshold).toBe(3)
+    expect(checks[2]!.threshold).toBe(7)
   })
 })

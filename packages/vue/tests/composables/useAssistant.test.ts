@@ -40,7 +40,7 @@ vi.mock('@vantra-design/ask-design-system', () => {
     flattenTokens: vi.fn().mockReturnValue([
       { path: 'color.primary', text: 'color.primary = #0066cc', value: '#0066cc', category: 'color' },
     ]),
-    deriveSuggestedQuestions: vi.fn().mockReturnValue(['What colour tokens are available?']),
+    deriveSuggestedQuestions: vi.fn().mockReturnValue(['What are the status colors?']),
   }
 })
 
@@ -103,7 +103,7 @@ describe('useAssistant', () => {
     const result = useAssistant({ schema: sampleSchema })
     // suggestedQuestions populated after init
     result.init()
-    expect(result.suggestedQuestions.value).toEqual(['What colour tokens are available?'])
+    expect(result.suggestedQuestions.value).toEqual(['What are the status colors?'])
   })
 
   it('accepts a reactive schema ref', () => {
