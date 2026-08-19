@@ -29,6 +29,7 @@ export function flattenTokens(schema: Record<string, unknown>): TokenChunk[] {
   const chunks: TokenChunk[] = []
 
   walkTokenTree(schema, [], format, chunks, undefined)
+  resolveReferences(chunks)
 
   return chunks
 }
@@ -138,12 +139,54 @@ function formatChunkText(
   description: string | undefined,
 ): string {
   const valueStr = typeof value === 'object' ? JSON.stringify(value) : String(value)
-  const parts = [path]
+  const pathWords = path.split('.').join(' ')
+  const parts = [pathWords, '—', path]
   if (type) parts.push(`(${type})`)
   parts.push('=')
   parts.push(valueStr)
   if (description) parts.push(`— ${description}`)
   return parts.join(' ')
+}
+
+const REFERENCE_RE = /^\{(.+)\}$/
+
+function resolveReferences(chunks: TokenChunk[]): void {
+  const valueMap = new Map<string, unknown>()
+  for (const chunk of chunks) {
+    valueMap.set(chunk.path, chunk.value)
+  }
+
+  for (const chunk of chunks) {
+    if (typeof chunk.value !== 'string') continue
+    const match = REFERENCE_RE.exec(chunk.value)
+    if (!match) continue
+
+    let refPath = match[1]!
+    let resolved: unknown = undefined
+    let depth = 0
+
+    while (refPath && depth < 10) {
+      const val = valueMap.get(refPath)
+      if (val === undefined) break
+      if (typeof val === 'string' && REFERENCE_RE.test(val)) {
+        refPath = val.slice(1, -1)
+        depth++
+      } else {
+        resolved = val
+        break
+      }
+    }
+
+    if (resolved !== undefined) {
+      chunk.value = resolved
+      chunk.text = formatChunkText(chunk.path, resolved, chunk.type, extractDescriptionFromText(chunk.text))
+    }
+  }
+}
+
+function extractDescriptionFromText(text: string): string | undefined {
+  const parts = text.split(' — ')
+  return parts.length >= 3 ? parts.slice(2).join(' — ') : undefined
 }
 
 function isPrimitiveValue(value: unknown): boolean {

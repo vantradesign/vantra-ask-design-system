@@ -6,7 +6,7 @@ import type { TokenChunk } from '../src/types.js'
 function makeResult(path: string, text: string, score: number): SearchResult {
   const chunk: TokenChunk = {
     path,
-    text,
+    text: `${path.split('.').join(' ')} — ${text}`,
     value: text,
     type: undefined,
     category: path.split('.')[0] ?? 'unknown',
@@ -64,7 +64,7 @@ describe('formatDirectAnswer', () => {
       {
         chunk: {
           path: 'color.primary',
-          text: 'color.primary (color) = #0066cc — Main brand colour.',
+          text: 'color primary — color.primary (color) = #0066cc — Main brand colour.',
           value: '#0066cc',
           type: 'color',
           category: 'color',
@@ -90,7 +90,7 @@ describe('formatDirectAnswer', () => {
       {
         chunk: {
           path: 'spacing.sm',
-          text: 'spacing.sm (dimension) = 8px',
+          text: 'spacing sm — spacing.sm (dimension) = 8px',
           value: '8px',
           type: 'dimension',
           category: 'spacing',

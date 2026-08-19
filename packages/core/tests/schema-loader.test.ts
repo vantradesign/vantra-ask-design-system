@@ -67,7 +67,7 @@ describe('flattenTokens', () => {
       const chunks = flattenTokens(dtcgTokens)
       const primary = chunks.find((c) => c.path === 'color.primary')
 
-      expect(primary!.text).toBe('color.primary (color) = #0066cc')
+      expect(primary!.text).toBe('color primary — color.primary (color) = #0066cc')
     })
 
     it('assigns correct categories from top-level keys', () => {
@@ -200,7 +200,7 @@ describe('flattenTokens', () => {
       const chunks = flattenTokens(schema)
       const primary = chunks.find((c) => c.path === 'color.primary')
 
-      expect(primary!.text).toBe('color.primary (color) = #f00 \u2014 Primary brand colour.')
+      expect(primary!.text).toBe('color primary — color.primary (color) = #f00 — Primary brand colour.')
     })
 
     it('omits description separator when no $description', () => {
@@ -212,7 +212,57 @@ describe('flattenTokens', () => {
       const chunks = flattenTokens(schema)
       const primary = chunks.find((c) => c.path === 'color.primary')
 
-      expect(primary!.text).toBe('color.primary (color) = #f00')
+      expect(primary!.text).toBe('color primary — color.primary (color) = #f00')
+    })
+  })
+
+  describe('reference resolution', () => {
+    it('resolves DTCG reference values to the target value', () => {
+      const schema = {
+        color: {
+          $type: 'color',
+          primitive: {
+            blue: { $value: '#0f62fe' },
+          },
+          semantic: {
+            brand: { $value: '{color.primitive.blue}', $description: 'Brand colour.' },
+          },
+        },
+      }
+      const chunks = flattenTokens(schema)
+      const brand = chunks.find((c) => c.path === 'color.semantic.brand')
+
+      expect(brand!.value).toBe('#0f62fe')
+      expect(brand!.text).toContain('#0f62fe')
+      expect(brand!.text).toContain('Brand colour.')
+    })
+
+    it('resolves chained references', () => {
+      const schema = {
+        color: {
+          $type: 'color',
+          raw: { $value: '#ff0000' },
+          alias: { $value: '{color.raw}' },
+          alias2: { $value: '{color.alias}' },
+        },
+      }
+      const chunks = flattenTokens(schema)
+      const alias2 = chunks.find((c) => c.path === 'color.alias2')
+
+      expect(alias2!.value).toBe('#ff0000')
+    })
+
+    it('keeps original value when reference target is missing', () => {
+      const schema = {
+        color: {
+          $type: 'color',
+          broken: { $value: '{color.nonexistent}' },
+        },
+      }
+      const chunks = flattenTokens(schema)
+      const broken = chunks.find((c) => c.path === 'color.broken')
+
+      expect(broken!.value).toBe('{color.nonexistent}')
     })
   })
 })

@@ -6,6 +6,9 @@ export {
   cosineSimilarity,
   searchChunks,
   keywordSearch,
+  keywordSearchWithTotal,
+  levenshteinDistance,
+  buildVocabulary,
 } from './retrieval.js'
 export { buildSystemPrompt, formatDirectAnswer, deriveSuggestedQuestions } from './prompt.js'
 
@@ -22,4 +25,4 @@ export type {
 } from './types.js'
 export { AssistantError, VoiceInputError } from './types.js'
 
-export type { EmbeddedChunk, SearchResult } from './retrieval.js'
+export type { EmbeddedChunk, SearchResult, KeywordSearchResult } from './retrieval.js'

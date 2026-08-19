@@ -5,7 +5,7 @@ import {
   embedChunks,
   embedQuery,
   searchChunks,
-  keywordSearch,
+  keywordSearchWithTotal,
   resetEmbeddingPipeline,
 } from './retrieval.js'
 import type { EmbeddedChunk, SearchResult } from './retrieval.js'
@@ -13,9 +13,9 @@ import { buildSystemPrompt, formatDirectAnswer } from './prompt.js'
 import type { LocalLLMEngine } from '@vantra-design/local-inference'
 
 const DEFAULT_MODEL = 'SmolLM2-360M-Instruct-q4f32_1-MLC'
-const DEFAULT_TOP_K = 3
+const DEFAULT_TOP_K = 5
 const DEFAULT_MAX_TOKENS = 256
-const DIRECT_ANSWER_LIMIT = 50
+const DIRECT_ANSWER_LIMIT = 10
 
 /**
  * Local-first AI assistant for design systems.
@@ -54,7 +54,14 @@ export class DesignSystemAssistant {
 
     // Embed chunks (may fall back to keyword search on failure)
     try {
-      this.embeddedChunks = await embedChunks(this.chunks)
+      this.embeddedChunks = await embedChunks(this.chunks, (loaded, total) => {
+        this.config.onModelProgress?.({
+          phase: 'initialize',
+          loaded,
+          total,
+          percentage: Math.round((loaded / total) * 100),
+        })
+      })
     } catch (error) {
       this.config.onError?.(
         error instanceof AssistantError
@@ -100,15 +107,15 @@ export class DesignSystemAssistant {
   async ask(question: string): Promise<string> {
     this.assertInitialized()
 
-    // 1. Keyword search → direct answer (instant, no limit)
-    const keywordResults = keywordSearch(question, this.chunks, DIRECT_ANSWER_LIMIT)
-    if (keywordResults.length > 0) {
+    // 1. Keyword search — direct answer when quality matches are specific
+    const { results: keywordResults, totalMatches } = keywordSearchWithTotal(question, this.chunks, DIRECT_ANSWER_LIMIT)
+    if (keywordResults.length > 0 && totalMatches <= DIRECT_ANSWER_LIMIT) {
       // eslint-disable-next-line no-console -- performance diagnostic
-      console.log(`[ask-design-system] direct answer: ${keywordResults.length} chunks (keyword)`)
-      return formatDirectAnswer(keywordResults)
+      console.log(`[ask-design-system] direct answer: ${keywordResults.length}/${totalMatches} chunks (keyword)`)
+      return formatDirectAnswer(keywordResults, totalMatches)
     }
 
-    // 2. Embedding search → direct answer (~100ms, generous limit)
+    // 2. Embedding search — semantic ranking via MiniLM (~100ms)
     const embeddingResults = await this.embeddingSearch(question, DIRECT_ANSWER_LIMIT)
     if (embeddingResults.length > 0) {
       // eslint-disable-next-line no-console -- performance diagnostic
@@ -116,7 +123,14 @@ export class DesignSystemAssistant {
       return formatDirectAnswer(embeddingResults)
     }
 
-    // 3. LLM generation — last resort (lazy-loads the model)
+    // 3. Keyword fallback — if embedding unavailable but keywords matched
+    if (keywordResults.length > 0) {
+      // eslint-disable-next-line no-console -- performance diagnostic
+      console.log(`[ask-design-system] direct answer: ${keywordResults.length}/${totalMatches} chunks (keyword fallback)`)
+      return formatDirectAnswer(keywordResults, totalMatches)
+    }
+
+    // 4. LLM generation — last resort (lazy-loads the model)
     const engine = await this.ensureEngine()
     const systemPrompt = buildSystemPrompt([], this.config.systemPrompt)
     const tokens: string[] = []
@@ -135,18 +149,18 @@ export class DesignSystemAssistant {
   async askStream(question: string, callbacks: StreamCallbacks): Promise<void> {
     this.assertInitialized()
 
-    // 1. Keyword search → direct answer (instant, no limit)
-    const keywordResults = keywordSearch(question, this.chunks, DIRECT_ANSWER_LIMIT)
-    if (keywordResults.length > 0) {
+    // 1. Keyword search — direct answer when quality matches are specific
+    const { results: keywordResults, totalMatches } = keywordSearchWithTotal(question, this.chunks, DIRECT_ANSWER_LIMIT)
+    if (keywordResults.length > 0 && totalMatches <= DIRECT_ANSWER_LIMIT) {
       // eslint-disable-next-line no-console -- performance diagnostic
-      console.log(`[ask-design-system] direct answer: ${keywordResults.length} chunks (keyword)`)
-      const answer = formatDirectAnswer(keywordResults)
+      console.log(`[ask-design-system] direct answer: ${keywordResults.length}/${totalMatches} chunks (keyword)`)
+      const answer = formatDirectAnswer(keywordResults, totalMatches)
       callbacks.onToken?.(answer)
       callbacks.onComplete?.(answer)
       return
     }
 
-    // 2. Embedding search → direct answer (~100ms, generous limit)
+    // 2. Embedding search — semantic ranking via MiniLM (~100ms)
     const embeddingResults = await this.embeddingSearch(question, DIRECT_ANSWER_LIMIT)
     if (embeddingResults.length > 0) {
       // eslint-disable-next-line no-console -- performance diagnostic
@@ -157,7 +171,17 @@ export class DesignSystemAssistant {
       return
     }
 
-    // 3. LLM generation — last resort (lazy-loads the model)
+    // 3. Keyword fallback — if embedding unavailable but keywords matched
+    if (keywordResults.length > 0) {
+      // eslint-disable-next-line no-console -- performance diagnostic
+      console.log(`[ask-design-system] direct answer: ${keywordResults.length}/${totalMatches} chunks (keyword fallback)`)
+      const answer = formatDirectAnswer(keywordResults, totalMatches)
+      callbacks.onToken?.(answer)
+      callbacks.onComplete?.(answer)
+      return
+    }
+
+    // 4. LLM generation — last resort (lazy-loads the model)
     const engine = await this.ensureEngine()
     const systemPrompt = buildSystemPrompt([], this.config.systemPrompt)
     const tokens: string[] = []

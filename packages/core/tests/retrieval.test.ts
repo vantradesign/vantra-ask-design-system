@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest'
-import { cosineSimilarity, searchChunks, keywordSearch } from '../src/retrieval.js'
+import { cosineSimilarity, searchChunks, keywordSearch, levenshteinDistance, buildVocabulary } from '../src/retrieval.js'
 import type { EmbeddedChunk } from '../src/retrieval.js'
 import type { TokenChunk } from '../src/types.js'
 
@@ -178,6 +178,57 @@ describe('keywordSearch', () => {
     expect(results.every((r) => r.chunk.category === 'color')).toBe(true)
   })
 
+  it('fuzzy-matches British "colour" against American "color" in paths', () => {
+    const results = keywordSearch('What colour tokens are available?', chunks, 5)
+
+    expect(results.length).toBeGreaterThan(0)
+    expect(results.every((r) => r.chunk.category === 'color')).toBe(true)
+  })
+
+  it('fuzzy-matches American "gray" against British "grey" in paths', () => {
+    const greyChunks: TokenChunk[] = [
+      makeChunk('color.grey.50', 'color.grey.50 = #8d8d8d', 'color'),
+      makeChunk('spacing.md', 'spacing.md = 16px', 'spacing'),
+    ]
+
+    const results = keywordSearch('gray', greyChunks, 5)
+
+    expect(results.length).toBeGreaterThan(0)
+    expect(results[0]!.chunk.path).toBe('color.grey.50')
+  })
+
+  it('fuzzy-matches typo "colir" against "color"', () => {
+    const results = keywordSearch('colir primary', chunks, 5)
+
+    expect(results.length).toBeGreaterThan(0)
+    expect(results[0]!.chunk.path).toBe('color.primary')
+  })
+
+  it('fuzzy-matches missing letter "colr" against "color"', () => {
+    const results = keywordSearch('colr', chunks, 5)
+
+    expect(results.length).toBeGreaterThan(0)
+    expect(results.every((r) => r.chunk.category === 'color')).toBe(true)
+  })
+
+  it('fuzzy-matches "spacng" against "spacing"', () => {
+    const results = keywordSearch('spacng', chunks, 5)
+
+    expect(results.length).toBeGreaterThan(0)
+    expect(results.every((r) => r.chunk.category === 'spacing')).toBe(true)
+  })
+
+  it('does not fuzzy-match very short terms (< 4 chars)', () => {
+    const tinyChunks: TokenChunk[] = [
+      makeChunk('color.red', 'color.red = #f00', 'color'),
+      makeChunk('spacing.md', 'spacing.md = 16px', 'spacing'),
+    ]
+
+    // "rd" is too short for fuzzy matching — should not match "red"
+    const results = keywordSearch('rd', tinyChunks, 5)
+    expect(results).toEqual([])
+  })
+
   it('gives higher score for exact segment matches', () => {
     const segChunks: TokenChunk[] = [
       makeChunk('typography.fontFamily.display', 'typography.fontFamily.display = Inter', 'typography'),
@@ -189,5 +240,79 @@ describe('keywordSearch', () => {
     // fontFamily.display has an exact segment match, fontSize.md does not
     expect(results.length).toBeGreaterThan(0)
     expect(results[0]!.chunk.path).toBe('typography.fontFamily.display')
+  })
+})
+
+describe('levenshteinDistance', () => {
+  it('returns 0 for identical strings', () => {
+    expect(levenshteinDistance('color', 'color')).toBe(0)
+  })
+
+  it('returns string length for empty vs non-empty', () => {
+    expect(levenshteinDistance('', 'abc')).toBe(3)
+    expect(levenshteinDistance('abc', '')).toBe(3)
+  })
+
+  it('returns 0 for two empty strings', () => {
+    expect(levenshteinDistance('', '')).toBe(0)
+  })
+
+  it('counts single substitution', () => {
+    expect(levenshteinDistance('color', 'colir')).toBe(1)
+  })
+
+  it('counts single deletion', () => {
+    expect(levenshteinDistance('color', 'colr')).toBe(1)
+  })
+
+  it('counts single insertion', () => {
+    expect(levenshteinDistance('color', 'collor')).toBe(1)
+  })
+
+  it('counts multiple edits', () => {
+    expect(levenshteinDistance('colour', 'color')).toBe(1) // delete 'u'
+    expect(levenshteinDistance('grey', 'gray')).toBe(1)    // substitute 'e' → 'a'
+  })
+
+  it('handles longer words', () => {
+    expect(levenshteinDistance('typography', 'typograpy')).toBe(1)
+    expect(levenshteinDistance('borderRadius', 'bordrRadius')).toBe(1)
+  })
+})
+
+describe('buildVocabulary', () => {
+  it('extracts unique lowercased segments from chunk paths', () => {
+    const chunks: TokenChunk[] = [
+      makeChunk('color.primary', 'color.primary = #0066cc'),
+      makeChunk('color.secondary', 'color.secondary = #6b7280'),
+      makeChunk('spacing.sm', 'spacing.sm = 8px'),
+    ]
+
+    const vocab = buildVocabulary(chunks)
+
+    expect(vocab).toContain('color')
+    expect(vocab).toContain('primary')
+    expect(vocab).toContain('secondary')
+    expect(vocab).toContain('spacing')
+    expect(vocab).toContain('sm')
+    expect(vocab.size).toBe(5)
+  })
+
+  it('returns empty set for empty chunks', () => {
+    const vocab = buildVocabulary([])
+    expect(vocab.size).toBe(0)
+  })
+
+  it('lowercases all segments', () => {
+    const chunks: TokenChunk[] = [
+      makeChunk('Typography.FontFamily.Display', 'test'),
+    ]
+
+    const vocab = buildVocabulary(chunks)
+
+    expect(vocab).toContain('typography')
+    expect(vocab).toContain('fontfamily')
+    expect(vocab).toContain('display')
+    expect(vocab).not.toContain('Typography')
   })
 })

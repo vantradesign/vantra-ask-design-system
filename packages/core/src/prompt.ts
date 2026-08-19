@@ -2,27 +2,64 @@ import type { SearchResult } from './retrieval.js'
 
 const DEFAULT_SYSTEM_PROMPT = `You are a design-token assistant. Answer using ONLY the CONTEXT below. Use markdown: \`inline code\` for token names, fenced code blocks (\`\`\`css) for code snippets and token values. Be brief. Do not invent tokens.`
 
+/** Map T-shirt size names to sort weights. */
+const SIZE_ORDER: Record<string, number> = {
+  'xs': 1, 'sm': 2, 'md': 3, 'lg': 4, 'xl': 5,
+  '2xl': 6, '3xl': 7, '4xl': 8, '5xl': 9, '6xl': 10,
+  '7xl': 11, '8xl': 12, '9xl': 13,
+}
+
+/**
+ * Sort two token paths with:
+ * 1. Shared prefix compared naturally (locale + numeric)
+ * 2. Last segment compared by T-shirt size order if both are known sizes,
+ *    otherwise by natural locale comparison (handles numeric suffixes too).
+ */
+function sortTokenPaths(a: string, b: string): number {
+  const aParts = a.split('.')
+  const bParts = b.split('.')
+  const len = Math.min(aParts.length, bParts.length)
+
+  for (let i = 0; i < len; i++) {
+    const sa = aParts[i]!
+    const sb = bParts[i]!
+    if (sa === sb) continue
+
+    const wa = SIZE_ORDER[sa]
+    const wb = SIZE_ORDER[sb]
+    if (wa !== undefined && wb !== undefined) return wa - wb
+
+    return sa.localeCompare(sb, undefined, { numeric: true })
+  }
+
+  return aParts.length - bParts.length
+}
+
 /**
  * Format retrieved token chunks directly as a readable answer.
  * Used as the primary response path — bypasses the LLM for instant,
  * accurate, deterministic answers from keyword-matched results.
  */
-export function formatDirectAnswer(results: SearchResult[]): string {
+export function formatDirectAnswer(results: SearchResult[], totalMatches?: number): string {
   if (results.length === 0) {
     return 'No matching design tokens found for that query.'
   }
 
-  const tokenLines = results.map((r) => {
+  // Sort by path with natural ordering + T-shirt size ordering
+  const sorted = [...results].sort((a, b) => sortTokenPaths(a.chunk.path, b.chunk.path))
+
+  const tokenLines = sorted.map((r) => {
     const c = r.chunk
     const value = typeof c.value === 'string' ? c.value : JSON.stringify(c.value)
     return `  ${c.path}: ${value};`
   })
 
-  const descriptions = results
-    .filter((r) => r.chunk.text.includes(' — '))
+  const descriptions = sorted
+    .filter((r) => r.chunk.text.split(' — ').length >= 3)
     .map((r) => {
       const c = r.chunk
-      const desc = c.text.split(' — ')[1]
+      const parts = c.text.split(' — ')
+      const desc = parts.slice(2).join(' — ')
       return `- \`${c.path}\` — ${desc}`
     })
 
@@ -31,6 +68,11 @@ export function formatDirectAnswer(results: SearchResult[]): string {
 
   if (descriptions.length > 0) {
     answer += '\n\n' + descriptions.join('\n')
+  }
+
+  const total = totalMatches ?? results.length
+  if (total > results.length) {
+    answer += `\n\n> Showing ${results.length} of ${total} matching tokens. Try a more specific query to narrow results.`
   }
 
   return answer
@@ -66,27 +108,27 @@ export function deriveSuggestedQuestions(
   const suggestions: string[] = []
 
   const categoryQuestions: Record<string, string> = {
-    color: 'What colour tokens are available?',
-    colour: 'What colour tokens are available?',
-    colors: 'What colour tokens are available?',
-    colours: 'What colour tokens are available?',
-    spacing: 'What is the spacing scale?',
-    space: 'What is the spacing scale?',
-    typography: 'Which fonts are used for headings?',
-    font: 'Which fonts are used for headings?',
-    fonts: 'Which fonts are used for headings?',
-    size: 'What sizing tokens are available?',
-    sizes: 'What sizing tokens are available?',
-    borderRadius: 'What border radius values are defined?',
-    radius: 'What border radius values are defined?',
-    shadow: 'What shadow tokens are defined?',
-    shadows: 'What shadow tokens are defined?',
-    breakpoint: 'What breakpoints are defined?',
-    breakpoints: 'What breakpoints are defined?',
-    opacity: 'What opacity values are available?',
-    motion: 'What motion/animation tokens exist?',
-    animation: 'What motion/animation tokens exist?',
-    zIndex: 'What z-index layers are defined?',
+    color: 'What are the status colors?',
+    colour: 'What are the status colors?',
+    colors: 'What are the status colors?',
+    colours: 'What are the status colors?',
+    spacing: 'What are the semantic spacing tokens?',
+    space: 'What are the semantic spacing tokens?',
+    typography: 'What heading styles are defined?',
+    font: 'What heading styles are defined?',
+    fonts: 'What heading styles are defined?',
+    size: 'What are the icon sizes?',
+    sizes: 'What are the icon sizes?',
+    borderRadius: 'What border radius for buttons?',
+    radius: 'What border radius for buttons?',
+    shadow: 'What shadow for a raised card?',
+    shadows: 'What shadow for a raised card?',
+    breakpoint: 'What are the breakpoints?',
+    breakpoints: 'What are the breakpoints?',
+    opacity: 'What opacity for disabled states?',
+    motion: 'What is the default transition duration?',
+    animation: 'What is the default transition duration?',
+    zIndex: 'What z-index for modals?',
   }
 
   for (const category of unique) {
