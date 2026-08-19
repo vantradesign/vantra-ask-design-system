@@ -1,6 +1,6 @@
 {
   "name": "@vantra-design/ask-design-system",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "A local-first AI assistant for your design system — ask questions about your tokens in natural language. Nothing leaves your browser.",
   "keywords": [
     "design-system",

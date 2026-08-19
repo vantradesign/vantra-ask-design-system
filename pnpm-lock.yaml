@@ -91,6 +91,9 @@ importers:
       '@vitest/coverage-v8':
         specifier: ^4.1.10
         version: 4.1.10(vitest@4.1.10)
+      '@webgpu/types':
+        specifier: ^0.1.71
+        version: 0.1.71
       jsdom:
         specifier: ^26.1.0
         version: 26.1.0(supports-color@8.1.1)

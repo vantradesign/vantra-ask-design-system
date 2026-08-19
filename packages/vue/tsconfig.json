@@ -2,8 +2,14 @@
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
     "noEmit": true,
+    "types": ["@webgpu/types"],
     "jsx": "preserve",
-    "jsxImportSource": "vue"
+    "jsxImportSource": "vue",
+    "paths": {
+      "@vantra-design/ask-design-system": ["../core/src/index.ts"],
+      "@vantra-design/ask-design-system/voice-input": ["../core/src/voice-input.ts"],
+      "@vantra-design/ask-design-system/voice-output": ["../core/src/voice-output.ts"]
+    }
   },
   "include": ["src", "src/**/*.vue"],
   "exclude": ["node_modules", "dist"]

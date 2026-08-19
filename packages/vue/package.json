@@ -1,6 +1,6 @@
 {
   "name": "@vantra-design/ask-design-system-vue",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Vue 3 component for @vantra-design/ask-design-system — a local-first AI assistant for design systems.",
   "keywords": [
     "design-system",
@@ -59,6 +59,7 @@
   },
   "devDependencies": {
     "@vantra-design/ask-design-system": "workspace:^",
+    "@webgpu/types": "^0.1.71",
     "@vitejs/plugin-vue": "^5.2.4",
     "@vitest/coverage-v8": "^4.1.10",
     "vite": "^6.3.5",
