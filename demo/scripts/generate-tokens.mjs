@@ -207,7 +207,7 @@ for (const [group, entries] of Object.entries(SEM_COLORS)) {
 
 tokens.typography = {}
 
-tokens.typography.fontFamily = {
+tokens.typography['font-family'] = {
   $type: 'fontFamily',
   $description: 'Available typeface stacks for headings, body, and code.',
   sans:  { $value: "'IBM Plex Sans', 'Helvetica Neue', Arial, sans-serif", $description: "Primary sans-serif typeface. Used for body text, UI labels, and most content. Designed for on-screen readability." },
@@ -228,9 +228,9 @@ const FONT_SIZES = [
   ['6xl', '3.75rem', 'Display jumbo (60px). Billboard text and oversized hero headings.'],
 ]
 
-tokens.typography.fontSize = { $type: 'dimension', $description: 'Font size scale in rem, based on 16px root.' }
+tokens.typography['font-size'] = { $type: 'dimension', $description: 'Font size scale in rem, based on 16px root.' }
 for (const [name, val, desc] of FONT_SIZES) {
-  tokens.typography.fontSize[name] = { $value: val, $description: desc }
+  tokens.typography['font-size'][name] = { $value: val, $description: desc }
 }
 
 const FONT_WEIGHTS = [
@@ -241,9 +241,9 @@ const FONT_WEIGHTS = [
   ['bold', '700', 'Bold weight. For headings, CTAs, and strong emphasis.'],
 ]
 
-tokens.typography.fontWeight = { $description: 'Font weight scale from light to bold.' }
+tokens.typography['font-weight'] = { $description: 'Font weight scale from light to bold.' }
 for (const [name, val, desc] of FONT_WEIGHTS) {
-  tokens.typography.fontWeight[name] = { $value: val, $description: desc }
+  tokens.typography['font-weight'][name] = { $value: val, $description: desc }
 }
 
 const LINE_HEIGHTS = [
@@ -254,9 +254,9 @@ const LINE_HEIGHTS = [
   ['loose', '2', 'Loose line height. For single-line labels with generous vertical padding.'],
 ]
 
-tokens.typography.lineHeight = { $description: 'Line height scale for vertical rhythm and readability.' }
+tokens.typography['line-height'] = { $description: 'Line height scale for vertical rhythm and readability.' }
 for (const [name, val, desc] of LINE_HEIGHTS) {
-  tokens.typography.lineHeight[name] = { $value: val, $description: desc }
+  tokens.typography['line-height'][name] = { $value: val, $description: desc }
 }
 
 const LETTER_SPACINGS = [
@@ -267,28 +267,28 @@ const LETTER_SPACINGS = [
   ['wider', '0.05em', 'Wider tracking. For spaced-out small-caps and brand wordmarks.'],
 ]
 
-tokens.typography.letterSpacing = { $description: 'Letter spacing (tracking) scale.' }
+tokens.typography['letter-spacing'] = { $description: 'Letter spacing (tracking) scale.' }
 for (const [name, val, desc] of LETTER_SPACINGS) {
-  tokens.typography.letterSpacing[name] = { $value: val, $description: desc }
+  tokens.typography['letter-spacing'][name] = { $value: val, $description: desc }
 }
 
 // Composite type tokens (semantic tier for typography)
 const TYPE_TOKENS = [
-  ['heading-01', { fontSize: '{typography.fontSize.6xl}', fontWeight: '{typography.fontWeight.bold}', lineHeight: '{typography.lineHeight.tight}', letterSpacing: '{typography.letterSpacing.tighter}' }, 'Display heading level 1 (60px bold). Page hero headings and splash titles.'],
-  ['heading-02', { fontSize: '{typography.fontSize.5xl}', fontWeight: '{typography.fontWeight.bold}', lineHeight: '{typography.lineHeight.tight}', letterSpacing: '{typography.letterSpacing.tighter}' }, 'Display heading level 2 (48px bold). Section hero headings.'],
-  ['heading-03', { fontSize: '{typography.fontSize.4xl}', fontWeight: '{typography.fontWeight.bold}', lineHeight: '{typography.lineHeight.snug}', letterSpacing: '{typography.letterSpacing.tight}' }, 'Heading level 3 (36px bold). Primary page titles and feature headings.'],
-  ['heading-04', { fontSize: '{typography.fontSize.3xl}', fontWeight: '{typography.fontWeight.semibold}', lineHeight: '{typography.lineHeight.snug}', letterSpacing: '{typography.letterSpacing.tight}' }, 'Heading level 4 (30px semibold). Section headings and card group titles.'],
-  ['heading-05', { fontSize: '{typography.fontSize.2xl}', fontWeight: '{typography.fontWeight.semibold}', lineHeight: '{typography.lineHeight.snug}' }, 'Heading level 5 (24px semibold). Card titles and sub-section headings.'],
-  ['heading-06', { fontSize: '{typography.fontSize.xl}', fontWeight: '{typography.fontWeight.semibold}', lineHeight: '{typography.lineHeight.normal}' }, 'Heading level 6 (20px semibold). Minor headings, list group titles.'],
-  ['body-01', { fontSize: '{typography.fontSize.md}', fontWeight: '{typography.fontWeight.regular}', lineHeight: '{typography.lineHeight.normal}' }, 'Default body text (16px regular). Paragraphs, descriptions, and general content.'],
-  ['body-02', { fontSize: '{typography.fontSize.lg}', fontWeight: '{typography.fontWeight.regular}', lineHeight: '{typography.lineHeight.relaxed}' }, 'Large body text (18px regular). Lead paragraphs and featured descriptions.'],
-  ['body-compact-01', { fontSize: '{typography.fontSize.sm}', fontWeight: '{typography.fontWeight.regular}', lineHeight: '{typography.lineHeight.normal}' }, 'Compact body text (14px regular). Dense lists, table cells, and sidebar content.'],
-  ['body-compact-02', { fontSize: '{typography.fontSize.md}', fontWeight: '{typography.fontWeight.regular}', lineHeight: '{typography.lineHeight.snug}' }, 'Compact body text (16px regular, snug). Data-dense layouts with reduced line height.'],
-  ['label-01', { fontSize: '{typography.fontSize.sm}', fontWeight: '{typography.fontWeight.medium}', lineHeight: '{typography.lineHeight.tight}' }, 'Label text (14px medium). Form labels, chip text, and navigation items.'],
-  ['label-02', { fontSize: '{typography.fontSize.xs}', fontWeight: '{typography.fontWeight.medium}', lineHeight: '{typography.lineHeight.tight}', letterSpacing: '{typography.letterSpacing.wide}' }, 'Small label/overline text (12px medium, wide tracking). Category tags, tab labels.'],
-  ['caption-01', { fontSize: '{typography.fontSize.xs}', fontWeight: '{typography.fontWeight.regular}', lineHeight: '{typography.lineHeight.normal}' }, 'Caption text (12px regular). Image captions, timestamps, and helper text below form fields.'],
-  ['code-01', { fontSize: '{typography.fontSize.sm}', fontWeight: '{typography.fontWeight.regular}', lineHeight: '{typography.lineHeight.relaxed}' }, 'Inline code text (14px regular, mono). Code snippets and terminal output. Pair with fontFamily.mono.'],
-  ['legal-01', { fontSize: '{typography.fontSize.xs}', fontWeight: '{typography.fontWeight.regular}', lineHeight: '{typography.lineHeight.relaxed}' }, 'Legal/fine-print text (12px regular, relaxed). Terms, disclaimers, and footnotes.'],
+  ['heading-01', { fontSize: '{typography.font-size.6xl}', fontWeight: '{typography.font-weight.bold}', lineHeight: '{typography.line-height.tight}', letterSpacing: '{typography.letter-spacing.tighter}' }, 'Display heading level 1 (60px bold). Page hero headings and splash titles.'],
+  ['heading-02', { fontSize: '{typography.font-size.5xl}', fontWeight: '{typography.font-weight.bold}', lineHeight: '{typography.line-height.tight}', letterSpacing: '{typography.letter-spacing.tighter}' }, 'Display heading level 2 (48px bold). Section hero headings.'],
+  ['heading-03', { fontSize: '{typography.font-size.4xl}', fontWeight: '{typography.font-weight.bold}', lineHeight: '{typography.line-height.snug}', letterSpacing: '{typography.letter-spacing.tight}' }, 'Heading level 3 (36px bold). Primary page titles and feature headings.'],
+  ['heading-04', { fontSize: '{typography.font-size.3xl}', fontWeight: '{typography.font-weight.semibold}', lineHeight: '{typography.line-height.snug}', letterSpacing: '{typography.letter-spacing.tight}' }, 'Heading level 4 (30px semibold). Section headings and card group titles.'],
+  ['heading-05', { fontSize: '{typography.font-size.2xl}', fontWeight: '{typography.font-weight.semibold}', lineHeight: '{typography.line-height.snug}' }, 'Heading level 5 (24px semibold). Card titles and sub-section headings.'],
+  ['heading-06', { fontSize: '{typography.font-size.xl}', fontWeight: '{typography.font-weight.semibold}', lineHeight: '{typography.line-height.normal}' }, 'Heading level 6 (20px semibold). Minor headings, list group titles.'],
+  ['body-01', { fontSize: '{typography.font-size.md}', fontWeight: '{typography.font-weight.regular}', lineHeight: '{typography.line-height.normal}' }, 'Default body text (16px regular). Paragraphs, descriptions, and general content.'],
+  ['body-02', { fontSize: '{typography.font-size.lg}', fontWeight: '{typography.font-weight.regular}', lineHeight: '{typography.line-height.relaxed}' }, 'Large body text (18px regular). Lead paragraphs and featured descriptions.'],
+  ['body-compact-01', { fontSize: '{typography.font-size.sm}', fontWeight: '{typography.font-weight.regular}', lineHeight: '{typography.line-height.normal}' }, 'Compact body text (14px regular). Dense lists, table cells, and sidebar content.'],
+  ['body-compact-02', { fontSize: '{typography.font-size.md}', fontWeight: '{typography.font-weight.regular}', lineHeight: '{typography.line-height.snug}' }, 'Compact body text (16px regular, snug). Data-dense layouts with reduced line height.'],
+  ['label-01', { fontSize: '{typography.font-size.sm}', fontWeight: '{typography.font-weight.medium}', lineHeight: '{typography.line-height.tight}' }, 'Label text (14px medium). Form labels, chip text, and navigation items.'],
+  ['label-02', { fontSize: '{typography.font-size.xs}', fontWeight: '{typography.font-weight.medium}', lineHeight: '{typography.line-height.tight}', letterSpacing: '{typography.letter-spacing.wide}' }, 'Small label/overline text (12px medium, wide tracking). Category tags, tab labels.'],
+  ['caption-01', { fontSize: '{typography.font-size.xs}', fontWeight: '{typography.font-weight.regular}', lineHeight: '{typography.line-height.normal}' }, 'Caption text (12px regular). Image captions, timestamps, and helper text below form fields.'],
+  ['code-01', { fontSize: '{typography.font-size.sm}', fontWeight: '{typography.font-weight.regular}', lineHeight: '{typography.line-height.relaxed}' }, 'Inline code text (14px regular, mono). Code snippets and terminal output. Pair with fontFamily.mono.'],
+  ['legal-01', { fontSize: '{typography.font-size.xs}', fontWeight: '{typography.font-weight.regular}', lineHeight: '{typography.line-height.relaxed}' }, 'Legal/fine-print text (12px regular, relaxed). Terms, disclaimers, and footnotes.'],
 ]
 
 tokens.typography.semantic = { $description: 'Composite type tokens bundling font size, weight, line height, and tracking into role-based presets.' }
@@ -492,7 +492,7 @@ tokens.layout.gutter = {
   lg: { $value: '{spacing.primitive.08}', $description: 'Large gutter (32px). Spacious layouts and feature grids.' },
 }
 
-tokens.layout.zIndex = {
+tokens.layout['z-index'] = {
   $description: 'Z-index stacking order. Use these tokens instead of arbitrary numbers.',
   base:       { $value: '0', $description: 'Base stacking level. Default for positioned elements.' },
   dropdown:   { $value: '1000', $description: 'Dropdown menus, select lists, and autocomplete panels.' },
@@ -576,9 +576,9 @@ const COMPONENTS = {
       'padding-y-lg': ['{spacing.primitive.04}', 'Large button vertical padding.'],
       'border-radius': ['{border.radius.sm}', 'Button border radius. Subtle rounding.'],
       'border-width':  ['{border.width.thin}', 'Button border width.'],
-      'font-size':     ['{typography.fontSize.sm}', 'Button font size (14px).'],
-      'font-weight':   ['{typography.fontWeight.semibold}', 'Button font weight (semibold).'],
-      'line-height':   ['{typography.lineHeight.tight}', 'Button line height. Tight for single-line labels.'],
+      'font-size':     ['{typography.font-size.sm}', 'Button font size (14px).'],
+      'font-weight':   ['{typography.font-weight.semibold}', 'Button font weight (semibold).'],
+      'line-height':   ['{typography.line-height.tight}', 'Button line height. Tight for single-line labels.'],
       'icon-size-sm':  ['16px', 'Small button icon size.'],
       'icon-size-md':  ['20px', 'Medium button icon size.'],
       'icon-size-lg':  ['24px', 'Large button icon size.'],
@@ -616,8 +616,8 @@ const COMPONENTS = {
       'border-radius':  ['{border.radius.sm}', 'Input border radius (4px).'],
       'border-width':   ['{border.width.thin}', 'Input default border width.'],
       'border-width-focus': ['{border.width.thick}', 'Input focus border width (2px). Thicker for visibility.'],
-      'font-size':      ['{typography.fontSize.md}', 'Input text font size (16px). Prevents iOS zoom.'],
-      'line-height':    ['{typography.lineHeight.normal}', 'Input text line height.'],
+      'font-size':      ['{typography.font-size.md}', 'Input text font size (16px). Prevents iOS zoom.'],
+      'line-height':    ['{typography.line-height.normal}', 'Input text line height.'],
       'min-height':     ['2.5rem', 'Input minimum height (40px).'],
       'label-gap':      ['{spacing.semantic.stack.xs}', 'Gap between label and input field (4px).'],
       'helper-gap':     ['{spacing.semantic.stack.xs}', 'Gap between input field and helper text (4px).'],
@@ -673,7 +673,7 @@ const COMPONENTS = {
       'border-radius':   ['{border.radius.lg}', 'Modal border radius (12px).'],
       'shadow':          ['{shadow.semantic.temporary}', 'Modal shadow. Deep shadow for floating panel.'],
       'gap':             ['{spacing.semantic.stack.md}', 'Gap between modal sections (16px).'],
-      'z-index':         ['{layout.zIndex.modal}', 'Modal z-index stacking level.'],
+      'z-index':         ['{layout.z-index.modal}', 'Modal z-index stacking level.'],
     },
   },
   tooltip: {
@@ -689,12 +689,12 @@ const COMPONENTS = {
       'padding-x':      ['{spacing.primitive.03}', 'Tooltip horizontal padding (8px).'],
       'padding-y':      ['{spacing.primitive.02}', 'Tooltip vertical padding (4px).'],
       'border-radius':  ['{border.radius.sm}', 'Tooltip border radius (4px).'],
-      'font-size':      ['{typography.fontSize.xs}', 'Tooltip font size (12px). Compact label text.'],
+      'font-size':      ['{typography.font-size.xs}', 'Tooltip font size (12px). Compact label text.'],
       'max-width':      ['16rem', 'Tooltip max width (256px). Wraps for longer labels.'],
       'arrow-size':     ['6px', 'Tooltip arrow/caret size.'],
       'offset':         ['{spacing.primitive.02}', 'Tooltip offset from trigger element (4px).'],
       'shadow':         ['{shadow.semantic.overlay}', 'Tooltip shadow.'],
-      'z-index':        ['{layout.zIndex.tooltip}', 'Tooltip z-index stacking level.'],
+      'z-index':        ['{layout.z-index.tooltip}', 'Tooltip z-index stacking level.'],
     },
   },
   tag: {
@@ -724,8 +724,8 @@ const COMPONENTS = {
       'padding-x':      ['{spacing.primitive.03}', 'Tag horizontal padding (8px).'],
       'padding-y':      ['{spacing.primitive.01}', 'Tag vertical padding (2px).'],
       'border-radius':  ['{border.radius.full}', 'Tag border radius (pill shape).'],
-      'font-size':      ['{typography.fontSize.xs}', 'Tag font size (12px).'],
-      'font-weight':    ['{typography.fontWeight.medium}', 'Tag font weight (medium).'],
+      'font-size':      ['{typography.font-size.xs}', 'Tag font size (12px).'],
+      'font-weight':    ['{typography.font-weight.medium}', 'Tag font weight (medium).'],
       'gap':            ['{spacing.primitive.02}', 'Gap between tag text and dismiss icon (4px).'],
       'close-size':     ['12px', 'Tag dismiss icon size.'],
     },
@@ -754,8 +754,8 @@ const COMPONENTS = {
       'padding-y':       ['{spacing.primitive.03}', 'Tab vertical padding (8px).'],
       'gap':             ['{spacing.primitive.01}', 'Gap between tabs (2px).'],
       'border-width':    ['{border.width.thick}', 'Selected tab indicator thickness (2px).'],
-      'font-size':       ['{typography.fontSize.sm}', 'Tab label font size (14px).'],
-      'font-weight':     ['{typography.fontWeight.semibold}', 'Selected tab font weight.'],
+      'font-size':       ['{typography.font-size.sm}', 'Tab label font size (14px).'],
+      'font-weight':     ['{typography.font-weight.semibold}', 'Selected tab font weight.'],
       'icon-size':       ['16px', 'Tab icon size.'],
       'icon-gap':        ['{spacing.primitive.02}', 'Gap between tab icon and label (4px).'],
     },
@@ -791,7 +791,7 @@ const COMPONENTS = {
       'icon-size':      ['20px', 'Notification status icon size.'],
       'gap':            ['{spacing.primitive.03}', 'Gap between icon and notification text (8px).'],
       'shadow':         ['{shadow.semantic.raised}', 'Toast notification shadow (floating variant).'],
-      'z-index':        ['{layout.zIndex.toast}', 'Toast notification z-index.'],
+      'z-index':        ['{layout.z-index.toast}', 'Toast notification z-index.'],
       'max-width':      ['28rem', 'Toast notification max width (448px).'],
     },
   },
@@ -818,8 +818,8 @@ const COMPONENTS = {
       'cell-padding-y':  ['{spacing.primitive.04}', 'Table cell vertical padding (12px).'],
       'header-padding-y':['{spacing.primitive.03}', 'Table header cell vertical padding (8px).'],
       'border-width':    ['{border.width.thin}', 'Table border width (1px).'],
-      'font-size':       ['{typography.fontSize.sm}', 'Table cell font size (14px). Compact for data density.'],
-      'header-font-weight': ['{typography.fontWeight.semibold}', 'Table header font weight.'],
+      'font-size':       ['{typography.font-size.sm}', 'Table cell font size (14px). Compact for data density.'],
+      'header-font-weight': ['{typography.font-weight.semibold}', 'Table header font weight.'],
       'row-height':      ['3rem', 'Table row minimum height (48px).'],
       'sort-icon-size':  ['16px', 'Table sort indicator icon size.'],
     },
@@ -848,9 +848,9 @@ const COMPONENTS = {
       'gap':             ['{spacing.primitive.03}', 'Gap between nav icon and label (8px).'],
       'indent':          ['{spacing.semantic.inset.md}', 'Nav sub-item indent depth (16px per level).'],
       'border-width':    ['{border.width.thick}', 'Nav active indicator width (2px).'],
-      'font-size':       ['{typography.fontSize.sm}', 'Nav item font size (14px).'],
-      'font-weight':     ['{typography.fontWeight.medium}', 'Nav item font weight.'],
-      'font-weight-active': ['{typography.fontWeight.semibold}', 'Nav active item font weight (semibold).'],
+      'font-size':       ['{typography.font-size.sm}', 'Nav item font size (14px).'],
+      'font-weight':     ['{typography.font-weight.medium}', 'Nav item font weight.'],
+      'font-weight-active': ['{typography.font-weight.semibold}', 'Nav active item font weight (semibold).'],
       'icon-size':       ['20px', 'Nav item icon size.'],
     },
   },
@@ -884,8 +884,8 @@ const COMPONENTS = {
       'menu-max-height':     ['15rem', 'Select dropdown menu max height (240px). Scrolls beyond.'],
       'option-padding-x':   ['{spacing.semantic.inset.sm}', 'Select option horizontal padding.'],
       'option-padding-y':   ['{spacing.primitive.03}', 'Select option vertical padding.'],
-      'menu-z-index':        ['{layout.zIndex.dropdown}', 'Select dropdown z-index.'],
-      'font-size':           ['{typography.fontSize.md}', 'Select text font size (16px).'],
+      'menu-z-index':        ['{layout.z-index.dropdown}', 'Select dropdown z-index.'],
+      'font-size':           ['{typography.font-size.md}', 'Select text font size (16px).'],
     },
   },
   toggle: {
@@ -909,6 +909,298 @@ const COMPONENTS = {
       'thumb-size':     ['1.25rem', 'Toggle thumb diameter (20px).'],
       'thumb-offset':   ['{spacing.primitive.01}', 'Toggle thumb offset from track edge (2px).'],
       'label-gap':      ['{spacing.primitive.03}', 'Gap between toggle and label (8px).'],
+    },
+  },
+  radio: {
+    desc: 'Radio button component tokens. Circular selection control for mutually exclusive choices within a group.',
+    variants: {
+      color: {
+        'bg-unchecked':    ['{color.primitive.white}', 'Radio unchecked background. Empty white circle.'],
+        'bg-disabled':     ['{color.semantic.background.disabled}', 'Radio disabled background.'],
+        'border-unchecked':['{color.semantic.border.strong}', 'Radio unchecked border. Visible gray circle outline.'],
+        'border-checked':  ['{color.semantic.interactive.primary}', 'Radio checked border. Blue outer ring.'],
+        'border-hover':    ['{color.semantic.interactive.primary-hover}', 'Radio hover border. Darkened blue preview.'],
+        'border-focus':    ['{color.semantic.focus.outline}', 'Radio focus ring colour.'],
+        'border-error':    ['{color.semantic.border.error}', 'Radio error border for required-but-unselected validation.'],
+        'border-disabled': ['{color.semantic.border.disabled}', 'Radio disabled border.'],
+        'dot-color':       ['{color.semantic.interactive.primary}', 'Radio selected dot colour. Solid blue inner circle.'],
+        'dot-disabled':    ['{color.semantic.text.disabled}', 'Radio disabled dot colour.'],
+        'label-default':   ['{color.semantic.text.primary}', 'Radio label text colour.'],
+        'label-disabled':  ['{color.semantic.text.disabled}', 'Radio disabled label colour.'],
+        'helper-default':  ['{color.semantic.text.secondary}', 'Radio helper/description text colour.'],
+      },
+    },
+    sizing: {
+      'size':           ['1.25rem', 'Radio outer circle size (20px).'],
+      'dot-size':       ['0.5rem', 'Radio inner dot size (8px).'],
+      'border-width':   ['{border.width.default}', 'Radio circle border width.'],
+      'label-gap':      ['{spacing.primitive.03}', 'Gap between radio circle and label text (8px).'],
+      'group-gap':      ['{spacing.semantic.stack.sm}', 'Vertical gap between radio items in a group (8px).'],
+      'focus-offset':   ['{focus.ring-offset}', 'Radio focus ring offset.'],
+    },
+  },
+  avatar: {
+    desc: 'Avatar component tokens. Circular user photo or initials indicator, with optional status badge.',
+    variants: {
+      color: {
+        'bg-default':      ['{color.primitive.cool-gray.30}', 'Avatar default background. Neutral gray when no image is provided.'],
+        'bg-brand':        ['{color.semantic.brand.primary}', 'Avatar brand background. Blue for system or bot avatars.'],
+        'text-initials':   ['{color.semantic.text.on-color}', 'Avatar initials text colour. White on coloured background.'],
+        'border-default':  ['{color.semantic.border.subtle}', 'Avatar border. Subtle ring around the image.'],
+        'border-active':   ['{color.semantic.interactive.primary}', 'Avatar active/online border. Blue ring for active users.'],
+        'badge-online':    ['{color.semantic.support.success}', 'Avatar status badge: online. Green dot.'],
+        'badge-busy':      ['{color.semantic.support.error}', 'Avatar status badge: busy/do-not-disturb. Red dot.'],
+        'badge-away':      ['{color.primitive.yellow.50}', 'Avatar status badge: away/idle. Yellow dot.'],
+        'badge-offline':   ['{color.primitive.gray.50}', 'Avatar status badge: offline. Gray dot.'],
+        'group-overlap-border': ['{color.primitive.white}', 'Avatar group overlap border. White ring between stacked avatars.'],
+      },
+    },
+    sizing: {
+      'size-xs':        ['1.5rem', 'Avatar extra-small size (24px). Compact lists and inline mentions.'],
+      'size-sm':        ['2rem', 'Avatar small size (32px). Comment threads and chat messages.'],
+      'size-md':        ['2.5rem', 'Avatar medium size (40px). Navigation bars and cards.'],
+      'size-lg':        ['3rem', 'Avatar large size (48px). Profile sections and team grids.'],
+      'size-xl':        ['4rem', 'Avatar extra-large size (64px). Profile headers and detail views.'],
+      'border-width':   ['{border.width.thin}', 'Avatar image border width.'],
+      'border-radius':  ['{border.radius.full}', 'Avatar border radius (circle).'],
+      'badge-size':     ['0.625rem', 'Avatar status badge diameter (10px).'],
+      'badge-border':   ['{border.width.thick}', 'Avatar badge border width (white ring around dot).'],
+      'font-size-xs':   ['{typography.font-size.xs}', 'Avatar initials font size for xs avatar.'],
+      'font-size-sm':   ['{typography.font-size.xs}', 'Avatar initials font size for sm avatar.'],
+      'font-size-md':   ['{typography.font-size.sm}', 'Avatar initials font size for md avatar.'],
+      'font-size-lg':   ['{typography.font-size.md}', 'Avatar initials font size for lg avatar.'],
+      'font-size-xl':   ['{typography.font-size.lg}', 'Avatar initials font size for xl avatar.'],
+      'group-overlap':  ['-0.5rem', 'Avatar group horizontal overlap offset.'],
+    },
+  },
+  'progress-bar': {
+    desc: 'Progress bar component tokens. Horizontal indicator for task completion, upload status, or loading sequences.',
+    variants: {
+      color: {
+        'track-bg':          ['{color.primitive.gray.20}', 'Progress bar track (unfilled) background. Light gray baseline.'],
+        'fill-default':      ['{color.semantic.interactive.primary}', 'Progress bar fill colour. Blue for standard progress.'],
+        'fill-success':      ['{color.semantic.support.success}', 'Progress bar fill for completed/success state. Green.'],
+        'fill-error':        ['{color.semantic.support.error}', 'Progress bar fill for error state. Red.'],
+        'fill-warning':      ['{color.semantic.support.warning}', 'Progress bar fill for warning state. Yellow.'],
+        'label-text':        ['{color.semantic.text.primary}', 'Progress bar label text colour.'],
+        'value-text':        ['{color.semantic.text.secondary}', 'Progress bar percentage/value text colour.'],
+        'helper-text':       ['{color.semantic.text.secondary}', 'Progress bar helper text colour (e.g. "Uploading file.pdf").'],
+      },
+    },
+    sizing: {
+      'track-height-sm':   ['0.25rem', 'Small progress bar height (4px). Compact variant.'],
+      'track-height-md':   ['0.5rem', 'Medium progress bar height (8px). Default variant.'],
+      'track-height-lg':   ['0.75rem', 'Large progress bar height (12px). Prominent variant.'],
+      'border-radius':     ['{border.radius.full}', 'Progress bar border radius (pill shape).'],
+      'label-gap':         ['{spacing.semantic.stack.xs}', 'Gap between progress label and bar (4px).'],
+      'helper-gap':        ['{spacing.semantic.stack.xs}', 'Gap between bar and helper text (4px).'],
+    },
+  },
+  accordion: {
+    desc: 'Accordion/disclosure component tokens. Expandable sections with header trigger and collapsible content panel.',
+    variants: {
+      color: {
+        'header-bg':         ['transparent', 'Accordion header default background. Transparent at rest.'],
+        'header-bg-hover':   ['{color.semantic.background.hover}', 'Accordion header hover background.'],
+        'header-bg-disabled':['{color.semantic.background.disabled}', 'Accordion header disabled background.'],
+        'header-text':       ['{color.semantic.text.primary}', 'Accordion header title text colour.'],
+        'header-text-disabled': ['{color.semantic.text.disabled}', 'Accordion header disabled title text colour.'],
+        'content-text':      ['{color.semantic.text.secondary}', 'Accordion content panel text colour.'],
+        'border':            ['{color.semantic.border.subtle}', 'Accordion divider border between items.'],
+        'icon-default':      ['{color.semantic.icon.secondary}', 'Accordion expand/collapse chevron icon colour.'],
+        'icon-hover':        ['{color.semantic.icon.primary}', 'Accordion chevron hover colour.'],
+        'icon-disabled':     ['{color.semantic.icon.disabled}', 'Accordion chevron disabled colour.'],
+        'border-focus':      ['{color.semantic.focus.outline}', 'Accordion header focus ring.'],
+      },
+    },
+    sizing: {
+      'header-padding-x':   ['{spacing.semantic.inset.md}', 'Accordion header horizontal padding (16px).'],
+      'header-padding-y':   ['{spacing.primitive.04}', 'Accordion header vertical padding (12px).'],
+      'content-padding-x':  ['{spacing.semantic.inset.md}', 'Accordion content horizontal padding (16px).'],
+      'content-padding-y':  ['{spacing.semantic.inset.sm}', 'Accordion content vertical padding (8px).'],
+      'border-width':       ['{border.width.thin}', 'Accordion divider border width (1px).'],
+      'icon-size':          ['20px', 'Accordion chevron icon size.'],
+      'gap':                ['{spacing.primitive.03}', 'Gap between accordion header text and chevron (8px).'],
+      'font-size':          ['{typography.font-size.md}', 'Accordion header font size (16px).'],
+      'font-weight':        ['{typography.font-weight.semibold}', 'Accordion header font weight.'],
+      'transition':         ['{motion.duration.moderate-01}', 'Accordion expand/collapse animation duration (200ms).'],
+    },
+  },
+  card: {
+    desc: 'Card component tokens. Contained surface for grouping related content with optional header, body, footer, and media regions.',
+    variants: {
+      color: {
+        'bg-default':        ['{color.semantic.surface.default}', 'Card default background. White content surface.'],
+        'bg-hover':          ['{color.semantic.background.hover}', 'Card hover background (for clickable/selectable cards).'],
+        'bg-selected':       ['{color.semantic.background.selected}', 'Card selected background. Light blue.'],
+        'bg-disabled':       ['{color.semantic.background.disabled}', 'Card disabled background.'],
+        'text-title':        ['{color.semantic.text.primary}', 'Card title text colour.'],
+        'text-body':         ['{color.semantic.text.secondary}', 'Card body/description text colour.'],
+        'text-meta':         ['{color.semantic.text.placeholder}', 'Card metadata text colour (date, author, category).'],
+        'border-default':    ['{color.semantic.border.subtle}', 'Card default border. Subtle outline.'],
+        'border-hover':      ['{color.semantic.border.strong}', 'Card hover border. Stronger outline for clickable cards.'],
+        'border-selected':   ['{color.semantic.border.interactive}', 'Card selected border. Blue outline.'],
+        'border-focus':      ['{color.semantic.focus.outline}', 'Card focus ring for keyboard navigation.'],
+        'divider':           ['{color.semantic.border.subtle}', 'Card internal divider between header, body, and footer.'],
+        'icon-action':       ['{color.semantic.icon.secondary}', 'Card action icon colour (overflow menu, bookmark).'],
+        'icon-action-hover': ['{color.semantic.icon.primary}', 'Card action icon hover colour.'],
+      },
+    },
+    sizing: {
+      'padding':           ['{spacing.semantic.inset.md}', 'Card content padding (16px).'],
+      'padding-compact':   ['{spacing.semantic.inset.sm}', 'Card compact variant padding (8px).'],
+      'border-radius':     ['{border.radius.md}', 'Card border radius (8px).'],
+      'border-width':      ['{border.width.thin}', 'Card border width (1px).'],
+      'shadow':            ['{shadow.semantic.overlay}', 'Card shadow for elevated variant.'],
+      'gap':               ['{spacing.semantic.stack.sm}', 'Gap between card content sections (8px).'],
+      'media-height':      ['12rem', 'Card media/image region height (192px).'],
+      'media-border-radius': ['{border.radius.md}', 'Card media region top border radius.'],
+      'title-font-size':   ['{typography.font-size.lg}', 'Card title font size (18px).'],
+      'title-font-weight': ['{typography.font-weight.semibold}', 'Card title font weight.'],
+      'body-font-size':    ['{typography.font-size.sm}', 'Card body text font size (14px).'],
+      'footer-gap':        ['{spacing.primitive.03}', 'Gap between card footer action buttons (8px).'],
+    },
+  },
+  breadcrumb: {
+    desc: 'Breadcrumb navigation component tokens. Horizontal trail showing the current page location within the site hierarchy.',
+    variants: {
+      color: {
+        'text-default':    ['{color.semantic.text.link}', 'Breadcrumb link text colour. Blue for clickable items.'],
+        'text-hover':      ['{color.semantic.interactive.primary-hover}', 'Breadcrumb link hover text colour.'],
+        'text-current':    ['{color.semantic.text.primary}', 'Breadcrumb current page text. Black, not a link.'],
+        'text-disabled':   ['{color.semantic.text.disabled}', 'Breadcrumb disabled link colour.'],
+        'separator':       ['{color.semantic.icon.secondary}', 'Breadcrumb separator icon (slash or chevron) colour.'],
+        'bg-hover':        ['{color.semantic.background.hover}', 'Breadcrumb item hover background.'],
+        'border-focus':    ['{color.semantic.focus.outline}', 'Breadcrumb item focus ring.'],
+      },
+    },
+    sizing: {
+      'padding-x':       ['{spacing.primitive.02}', 'Breadcrumb item horizontal padding (4px).'],
+      'padding-y':       ['{spacing.primitive.01}', 'Breadcrumb item vertical padding (2px).'],
+      'gap':             ['{spacing.primitive.02}', 'Gap between breadcrumb items (4px).'],
+      'separator-size':  ['16px', 'Breadcrumb separator icon size.'],
+      'font-size':       ['{typography.font-size.sm}', 'Breadcrumb text font size (14px).'],
+      'border-radius':   ['{border.radius.sm}', 'Breadcrumb item hover state border radius (4px).'],
+      'max-items':       ['5', 'Breadcrumb max visible items before truncation.'],
+    },
+  },
+  pagination: {
+    desc: 'Pagination component tokens. Page navigation controls for paginated lists, tables, and search results.',
+    variants: {
+      color: {
+        'bg-default':      ['transparent', 'Pagination button default background.'],
+        'bg-hover':        ['{color.semantic.background.hover}', 'Pagination button hover background.'],
+        'bg-active':       ['{color.semantic.interactive.primary}', 'Pagination active/current page background. Blue.'],
+        'bg-disabled':     ['{color.semantic.background.disabled}', 'Pagination disabled button background.'],
+        'text-default':    ['{color.semantic.text.primary}', 'Pagination button text colour.'],
+        'text-active':     ['{color.semantic.text.on-color}', 'Pagination active page text. White on blue.'],
+        'text-disabled':   ['{color.semantic.text.disabled}', 'Pagination disabled button text colour.'],
+        'border-default':  ['{color.semantic.border.subtle}', 'Pagination button border.'],
+        'border-active':   ['{color.semantic.interactive.primary}', 'Pagination active page border.'],
+        'border-focus':    ['{color.semantic.focus.outline}', 'Pagination button focus ring.'],
+        'icon-prev-next':  ['{color.semantic.icon.primary}', 'Pagination prev/next arrow icon colour.'],
+        'icon-disabled':   ['{color.semantic.icon.disabled}', 'Pagination disabled arrow icon colour.'],
+      },
+    },
+    sizing: {
+      'button-size':     ['2.5rem', 'Pagination button width and height (40px square).'],
+      'border-radius':   ['{border.radius.sm}', 'Pagination button border radius (4px).'],
+      'gap':             ['{spacing.primitive.02}', 'Gap between pagination buttons (4px).'],
+      'font-size':       ['{typography.font-size.sm}', 'Pagination text font size (14px).'],
+      'icon-size':       ['20px', 'Pagination arrow icon size.'],
+      'border-width':    ['{border.width.thin}', 'Pagination button border width.'],
+    },
+  },
+  link: {
+    desc: 'Inline link component tokens. Hyperlinks within body text and standalone action links.',
+    variants: {
+      color: {
+        'text-default':    ['{color.semantic.text.link}', 'Link default text colour. Blue for standard hyperlinks.'],
+        'text-hover':      ['{color.semantic.interactive.primary-hover}', 'Link hover text colour. Darkened blue.'],
+        'text-active':     ['{color.semantic.interactive.primary-active}', 'Link active/pressed text colour.'],
+        'text-visited':    ['{color.semantic.text.visited-link}', 'Link visited text colour. Purple to indicate previously followed.'],
+        'text-disabled':   ['{color.semantic.text.disabled}', 'Link disabled text colour.'],
+        'text-inverse':    ['{color.primitive.blue.40}', 'Link text on dark/inverse backgrounds. Lighter blue for contrast.'],
+        'underline-default': ['{color.semantic.text.link}', 'Link underline colour. Matches text.'],
+        'underline-hover': ['{color.semantic.interactive.primary-hover}', 'Link underline hover colour.'],
+        'border-focus':    ['{color.semantic.focus.outline}', 'Link focus ring colour.'],
+        'icon':            ['{color.semantic.text.link}', 'Link trailing icon colour (external link indicator).'],
+      },
+    },
+    sizing: {
+      'font-weight':     ['{typography.font-weight.regular}', 'Link font weight. Regular to blend with surrounding body text.'],
+      'underline-offset': ['2px', 'Link underline offset from text baseline.'],
+      'underline-thickness': ['1px', 'Link underline thickness.'],
+      'icon-size':       ['0.75em', 'Link trailing icon size (relative to font size).'],
+      'icon-gap':        ['{spacing.primitive.01}', 'Gap between link text and trailing icon (2px).'],
+      'focus-offset':    ['2px', 'Link focus ring offset.'],
+    },
+  },
+  badge: {
+    desc: 'Badge/count component tokens. Small numeric or dot indicators overlaid on icons and avatars to show notification counts.',
+    variants: {
+      color: {
+        'bg-default':      ['{color.semantic.support.error}', 'Badge default background. Red for notification count.'],
+        'bg-info':         ['{color.semantic.interactive.primary}', 'Badge informational background. Blue for neutral counts.'],
+        'bg-success':      ['{color.semantic.support.success}', 'Badge success background. Green for positive indicators.'],
+        'bg-warning':      ['{color.semantic.support.warning}', 'Badge warning background. Yellow for cautionary counts.'],
+        'bg-neutral':      ['{color.primitive.gray.60}', 'Badge neutral background. Gray for non-urgent counts.'],
+        'text-default':    ['{color.semantic.text.on-color}', 'Badge text colour. White on coloured background.'],
+        'border':          ['{color.primitive.white}', 'Badge border. White ring to separate from parent element.'],
+        'dot-default':     ['{color.semantic.support.error}', 'Badge dot indicator. Small red circle for unread/new status.'],
+      },
+    },
+    sizing: {
+      'size-sm':         ['1rem', 'Small badge size (16px). Dot and single-digit counts.'],
+      'size-md':         ['1.25rem', 'Medium badge size (20px). Multi-digit counts.'],
+      'border-radius':   ['{border.radius.full}', 'Badge border radius (circle/pill).'],
+      'border-width':    ['{border.width.thick}', 'Badge border width (white ring).'],
+      'font-size':       ['{typography.font-size.xs}', 'Badge font size (12px).'],
+      'font-weight':     ['{typography.font-weight.bold}', 'Badge font weight (bold for readability at small size).'],
+      'dot-size':        ['0.5rem', 'Badge dot indicator diameter (8px).'],
+      'offset-x':        ['-0.25rem', 'Badge horizontal offset from parent top-right corner.'],
+      'offset-y':        ['-0.25rem', 'Badge vertical offset from parent top-right corner.'],
+      'min-width':       ['1.25rem', 'Badge minimum width to prevent squishing single digits.'],
+      'padding-x':       ['{spacing.primitive.02}', 'Badge horizontal padding for multi-digit counts (4px).'],
+    },
+  },
+  divider: {
+    desc: 'Divider/separator component tokens. Horizontal or vertical rules for visually separating content regions.',
+    variants: {
+      color: {
+        'default':         ['{color.semantic.border.subtle}', 'Divider default colour. Subtle gray line.'],
+        'strong':          ['{color.semantic.border.strong}', 'Divider strong colour. High-emphasis separator.'],
+        'brand':           ['{color.semantic.brand.primary}', 'Divider brand colour. Blue accent divider for section breaks.'],
+        'inverse':         ['{color.semantic.border.inverse}', 'Divider on dark/inverse backgrounds.'],
+      },
+    },
+    sizing: {
+      'thickness':       ['{border.width.thin}', 'Divider line thickness (1px).'],
+      'thickness-thick': ['{border.width.thick}', 'Divider thick variant (2px).'],
+      'spacing-sm':      ['{spacing.semantic.stack.sm}', 'Divider small vertical margin (8px above and below).'],
+      'spacing-md':      ['{spacing.semantic.stack.md}', 'Divider medium vertical margin (16px above and below).'],
+      'spacing-lg':      ['{spacing.semantic.stack.lg}', 'Divider large vertical margin (24px above and below).'],
+      'indent':          ['{spacing.semantic.inset.md}', 'Divider indented variant left margin (16px). For list item separators.'],
+    },
+  },
+  skeleton: {
+    desc: 'Skeleton loading placeholder component tokens. Animated placeholders shown while real content loads.',
+    variants: {
+      color: {
+        'bg':              ['{color.semantic.skeleton.background}', 'Skeleton base background colour. Light gray.'],
+        'shimmer':         ['{color.semantic.skeleton.element}', 'Skeleton shimmer animation highlight colour.'],
+        'border-radius':   ['{border.radius.sm}', 'Skeleton placeholder border radius.'],
+      },
+    },
+    sizing: {
+      'text-height':       ['1rem', 'Skeleton text line height (16px).'],
+      'text-gap':          ['{spacing.primitive.03}', 'Gap between skeleton text lines (8px).'],
+      'heading-height':    ['1.5rem', 'Skeleton heading line height (24px).'],
+      'avatar-size':       ['2.5rem', 'Skeleton avatar circle size (40px).'],
+      'image-height':      ['12rem', 'Skeleton image placeholder height (192px).'],
+      'border-radius-text': ['{border.radius.sm}', 'Skeleton text line border radius (4px).'],
+      'border-radius-image': ['{border.radius.md}', 'Skeleton image placeholder border radius (8px).'],
+      'animation-duration': ['{motion.duration.slow-02}', 'Skeleton shimmer animation duration (500ms).'],
     },
   },
 }

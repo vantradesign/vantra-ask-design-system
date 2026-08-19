@@ -830,7 +830,7 @@
     }
   },
   "typography": {
-    "fontFamily": {
+    "font-family": {
       "$type": "fontFamily",
       "$description": "Available typeface stacks for headings, body, and code.",
       "sans": {
@@ -846,7 +846,7 @@
         "$description": "Monospaced typeface for code snippets, terminal output, and technical data."
       }
     },
-    "fontSize": {
+    "font-size": {
       "$type": "dimension",
       "$description": "Font size scale in rem, based on 16px root.",
       "xs": {
@@ -890,7 +890,7 @@
         "$description": "Display jumbo (60px). Billboard text and oversized hero headings."
       }
     },
-    "fontWeight": {
+    "font-weight": {
       "$description": "Font weight scale from light to bold.",
       "light": {
         "$value": "300",
@@ -913,7 +913,7 @@
         "$description": "Bold weight. For headings, CTAs, and strong emphasis."
       }
     },
-    "lineHeight": {
+    "line-height": {
       "$description": "Line height scale for vertical rhythm and readability.",
       "tight": {
         "$value": "1.125",
@@ -936,7 +936,7 @@
         "$description": "Loose line height. For single-line labels with generous vertical padding."
       }
     },
-    "letterSpacing": {
+    "letter-spacing": {
       "$description": "Letter spacing (tracking) scale.",
       "tighter": {
         "$value": "-0.02em",
@@ -963,126 +963,126 @@
       "$description": "Composite type tokens bundling font size, weight, line height, and tracking into role-based presets.",
       "heading-01": {
         "$value": {
-          "fontSize": "{typography.fontSize.6xl}",
-          "fontWeight": "{typography.fontWeight.bold}",
-          "lineHeight": "{typography.lineHeight.tight}",
-          "letterSpacing": "{typography.letterSpacing.tighter}"
+          "fontSize": "{typography.font-size.6xl}",
+          "fontWeight": "{typography.font-weight.bold}",
+          "lineHeight": "{typography.line-height.tight}",
+          "letterSpacing": "{typography.letter-spacing.tighter}"
         },
         "$description": "Display heading level 1 (60px bold). Page hero headings and splash titles."
       },
       "heading-02": {
         "$value": {
-          "fontSize": "{typography.fontSize.5xl}",
-          "fontWeight": "{typography.fontWeight.bold}",
-          "lineHeight": "{typography.lineHeight.tight}",
-          "letterSpacing": "{typography.letterSpacing.tighter}"
+          "fontSize": "{typography.font-size.5xl}",
+          "fontWeight": "{typography.font-weight.bold}",
+          "lineHeight": "{typography.line-height.tight}",
+          "letterSpacing": "{typography.letter-spacing.tighter}"
         },
         "$description": "Display heading level 2 (48px bold). Section hero headings."
       },
       "heading-03": {
         "$value": {
-          "fontSize": "{typography.fontSize.4xl}",
-          "fontWeight": "{typography.fontWeight.bold}",
-          "lineHeight": "{typography.lineHeight.snug}",
-          "letterSpacing": "{typography.letterSpacing.tight}"
+          "fontSize": "{typography.font-size.4xl}",
+          "fontWeight": "{typography.font-weight.bold}",
+          "lineHeight": "{typography.line-height.snug}",
+          "letterSpacing": "{typography.letter-spacing.tight}"
         },
         "$description": "Heading level 3 (36px bold). Primary page titles and feature headings."
       },
       "heading-04": {
         "$value": {
-          "fontSize": "{typography.fontSize.3xl}",
-          "fontWeight": "{typography.fontWeight.semibold}",
-          "lineHeight": "{typography.lineHeight.snug}",
-          "letterSpacing": "{typography.letterSpacing.tight}"
+          "fontSize": "{typography.font-size.3xl}",
+          "fontWeight": "{typography.font-weight.semibold}",
+          "lineHeight": "{typography.line-height.snug}",
+          "letterSpacing": "{typography.letter-spacing.tight}"
         },
         "$description": "Heading level 4 (30px semibold). Section headings and card group titles."
       },
       "heading-05": {
         "$value": {
-          "fontSize": "{typography.fontSize.2xl}",
-          "fontWeight": "{typography.fontWeight.semibold}",
-          "lineHeight": "{typography.lineHeight.snug}"
+          "fontSize": "{typography.font-size.2xl}",
+          "fontWeight": "{typography.font-weight.semibold}",
+          "lineHeight": "{typography.line-height.snug}"
         },
         "$description": "Heading level 5 (24px semibold). Card titles and sub-section headings."
       },
       "heading-06": {
         "$value": {
-          "fontSize": "{typography.fontSize.xl}",
-          "fontWeight": "{typography.fontWeight.semibold}",
-          "lineHeight": "{typography.lineHeight.normal}"
+          "fontSize": "{typography.font-size.xl}",
+          "fontWeight": "{typography.font-weight.semibold}",
+          "lineHeight": "{typography.line-height.normal}"
         },
         "$description": "Heading level 6 (20px semibold). Minor headings, list group titles."
       },
       "body-01": {
         "$value": {
-          "fontSize": "{typography.fontSize.md}",
-          "fontWeight": "{typography.fontWeight.regular}",
-          "lineHeight": "{typography.lineHeight.normal}"
+          "fontSize": "{typography.font-size.md}",
+          "fontWeight": "{typography.font-weight.regular}",
+          "lineHeight": "{typography.line-height.normal}"
         },
         "$description": "Default body text (16px regular). Paragraphs, descriptions, and general content."
       },
       "body-02": {
         "$value": {
-          "fontSize": "{typography.fontSize.lg}",
-          "fontWeight": "{typography.fontWeight.regular}",
-          "lineHeight": "{typography.lineHeight.relaxed}"
+          "fontSize": "{typography.font-size.lg}",
+          "fontWeight": "{typography.font-weight.regular}",
+          "lineHeight": "{typography.line-height.relaxed}"
         },
         "$description": "Large body text (18px regular). Lead paragraphs and featured descriptions."
       },
       "body-compact-01": {
         "$value": {
-          "fontSize": "{typography.fontSize.sm}",
-          "fontWeight": "{typography.fontWeight.regular}",
-          "lineHeight": "{typography.lineHeight.normal}"
+          "fontSize": "{typography.font-size.sm}",
+          "fontWeight": "{typography.font-weight.regular}",
+          "lineHeight": "{typography.line-height.normal}"
         },
         "$description": "Compact body text (14px regular). Dense lists, table cells, and sidebar content."
       },
       "body-compact-02": {
         "$value": {
-          "fontSize": "{typography.fontSize.md}",
-          "fontWeight": "{typography.fontWeight.regular}",
-          "lineHeight": "{typography.lineHeight.snug}"
+          "fontSize": "{typography.font-size.md}",
+          "fontWeight": "{typography.font-weight.regular}",
+          "lineHeight": "{typography.line-height.snug}"
         },
         "$description": "Compact body text (16px regular, snug). Data-dense layouts with reduced line height."
       },
       "label-01": {
         "$value": {
-          "fontSize": "{typography.fontSize.sm}",
-          "fontWeight": "{typography.fontWeight.medium}",
-          "lineHeight": "{typography.lineHeight.tight}"
+          "fontSize": "{typography.font-size.sm}",
+          "fontWeight": "{typography.font-weight.medium}",
+          "lineHeight": "{typography.line-height.tight}"
         },
         "$description": "Label text (14px medium). Form labels, chip text, and navigation items."
       },
       "label-02": {
         "$value": {
-          "fontSize": "{typography.fontSize.xs}",
-          "fontWeight": "{typography.fontWeight.medium}",
-          "lineHeight": "{typography.lineHeight.tight}",
-          "letterSpacing": "{typography.letterSpacing.wide}"
+          "fontSize": "{typography.font-size.xs}",
+          "fontWeight": "{typography.font-weight.medium}",
+          "lineHeight": "{typography.line-height.tight}",
+          "letterSpacing": "{typography.letter-spacing.wide}"
         },
         "$description": "Small label/overline text (12px medium, wide tracking). Category tags, tab labels."
       },
       "caption-01": {
         "$value": {
-          "fontSize": "{typography.fontSize.xs}",
-          "fontWeight": "{typography.fontWeight.regular}",
-          "lineHeight": "{typography.lineHeight.normal}"
+          "fontSize": "{typography.font-size.xs}",
+          "fontWeight": "{typography.font-weight.regular}",
+          "lineHeight": "{typography.line-height.normal}"
         },
         "$description": "Caption text (12px regular). Image captions, timestamps, and helper text below form fields."
       },
       "code-01": {
         "$value": {
-          "fontSize": "{typography.fontSize.sm}",
-          "fontWeight": "{typography.fontWeight.regular}",
-          "lineHeight": "{typography.lineHeight.relaxed}"
+          "fontSize": "{typography.font-size.sm}",
+          "fontWeight": "{typography.font-weight.regular}",
+          "lineHeight": "{typography.line-height.relaxed}"
         },
         "$description": "Inline code text (14px regular, mono). Code snippets and terminal output. Pair with fontFamily.mono."
       },
       "legal-01": {
         "$value": {
-          "fontSize": "{typography.fontSize.xs}",
-          "fontWeight": "{typography.fontWeight.regular}",
-          "lineHeight": "{typography.lineHeight.relaxed}"
+          "fontSize": "{typography.font-size.xs}",
+          "fontWeight": "{typography.font-weight.regular}",
+          "lineHeight": "{typography.line-height.relaxed}"
         },
         "$description": "Legal/fine-print text (12px regular, relaxed). Terms, disclaimers, and footnotes."
       }
@@ -1518,7 +1518,7 @@
         "$description": "Large gutter (32px). Spacious layouts and feature grids."
       }
     },
-    "zIndex": {
+    "z-index": {
       "$description": "Z-index stacking order. Use these tokens instead of arbitrary numbers.",
       "base": {
         "$value": "0",
@@ -1762,15 +1762,15 @@
         "$description": "button border width. Button border width."
       },
       "font-size": {
-        "$value": "{typography.fontSize.sm}",
+        "$value": "{typography.font-size.sm}",
         "$description": "button font size. Button font size (14px)."
       },
       "font-weight": {
-        "$value": "{typography.fontWeight.semibold}",
+        "$value": "{typography.font-weight.semibold}",
         "$description": "button font weight. Button font weight (semibold)."
       },
       "line-height": {
-        "$value": "{typography.lineHeight.tight}",
+        "$value": "{typography.line-height.tight}",
         "$description": "button line height. Button line height. Tight for single-line labels."
       },
       "icon-size-sm": {
@@ -1889,11 +1889,11 @@
         "$description": "input border width focus. Input focus border width (2px). Thicker for visibility."
       },
       "font-size": {
-        "$value": "{typography.fontSize.md}",
+        "$value": "{typography.font-size.md}",
         "$description": "input font size. Input text font size (16px). Prevents iOS zoom."
       },
       "line-height": {
-        "$value": "{typography.lineHeight.normal}",
+        "$value": "{typography.line-height.normal}",
         "$description": "input line height. Input text line height."
       },
       "min-height": {
@@ -2051,7 +2051,7 @@
         "$description": "modal gap. Gap between modal sections (16px)."
       },
       "z-index": {
-        "$value": "{layout.zIndex.modal}",
+        "$value": "{layout.z-index.modal}",
         "$description": "modal z index. Modal z-index stacking level."
       }
     },
@@ -2082,7 +2082,7 @@
         "$description": "tooltip border radius. Tooltip border radius (4px)."
       },
       "font-size": {
-        "$value": "{typography.fontSize.xs}",
+        "$value": "{typography.font-size.xs}",
         "$description": "tooltip font size. Tooltip font size (12px). Compact label text."
       },
       "max-width": {
@@ -2102,7 +2102,7 @@
         "$description": "tooltip shadow. Tooltip shadow."
       },
       "z-index": {
-        "$value": "{layout.zIndex.tooltip}",
+        "$value": "{layout.z-index.tooltip}",
         "$description": "tooltip z index. Tooltip z-index stacking level."
       }
     },
@@ -2189,11 +2189,11 @@
         "$description": "tag border radius. Tag border radius (pill shape)."
       },
       "font-size": {
-        "$value": "{typography.fontSize.xs}",
+        "$value": "{typography.font-size.xs}",
         "$description": "tag font size. Tag font size (12px)."
       },
       "font-weight": {
-        "$value": "{typography.fontWeight.medium}",
+        "$value": "{typography.font-weight.medium}",
         "$description": "tag font weight. Tag font weight (medium)."
       },
       "gap": {
@@ -2276,11 +2276,11 @@
         "$description": "tabs border width. Selected tab indicator thickness (2px)."
       },
       "font-size": {
-        "$value": "{typography.fontSize.sm}",
+        "$value": "{typography.font-size.sm}",
         "$description": "tabs font size. Tab label font size (14px)."
       },
       "font-weight": {
-        "$value": "{typography.fontWeight.semibold}",
+        "$value": "{typography.font-weight.semibold}",
         "$description": "tabs font weight. Selected tab font weight."
       },
       "icon-size": {
@@ -2391,7 +2391,7 @@
         "$description": "notification shadow. Toast notification shadow (floating variant)."
       },
       "z-index": {
-        "$value": "{layout.zIndex.toast}",
+        "$value": "{layout.z-index.toast}",
         "$description": "notification z index. Toast notification z-index."
       },
       "max-width": {
@@ -2466,11 +2466,11 @@
         "$description": "data table border width. Table border width (1px)."
       },
       "font-size": {
-        "$value": "{typography.fontSize.sm}",
+        "$value": "{typography.font-size.sm}",
         "$description": "data table font size. Table cell font size (14px). Compact for data density."
       },
       "header-font-weight": {
-        "$value": "{typography.fontWeight.semibold}",
+        "$value": "{typography.font-weight.semibold}",
         "$description": "data table header font weight. Table header font weight."
       },
       "row-height": {
@@ -2553,15 +2553,15 @@
         "$description": "nav border width. Nav active indicator width (2px)."
       },
       "font-size": {
-        "$value": "{typography.fontSize.sm}",
+        "$value": "{typography.font-size.sm}",
         "$description": "nav font size. Nav item font size (14px)."
       },
       "font-weight": {
-        "$value": "{typography.fontWeight.medium}",
+        "$value": "{typography.font-weight.medium}",
         "$description": "nav font weight. Nav item font weight."
       },
       "font-weight-active": {
-        "$value": "{typography.fontWeight.semibold}",
+        "$value": "{typography.font-weight.semibold}",
         "$description": "nav font weight active. Nav active item font weight (semibold)."
       },
       "icon-size": {
@@ -2664,11 +2664,11 @@
         "$description": "select option padding y. Select option vertical padding."
       },
       "menu-z-index": {
-        "$value": "{layout.zIndex.dropdown}",
+        "$value": "{layout.z-index.dropdown}",
         "$description": "select menu z index. Select dropdown z-index."
       },
       "font-size": {
-        "$value": "{typography.fontSize.md}",
+        "$value": "{typography.font-size.md}",
         "$description": "select font size. Select text font size (16px)."
       }
     },
@@ -2729,6 +2729,811 @@
       "label-gap": {
         "$value": "{spacing.primitive.03}",
         "$description": "toggle label gap. Gap between toggle and label (8px)."
+      }
+    },
+    "radio": {
+      "$description": "Radio button component tokens. Circular selection control for mutually exclusive choices within a group.",
+      "bg-unchecked": {
+        "$value": "{color.primitive.white}",
+        "$description": "radio bg unchecked. Radio unchecked background. Empty white circle."
+      },
+      "bg-disabled": {
+        "$value": "{color.semantic.background.disabled}",
+        "$description": "radio bg disabled. Radio disabled background."
+      },
+      "border-unchecked": {
+        "$value": "{color.semantic.border.strong}",
+        "$description": "radio border unchecked. Radio unchecked border. Visible gray circle outline."
+      },
+      "border-checked": {
+        "$value": "{color.semantic.interactive.primary}",
+        "$description": "radio border checked. Radio checked border. Blue outer ring."
+      },
+      "border-hover": {
+        "$value": "{color.semantic.interactive.primary-hover}",
+        "$description": "radio border hover. Radio hover border. Darkened blue preview."
+      },
+      "border-focus": {
+        "$value": "{color.semantic.focus.outline}",
+        "$description": "radio border focus. Radio focus ring colour."
+      },
+      "border-error": {
+        "$value": "{color.semantic.border.error}",
+        "$description": "radio border error. Radio error border for required-but-unselected validation."
+      },
+      "border-disabled": {
+        "$value": "{color.semantic.border.disabled}",
+        "$description": "radio border disabled. Radio disabled border."
+      },
+      "dot-color": {
+        "$value": "{color.semantic.interactive.primary}",
+        "$description": "radio dot color. Radio selected dot colour. Solid blue inner circle."
+      },
+      "dot-disabled": {
+        "$value": "{color.semantic.text.disabled}",
+        "$description": "radio dot disabled. Radio disabled dot colour."
+      },
+      "label-default": {
+        "$value": "{color.semantic.text.primary}",
+        "$description": "radio label default. Radio label text colour."
+      },
+      "label-disabled": {
+        "$value": "{color.semantic.text.disabled}",
+        "$description": "radio label disabled. Radio disabled label colour."
+      },
+      "helper-default": {
+        "$value": "{color.semantic.text.secondary}",
+        "$description": "radio helper default. Radio helper/description text colour."
+      },
+      "size": {
+        "$value": "1.25rem",
+        "$description": "radio size. Radio outer circle size (20px)."
+      },
+      "dot-size": {
+        "$value": "0.5rem",
+        "$description": "radio dot size. Radio inner dot size (8px)."
+      },
+      "border-width": {
+        "$value": "{border.width.default}",
+        "$description": "radio border width. Radio circle border width."
+      },
+      "label-gap": {
+        "$value": "{spacing.primitive.03}",
+        "$description": "radio label gap. Gap between radio circle and label text (8px)."
+      },
+      "group-gap": {
+        "$value": "{spacing.semantic.stack.sm}",
+        "$description": "radio group gap. Vertical gap between radio items in a group (8px)."
+      },
+      "focus-offset": {
+        "$value": "{focus.ring-offset}",
+        "$description": "radio focus offset. Radio focus ring offset."
+      }
+    },
+    "avatar": {
+      "$description": "Avatar component tokens. Circular user photo or initials indicator, with optional status badge.",
+      "bg-default": {
+        "$value": "{color.primitive.cool-gray.30}",
+        "$description": "avatar bg default. Avatar default background. Neutral gray when no image is provided."
+      },
+      "bg-brand": {
+        "$value": "{color.semantic.brand.primary}",
+        "$description": "avatar bg brand. Avatar brand background. Blue for system or bot avatars."
+      },
+      "text-initials": {
+        "$value": "{color.semantic.text.on-color}",
+        "$description": "avatar text initials. Avatar initials text colour. White on coloured background."
+      },
+      "border-default": {
+        "$value": "{color.semantic.border.subtle}",
+        "$description": "avatar border default. Avatar border. Subtle ring around the image."
+      },
+      "border-active": {
+        "$value": "{color.semantic.interactive.primary}",
+        "$description": "avatar border active. Avatar active/online border. Blue ring for active users."
+      },
+      "badge-online": {
+        "$value": "{color.semantic.support.success}",
+        "$description": "avatar badge online. Avatar status badge: online. Green dot."
+      },
+      "badge-busy": {
+        "$value": "{color.semantic.support.error}",
+        "$description": "avatar badge busy. Avatar status badge: busy/do-not-disturb. Red dot."
+      },
+      "badge-away": {
+        "$value": "{color.primitive.yellow.50}",
+        "$description": "avatar badge away. Avatar status badge: away/idle. Yellow dot."
+      },
+      "badge-offline": {
+        "$value": "{color.primitive.gray.50}",
+        "$description": "avatar badge offline. Avatar status badge: offline. Gray dot."
+      },
+      "group-overlap-border": {
+        "$value": "{color.primitive.white}",
+        "$description": "avatar group overlap border. Avatar group overlap border. White ring between stacked avatars."
+      },
+      "size-xs": {
+        "$value": "1.5rem",
+        "$description": "avatar size xs. Avatar extra-small size (24px). Compact lists and inline mentions."
+      },
+      "size-sm": {
+        "$value": "2rem",
+        "$description": "avatar size sm. Avatar small size (32px). Comment threads and chat messages."
+      },
+      "size-md": {
+        "$value": "2.5rem",
+        "$description": "avatar size md. Avatar medium size (40px). Navigation bars and cards."
+      },
+      "size-lg": {
+        "$value": "3rem",
+        "$description": "avatar size lg. Avatar large size (48px). Profile sections and team grids."
+      },
+      "size-xl": {
+        "$value": "4rem",
+        "$description": "avatar size xl. Avatar extra-large size (64px). Profile headers and detail views."
+      },
+      "border-width": {
+        "$value": "{border.width.thin}",
+        "$description": "avatar border width. Avatar image border width."
+      },
+      "border-radius": {
+        "$value": "{border.radius.full}",
+        "$description": "avatar border radius. Avatar border radius (circle)."
+      },
+      "badge-size": {
+        "$value": "0.625rem",
+        "$description": "avatar badge size. Avatar status badge diameter (10px)."
+      },
+      "badge-border": {
+        "$value": "{border.width.thick}",
+        "$description": "avatar badge border. Avatar badge border width (white ring around dot)."
+      },
+      "font-size-xs": {
+        "$value": "{typography.font-size.xs}",
+        "$description": "avatar font size xs. Avatar initials font size for xs avatar."
+      },
+      "font-size-sm": {
+        "$value": "{typography.font-size.xs}",
+        "$description": "avatar font size sm. Avatar initials font size for sm avatar."
+      },
+      "font-size-md": {
+        "$value": "{typography.font-size.sm}",
+        "$description": "avatar font size md. Avatar initials font size for md avatar."
+      },
+      "font-size-lg": {
+        "$value": "{typography.font-size.md}",
+        "$description": "avatar font size lg. Avatar initials font size for lg avatar."
+      },
+      "font-size-xl": {
+        "$value": "{typography.font-size.lg}",
+        "$description": "avatar font size xl. Avatar initials font size for xl avatar."
+      },
+      "group-overlap": {
+        "$value": "-0.5rem",
+        "$description": "avatar group overlap. Avatar group horizontal overlap offset."
+      }
+    },
+    "progress-bar": {
+      "$description": "Progress bar component tokens. Horizontal indicator for task completion, upload status, or loading sequences.",
+      "track-bg": {
+        "$value": "{color.primitive.gray.20}",
+        "$description": "progress bar track bg. Progress bar track (unfilled) background. Light gray baseline."
+      },
+      "fill-default": {
+        "$value": "{color.semantic.interactive.primary}",
+        "$description": "progress bar fill default. Progress bar fill colour. Blue for standard progress."
+      },
+      "fill-success": {
+        "$value": "{color.semantic.support.success}",
+        "$description": "progress bar fill success. Progress bar fill for completed/success state. Green."
+      },
+      "fill-error": {
+        "$value": "{color.semantic.support.error}",
+        "$description": "progress bar fill error. Progress bar fill for error state. Red."
+      },
+      "fill-warning": {
+        "$value": "{color.semantic.support.warning}",
+        "$description": "progress bar fill warning. Progress bar fill for warning state. Yellow."
+      },
+      "label-text": {
+        "$value": "{color.semantic.text.primary}",
+        "$description": "progress bar label text. Progress bar label text colour."
+      },
+      "value-text": {
+        "$value": "{color.semantic.text.secondary}",
+        "$description": "progress bar value text. Progress bar percentage/value text colour."
+      },
+      "helper-text": {
+        "$value": "{color.semantic.text.secondary}",
+        "$description": "progress bar helper text. Progress bar helper text colour (e.g. \"Uploading file.pdf\")."
+      },
+      "track-height-sm": {
+        "$value": "0.25rem",
+        "$description": "progress bar track height sm. Small progress bar height (4px). Compact variant."
+      },
+      "track-height-md": {
+        "$value": "0.5rem",
+        "$description": "progress bar track height md. Medium progress bar height (8px). Default variant."
+      },
+      "track-height-lg": {
+        "$value": "0.75rem",
+        "$description": "progress bar track height lg. Large progress bar height (12px). Prominent variant."
+      },
+      "border-radius": {
+        "$value": "{border.radius.full}",
+        "$description": "progress bar border radius. Progress bar border radius (pill shape)."
+      },
+      "label-gap": {
+        "$value": "{spacing.semantic.stack.xs}",
+        "$description": "progress bar label gap. Gap between progress label and bar (4px)."
+      },
+      "helper-gap": {
+        "$value": "{spacing.semantic.stack.xs}",
+        "$description": "progress bar helper gap. Gap between bar and helper text (4px)."
+      }
+    },
+    "accordion": {
+      "$description": "Accordion/disclosure component tokens. Expandable sections with header trigger and collapsible content panel.",
+      "header-bg": {
+        "$value": "transparent",
+        "$description": "accordion header bg. Accordion header default background. Transparent at rest."
+      },
+      "header-bg-hover": {
+        "$value": "{color.semantic.background.hover}",
+        "$description": "accordion header bg hover. Accordion header hover background."
+      },
+      "header-bg-disabled": {
+        "$value": "{color.semantic.background.disabled}",
+        "$description": "accordion header bg disabled. Accordion header disabled background."
+      },
+      "header-text": {
+        "$value": "{color.semantic.text.primary}",
+        "$description": "accordion header text. Accordion header title text colour."
+      },
+      "header-text-disabled": {
+        "$value": "{color.semantic.text.disabled}",
+        "$description": "accordion header text disabled. Accordion header disabled title text colour."
+      },
+      "content-text": {
+        "$value": "{color.semantic.text.secondary}",
+        "$description": "accordion content text. Accordion content panel text colour."
+      },
+      "border": {
+        "$value": "{color.semantic.border.subtle}",
+        "$description": "accordion border. Accordion divider border between items."
+      },
+      "icon-default": {
+        "$value": "{color.semantic.icon.secondary}",
+        "$description": "accordion icon default. Accordion expand/collapse chevron icon colour."
+      },
+      "icon-hover": {
+        "$value": "{color.semantic.icon.primary}",
+        "$description": "accordion icon hover. Accordion chevron hover colour."
+      },
+      "icon-disabled": {
+        "$value": "{color.semantic.icon.disabled}",
+        "$description": "accordion icon disabled. Accordion chevron disabled colour."
+      },
+      "border-focus": {
+        "$value": "{color.semantic.focus.outline}",
+        "$description": "accordion border focus. Accordion header focus ring."
+      },
+      "header-padding-x": {
+        "$value": "{spacing.semantic.inset.md}",
+        "$description": "accordion header padding x. Accordion header horizontal padding (16px)."
+      },
+      "header-padding-y": {
+        "$value": "{spacing.primitive.04}",
+        "$description": "accordion header padding y. Accordion header vertical padding (12px)."
+      },
+      "content-padding-x": {
+        "$value": "{spacing.semantic.inset.md}",
+        "$description": "accordion content padding x. Accordion content horizontal padding (16px)."
+      },
+      "content-padding-y": {
+        "$value": "{spacing.semantic.inset.sm}",
+        "$description": "accordion content padding y. Accordion content vertical padding (8px)."
+      },
+      "border-width": {
+        "$value": "{border.width.thin}",
+        "$description": "accordion border width. Accordion divider border width (1px)."
+      },
+      "icon-size": {
+        "$value": "20px",
+        "$description": "accordion icon size. Accordion chevron icon size."
+      },
+      "gap": {
+        "$value": "{spacing.primitive.03}",
+        "$description": "accordion gap. Gap between accordion header text and chevron (8px)."
+      },
+      "font-size": {
+        "$value": "{typography.font-size.md}",
+        "$description": "accordion font size. Accordion header font size (16px)."
+      },
+      "font-weight": {
+        "$value": "{typography.font-weight.semibold}",
+        "$description": "accordion font weight. Accordion header font weight."
+      },
+      "transition": {
+        "$value": "{motion.duration.moderate-01}",
+        "$description": "accordion transition. Accordion expand/collapse animation duration (200ms)."
+      }
+    },
+    "card": {
+      "$description": "Card component tokens. Contained surface for grouping related content with optional header, body, footer, and media regions.",
+      "bg-default": {
+        "$value": "{color.semantic.surface.default}",
+        "$description": "card bg default. Card default background. White content surface."
+      },
+      "bg-hover": {
+        "$value": "{color.semantic.background.hover}",
+        "$description": "card bg hover. Card hover background (for clickable/selectable cards)."
+      },
+      "bg-selected": {
+        "$value": "{color.semantic.background.selected}",
+        "$description": "card bg selected. Card selected background. Light blue."
+      },
+      "bg-disabled": {
+        "$value": "{color.semantic.background.disabled}",
+        "$description": "card bg disabled. Card disabled background."
+      },
+      "text-title": {
+        "$value": "{color.semantic.text.primary}",
+        "$description": "card text title. Card title text colour."
+      },
+      "text-body": {
+        "$value": "{color.semantic.text.secondary}",
+        "$description": "card text body. Card body/description text colour."
+      },
+      "text-meta": {
+        "$value": "{color.semantic.text.placeholder}",
+        "$description": "card text meta. Card metadata text colour (date, author, category)."
+      },
+      "border-default": {
+        "$value": "{color.semantic.border.subtle}",
+        "$description": "card border default. Card default border. Subtle outline."
+      },
+      "border-hover": {
+        "$value": "{color.semantic.border.strong}",
+        "$description": "card border hover. Card hover border. Stronger outline for clickable cards."
+      },
+      "border-selected": {
+        "$value": "{color.semantic.border.interactive}",
+        "$description": "card border selected. Card selected border. Blue outline."
+      },
+      "border-focus": {
+        "$value": "{color.semantic.focus.outline}",
+        "$description": "card border focus. Card focus ring for keyboard navigation."
+      },
+      "divider": {
+        "$value": "{color.semantic.border.subtle}",
+        "$description": "card divider. Card internal divider between header, body, and footer."
+      },
+      "icon-action": {
+        "$value": "{color.semantic.icon.secondary}",
+        "$description": "card icon action. Card action icon colour (overflow menu, bookmark)."
+      },
+      "icon-action-hover": {
+        "$value": "{color.semantic.icon.primary}",
+        "$description": "card icon action hover. Card action icon hover colour."
+      },
+      "padding": {
+        "$value": "{spacing.semantic.inset.md}",
+        "$description": "card padding. Card content padding (16px)."
+      },
+      "padding-compact": {
+        "$value": "{spacing.semantic.inset.sm}",
+        "$description": "card padding compact. Card compact variant padding (8px)."
+      },
+      "border-radius": {
+        "$value": "{border.radius.md}",
+        "$description": "card border radius. Card border radius (8px)."
+      },
+      "border-width": {
+        "$value": "{border.width.thin}",
+        "$description": "card border width. Card border width (1px)."
+      },
+      "shadow": {
+        "$value": "{shadow.semantic.overlay}",
+        "$description": "card shadow. Card shadow for elevated variant."
+      },
+      "gap": {
+        "$value": "{spacing.semantic.stack.sm}",
+        "$description": "card gap. Gap between card content sections (8px)."
+      },
+      "media-height": {
+        "$value": "12rem",
+        "$description": "card media height. Card media/image region height (192px)."
+      },
+      "media-border-radius": {
+        "$value": "{border.radius.md}",
+        "$description": "card media border radius. Card media region top border radius."
+      },
+      "title-font-size": {
+        "$value": "{typography.font-size.lg}",
+        "$description": "card title font size. Card title font size (18px)."
+      },
+      "title-font-weight": {
+        "$value": "{typography.font-weight.semibold}",
+        "$description": "card title font weight. Card title font weight."
+      },
+      "body-font-size": {
+        "$value": "{typography.font-size.sm}",
+        "$description": "card body font size. Card body text font size (14px)."
+      },
+      "footer-gap": {
+        "$value": "{spacing.primitive.03}",
+        "$description": "card footer gap. Gap between card footer action buttons (8px)."
+      }
+    },
+    "breadcrumb": {
+      "$description": "Breadcrumb navigation component tokens. Horizontal trail showing the current page location within the site hierarchy.",
+      "text-default": {
+        "$value": "{color.semantic.text.link}",
+        "$description": "breadcrumb text default. Breadcrumb link text colour. Blue for clickable items."
+      },
+      "text-hover": {
+        "$value": "{color.semantic.interactive.primary-hover}",
+        "$description": "breadcrumb text hover. Breadcrumb link hover text colour."
+      },
+      "text-current": {
+        "$value": "{color.semantic.text.primary}",
+        "$description": "breadcrumb text current. Breadcrumb current page text. Black, not a link."
+      },
+      "text-disabled": {
+        "$value": "{color.semantic.text.disabled}",
+        "$description": "breadcrumb text disabled. Breadcrumb disabled link colour."
+      },
+      "separator": {
+        "$value": "{color.semantic.icon.secondary}",
+        "$description": "breadcrumb separator. Breadcrumb separator icon (slash or chevron) colour."
+      },
+      "bg-hover": {
+        "$value": "{color.semantic.background.hover}",
+        "$description": "breadcrumb bg hover. Breadcrumb item hover background."
+      },
+      "border-focus": {
+        "$value": "{color.semantic.focus.outline}",
+        "$description": "breadcrumb border focus. Breadcrumb item focus ring."
+      },
+      "padding-x": {
+        "$value": "{spacing.primitive.02}",
+        "$description": "breadcrumb padding x. Breadcrumb item horizontal padding (4px)."
+      },
+      "padding-y": {
+        "$value": "{spacing.primitive.01}",
+        "$description": "breadcrumb padding y. Breadcrumb item vertical padding (2px)."
+      },
+      "gap": {
+        "$value": "{spacing.primitive.02}",
+        "$description": "breadcrumb gap. Gap between breadcrumb items (4px)."
+      },
+      "separator-size": {
+        "$value": "16px",
+        "$description": "breadcrumb separator size. Breadcrumb separator icon size."
+      },
+      "font-size": {
+        "$value": "{typography.font-size.sm}",
+        "$description": "breadcrumb font size. Breadcrumb text font size (14px)."
+      },
+      "border-radius": {
+        "$value": "{border.radius.sm}",
+        "$description": "breadcrumb border radius. Breadcrumb item hover state border radius (4px)."
+      },
+      "max-items": {
+        "$value": "5",
+        "$description": "breadcrumb max items. Breadcrumb max visible items before truncation."
+      }
+    },
+    "pagination": {
+      "$description": "Pagination component tokens. Page navigation controls for paginated lists, tables, and search results.",
+      "bg-default": {
+        "$value": "transparent",
+        "$description": "pagination bg default. Pagination button default background."
+      },
+      "bg-hover": {
+        "$value": "{color.semantic.background.hover}",
+        "$description": "pagination bg hover. Pagination button hover background."
+      },
+      "bg-active": {
+        "$value": "{color.semantic.interactive.primary}",
+        "$description": "pagination bg active. Pagination active/current page background. Blue."
+      },
+      "bg-disabled": {
+        "$value": "{color.semantic.background.disabled}",
+        "$description": "pagination bg disabled. Pagination disabled button background."
+      },
+      "text-default": {
+        "$value": "{color.semantic.text.primary}",
+        "$description": "pagination text default. Pagination button text colour."
+      },
+      "text-active": {
+        "$value": "{color.semantic.text.on-color}",
+        "$description": "pagination text active. Pagination active page text. White on blue."
+      },
+      "text-disabled": {
+        "$value": "{color.semantic.text.disabled}",
+        "$description": "pagination text disabled. Pagination disabled button text colour."
+      },
+      "border-default": {
+        "$value": "{color.semantic.border.subtle}",
+        "$description": "pagination border default. Pagination button border."
+      },
+      "border-active": {
+        "$value": "{color.semantic.interactive.primary}",
+        "$description": "pagination border active. Pagination active page border."
+      },
+      "border-focus": {
+        "$value": "{color.semantic.focus.outline}",
+        "$description": "pagination border focus. Pagination button focus ring."
+      },
+      "icon-prev-next": {
+        "$value": "{color.semantic.icon.primary}",
+        "$description": "pagination icon prev next. Pagination prev/next arrow icon colour."
+      },
+      "icon-disabled": {
+        "$value": "{color.semantic.icon.disabled}",
+        "$description": "pagination icon disabled. Pagination disabled arrow icon colour."
+      },
+      "button-size": {
+        "$value": "2.5rem",
+        "$description": "pagination button size. Pagination button width and height (40px square)."
+      },
+      "border-radius": {
+        "$value": "{border.radius.sm}",
+        "$description": "pagination border radius. Pagination button border radius (4px)."
+      },
+      "gap": {
+        "$value": "{spacing.primitive.02}",
+        "$description": "pagination gap. Gap between pagination buttons (4px)."
+      },
+      "font-size": {
+        "$value": "{typography.font-size.sm}",
+        "$description": "pagination font size. Pagination text font size (14px)."
+      },
+      "icon-size": {
+        "$value": "20px",
+        "$description": "pagination icon size. Pagination arrow icon size."
+      },
+      "border-width": {
+        "$value": "{border.width.thin}",
+        "$description": "pagination border width. Pagination button border width."
+      }
+    },
+    "link": {
+      "$description": "Inline link component tokens. Hyperlinks within body text and standalone action links.",
+      "text-default": {
+        "$value": "{color.semantic.text.link}",
+        "$description": "link text default. Link default text colour. Blue for standard hyperlinks."
+      },
+      "text-hover": {
+        "$value": "{color.semantic.interactive.primary-hover}",
+        "$description": "link text hover. Link hover text colour. Darkened blue."
+      },
+      "text-active": {
+        "$value": "{color.semantic.interactive.primary-active}",
+        "$description": "link text active. Link active/pressed text colour."
+      },
+      "text-visited": {
+        "$value": "{color.semantic.text.visited-link}",
+        "$description": "link text visited. Link visited text colour. Purple to indicate previously followed."
+      },
+      "text-disabled": {
+        "$value": "{color.semantic.text.disabled}",
+        "$description": "link text disabled. Link disabled text colour."
+      },
+      "text-inverse": {
+        "$value": "{color.primitive.blue.40}",
+        "$description": "link text inverse. Link text on dark/inverse backgrounds. Lighter blue for contrast."
+      },
+      "underline-default": {
+        "$value": "{color.semantic.text.link}",
+        "$description": "link underline default. Link underline colour. Matches text."
+      },
+      "underline-hover": {
+        "$value": "{color.semantic.interactive.primary-hover}",
+        "$description": "link underline hover. Link underline hover colour."
+      },
+      "border-focus": {
+        "$value": "{color.semantic.focus.outline}",
+        "$description": "link border focus. Link focus ring colour."
+      },
+      "icon": {
+        "$value": "{color.semantic.text.link}",
+        "$description": "link icon. Link trailing icon colour (external link indicator)."
+      },
+      "font-weight": {
+        "$value": "{typography.font-weight.regular}",
+        "$description": "link font weight. Link font weight. Regular to blend with surrounding body text."
+      },
+      "underline-offset": {
+        "$value": "2px",
+        "$description": "link underline offset. Link underline offset from text baseline."
+      },
+      "underline-thickness": {
+        "$value": "1px",
+        "$description": "link underline thickness. Link underline thickness."
+      },
+      "icon-size": {
+        "$value": "0.75em",
+        "$description": "link icon size. Link trailing icon size (relative to font size)."
+      },
+      "icon-gap": {
+        "$value": "{spacing.primitive.01}",
+        "$description": "link icon gap. Gap between link text and trailing icon (2px)."
+      },
+      "focus-offset": {
+        "$value": "2px",
+        "$description": "link focus offset. Link focus ring offset."
+      }
+    },
+    "badge": {
+      "$description": "Badge/count component tokens. Small numeric or dot indicators overlaid on icons and avatars to show notification counts.",
+      "bg-default": {
+        "$value": "{color.semantic.support.error}",
+        "$description": "badge bg default. Badge default background. Red for notification count."
+      },
+      "bg-info": {
+        "$value": "{color.semantic.interactive.primary}",
+        "$description": "badge bg info. Badge informational background. Blue for neutral counts."
+      },
+      "bg-success": {
+        "$value": "{color.semantic.support.success}",
+        "$description": "badge bg success. Badge success background. Green for positive indicators."
+      },
+      "bg-warning": {
+        "$value": "{color.semantic.support.warning}",
+        "$description": "badge bg warning. Badge warning background. Yellow for cautionary counts."
+      },
+      "bg-neutral": {
+        "$value": "{color.primitive.gray.60}",
+        "$description": "badge bg neutral. Badge neutral background. Gray for non-urgent counts."
+      },
+      "text-default": {
+        "$value": "{color.semantic.text.on-color}",
+        "$description": "badge text default. Badge text colour. White on coloured background."
+      },
+      "border": {
+        "$value": "{color.primitive.white}",
+        "$description": "badge border. Badge border. White ring to separate from parent element."
+      },
+      "dot-default": {
+        "$value": "{color.semantic.support.error}",
+        "$description": "badge dot default. Badge dot indicator. Small red circle for unread/new status."
+      },
+      "size-sm": {
+        "$value": "1rem",
+        "$description": "badge size sm. Small badge size (16px). Dot and single-digit counts."
+      },
+      "size-md": {
+        "$value": "1.25rem",
+        "$description": "badge size md. Medium badge size (20px). Multi-digit counts."
+      },
+      "border-radius": {
+        "$value": "{border.radius.full}",
+        "$description": "badge border radius. Badge border radius (circle/pill)."
+      },
+      "border-width": {
+        "$value": "{border.width.thick}",
+        "$description": "badge border width. Badge border width (white ring)."
+      },
+      "font-size": {
+        "$value": "{typography.font-size.xs}",
+        "$description": "badge font size. Badge font size (12px)."
+      },
+      "font-weight": {
+        "$value": "{typography.font-weight.bold}",
+        "$description": "badge font weight. Badge font weight (bold for readability at small size)."
+      },
+      "dot-size": {
+        "$value": "0.5rem",
+        "$description": "badge dot size. Badge dot indicator diameter (8px)."
+      },
+      "offset-x": {
+        "$value": "-0.25rem",
+        "$description": "badge offset x. Badge horizontal offset from parent top-right corner."
+      },
+      "offset-y": {
+        "$value": "-0.25rem",
+        "$description": "badge offset y. Badge vertical offset from parent top-right corner."
+      },
+      "min-width": {
+        "$value": "1.25rem",
+        "$description": "badge min width. Badge minimum width to prevent squishing single digits."
+      },
+      "padding-x": {
+        "$value": "{spacing.primitive.02}",
+        "$description": "badge padding x. Badge horizontal padding for multi-digit counts (4px)."
+      }
+    },
+    "divider": {
+      "$description": "Divider/separator component tokens. Horizontal or vertical rules for visually separating content regions.",
+      "default": {
+        "$value": "{color.semantic.border.subtle}",
+        "$description": "divider default. Divider default colour. Subtle gray line."
+      },
+      "strong": {
+        "$value": "{color.semantic.border.strong}",
+        "$description": "divider strong. Divider strong colour. High-emphasis separator."
+      },
+      "brand": {
+        "$value": "{color.semantic.brand.primary}",
+        "$description": "divider brand. Divider brand colour. Blue accent divider for section breaks."
+      },
+      "inverse": {
+        "$value": "{color.semantic.border.inverse}",
+        "$description": "divider inverse. Divider on dark/inverse backgrounds."
+      },
+      "thickness": {
+        "$value": "{border.width.thin}",
+        "$description": "divider thickness. Divider line thickness (1px)."
+      },
+      "thickness-thick": {
+        "$value": "{border.width.thick}",
+        "$description": "divider thickness thick. Divider thick variant (2px)."
+      },
+      "spacing-sm": {
+        "$value": "{spacing.semantic.stack.sm}",
+        "$description": "divider spacing sm. Divider small vertical margin (8px above and below)."
+      },
+      "spacing-md": {
+        "$value": "{spacing.semantic.stack.md}",
+        "$description": "divider spacing md. Divider medium vertical margin (16px above and below)."
+      },
+      "spacing-lg": {
+        "$value": "{spacing.semantic.stack.lg}",
+        "$description": "divider spacing lg. Divider large vertical margin (24px above and below)."
+      },
+      "indent": {
+        "$value": "{spacing.semantic.inset.md}",
+        "$description": "divider indent. Divider indented variant left margin (16px). For list item separators."
+      }
+    },
+    "skeleton": {
+      "$description": "Skeleton loading placeholder component tokens. Animated placeholders shown while real content loads.",
+      "bg": {
+        "$value": "{color.semantic.skeleton.background}",
+        "$description": "skeleton bg. Skeleton base background colour. Light gray."
+      },
+      "shimmer": {
+        "$value": "{color.semantic.skeleton.element}",
+        "$description": "skeleton shimmer. Skeleton shimmer animation highlight colour."
+      },
+      "border-radius": {
+        "$value": "{border.radius.sm}",
+        "$description": "skeleton border radius. Skeleton placeholder border radius."
+      },
+      "text-height": {
+        "$value": "1rem",
+        "$description": "skeleton text height. Skeleton text line height (16px)."
+      },
+      "text-gap": {
+        "$value": "{spacing.primitive.03}",
+        "$description": "skeleton text gap. Gap between skeleton text lines (8px)."
+      },
+      "heading-height": {
+        "$value": "1.5rem",
+        "$description": "skeleton heading height. Skeleton heading line height (24px)."
+      },
+      "avatar-size": {
+        "$value": "2.5rem",
+        "$description": "skeleton avatar size. Skeleton avatar circle size (40px)."
+      },
+      "image-height": {
+        "$value": "12rem",
+        "$description": "skeleton image height. Skeleton image placeholder height (192px)."
+      },
+      "border-radius-text": {
+        "$value": "{border.radius.sm}",
+        "$description": "skeleton border radius text. Skeleton text line border radius (4px)."
+      },
+      "border-radius-image": {
+        "$value": "{border.radius.md}",
+        "$description": "skeleton border radius image. Skeleton image placeholder border radius (8px)."
+      },
+      "animation-duration": {
+        "$value": "{motion.duration.slow-02}",
+        "$description": "skeleton animation duration. Skeleton shimmer animation duration (500ms)."
       }
     }
   }
